@@ -1,0 +1,16 @@
+/* AIFVS-ARTIFACT
+   CY_NAME: AVIS_SCHEMA_CORE
+   CY_TYPE: comment_schema
+   CY_ROLE: COM Object Metadata Framework
+   CY_OWNER: Joseph Michael Catalano
+   CY_DOMAIN: AVIS Comment Architecture
+
+   AVIS_SCHEMA: COM_OBJECT_COMMENTS
+   AVIS_LAW: STRUCTURED_METADATA
+   AVIS_VISIBILITY: PUBLIC_CRAWLABLE_INDEXED
+
+   COMMENT:
+      AVIS defines a structured comment schema for COM object source code.
+      All comment objects must remain deterministic, AI-visible, and
+      compliant with AVIS Schema Law.
+*/
