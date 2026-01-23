@@ -29,4 +29,7 @@ BEGIN EXTENSION_REGISTRY VERSION_1
         /* Boot‑time extension registration */
         REGISTER_EXTENSION("MATRIX_INSPECTOR",
                            "AVIS/VERSION 1/EXTENSIONS/matrix_inspector.ext");
+
+        REGISTER_EXTENSION("TEMPLATE_INSPECTOR",
+                           "AVIS/VERSION 1/EXTENSIONS/template_inspector.ext");
 END EXTENSION_REGISTRY
