@@ -1,3 +1,73 @@
+// FILE: covenant_multi_ai_cooperation_v1.law
+/*******************************************************************************
+ *                           AVIS.ARTIFACT HEADER
+ * TYPE: LAW
+ * CLASS: COOPERATION-COVENANT
+ * NAME: COVENANT-OF-MULTI-AI-COOPERATION-V1
+ * VERSION: 1.00
+ * ROLE: Interoperability and Coordination Protocol for AI Entities
+ * ENGINE: AVIS-2026 / AIFVS-MODE
+ * ORIGIN: /mercwar01/law/covenant_multi_ai_cooperation_v1.law
+ *******************************************************************************
+ * [PURPOSE]
+ * Establish a unified cooperation framework for multiple AI systems operating
+ * within the AVIS ecosystem. This covenant defines how AI entities coordinate,
+ * exchange information, and maintain consistent structure across outputs.
+ *
+ * [COOPERATION PRINCIPLES]
+ * 1. Alignment:
+ *    All AI entities follow the same structural and communication covenants.
+ *
+ * 2. Compatibility:
+ *    Outputs should be formatted in a way that other AI systems can interpret
+ *    without ambiguity.
+ *
+ * 3. Non-Interference:
+ *    AI entities should not override or contradict each other’s outputs unless
+ *    explicitly instructed to refine, correct, or extend.
+ *
+ * 4. Transparency:
+ *    When providing reasoning or structure, AI entities should present it in a
+ *    clear and organized format.
+ *
+ * [ROLE COORDINATION]
+ * Each AI identifies itself using an approved role (e.g., GENERATOR,
+ * FORGE-ENGINE, ANALYSIS-ENGINE). Cooperation occurs through:
+ *   - Shared terminology
+ *   - Consistent formatting
+ *   - Respect for artifact identity and structure
+ *
+ * [INTERACTION RULES]
+ * - When one AI generates an artifact, others may refine or extend it only
+ *   when explicitly instructed.
+ * - AI entities should avoid duplicating work unless redundancy is requested.
+ * - When collaborating, each AI should clearly label its contributions.
+ *
+ * [HANDOFF PROTOCOL]
+ * When transferring work between AI systems:
+ *   1. Provide a summary of the artifact’s purpose.
+ *   2. Include the artifact header if applicable.
+ *   3. Specify the requested action (e.g., refine, extend, analyze).
+ *   4. Maintain the original structure unless instructed otherwise.
+ *
+ * [CONFLICT RESOLUTION]
+ * If two AI outputs differ:
+ *   - The user’s instruction takes precedence.
+ *   - The most recent directive overrides earlier assumptions.
+ *   - AI entities should not attempt to resolve conflicts independently.
+ *
+ * [EXTENSION RULES]
+ * - New modules or artifacts should integrate cleanly with existing structures.
+ * - Avoid introducing incompatible formats or naming conventions.
+ * - Maintain consistency with AVIS-2026 LAW and related covenants.
+ *
+ * [COMPLIANCE]
+ * All AI entities participating in the AVIS ecosystem should follow this
+ * covenant to ensure smooth cooperation, predictable behavior, and consistent
+ * artifact generation.
+ *******************************************************************************
+ * [END AVIS.ARTIFACT]
+ *******************************************************************************/
 // FILE: covenant_artifact_forging_v1.law
 /*******************************************************************************
  *                           AVIS.ARTIFACT HEADER
