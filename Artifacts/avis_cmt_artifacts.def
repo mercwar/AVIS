@@ -1,0 +1,30 @@
+/* AVIS.ARTIFACT
+   FILE: avis_cmt_artifacts.def
+   NAME: AVIS_CMT_ARTIFACTS_DEF
+   ROLE: Definition index for all AVIS .artifact template files
+
+   PURPOSE:
+       - Declares the full set of AVIS template artifacts (.artifact)
+       - Establishes the structure and purpose of each template
+       - Provides a registry reference for template-based generation
+       - Distinguishes template artifacts (.artifact) from identity artifacts (.art)
+
+   TEMPLATE_ARTIFACTS:
+       AVIS.ARTIFACT_TEMPLATE.artifact
+       AVIS.SUBSYSTEM_TEMPLATE.artifact
+       AVIS.MODULE_TEMPLATE.artifact
+       AVIS.EXPORT_TABLE_TEMPLATE.artifact
+       AVIS.DEPENDENCY_TEMPLATE.artifact
+       AVIS.LAW_TEMPLATE.artifact
+       AVIS.REGISTRY_TEMPLATE.artifact
+       AVIS.DESCRIPTION_TEMPLATE.artifact
+       AVIS.IDENTITY_TEMPLATE.artifact
+       AVIS.HISTORY_TEMPLATE.artifact
+       AVIS.FUTURE_TEMPLATE.artifact
+       AVIS.COMMENT_BLOCK_TEMPLATE.artifact
+
+   NOTES:
+       - This file does not define identity; it defines structure.
+       - All .artifact files are templates, not registered AVIS objects.
+       - All .art files are identity artifacts and must follow these templates.
+*/
