@@ -1,0 +1,4 @@
+/* FILE: AVIS/VERSION 1/IO/output.io
+   ROLE: OUTPUT_HANDLER
+   VERSION: 1
+*/
