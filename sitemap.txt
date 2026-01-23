@@ -1,0 +1,157 @@
+.gitattributes
+AIFVS-HEADER.txt
+AVIS.FVS
+AVIS_SPEC.cmt
+Artifacts
+Artifacts/AVIS.ARTIFACT
+Artifacts/MASTER_CONVERT.art
+Artifacts/Readme.md
+Artifacts/avis.fvs
+Artifacts/avis_cmt.artifacts
+Artifacts/avis_cmt_artifacts.def
+Artifacts/avis_cmt_artifacts.defs
+CITATION.cff
+CONTRIBUTING.md
+LICENSE
+META.JSON
+Readme.md
+SYSTEM.HEALTH
+SYSTEM.INDEX
+SYSTEM.MANIFEST
+SYSTEM.MAP
+Version 1
+Version 1/ACTIVATE.VERSION1
+Version 1/ACTIVE.VERSION
+Version 1/ARTIFACTS
+Version 1/ARTIFACTS/interpreter.art
+Version 1/ARTIFACTS/matrix.instance.art
+Version 1/ARTIFACTS/root.art
+Version 1/ARTIFACTS/source_nodes.art
+Version 1/AVIS.FVS
+Version 1/BOOT
+Version 1/BOOT/init.boot
+Version 1/BOOT/interpreter.boot
+Version 1/CACHE
+Version 1/CACHE/interpreter.cache
+Version 1/CACHE/runtime.cache
+Version 1/CMT
+Version 1/CMT/avis.cmt
+Version 1/CMT/interpreter.cmt
+Version 1/CONFIG
+Version 1/CONFIG/interpreter.cfg
+Version 1/CONFIG/version.cfg
+Version 1/CRASH
+Version 1/CRASH/dump.crash
+Version 1/CRASH/interpreter.crash
+Version 1/DEFS
+Version 1/DEFS/avis.defs
+Version 1/DEFS/matrix.defs
+Version 1/DOCS
+Version 1/DOCS/api.docs
+Version 1/DOCS/interpreter.docs
+Version 1/ENGINE
+Version 1/ENGINE/cbord.engine
+Version 1/ENGINE/cyborg.engine
+Version 1/ENGINE/events.engine
+Version 1/ENGINE/hooks.engine
+Version 1/EXPORT
+Version 1/EXPORT/interpreter.export
+Version 1/EXPORT/schema.export
+Version 1/EXTENSIONS
+Version 1/EXTENSIONS/loader.ext
+Version 1/EXTENSIONS/matrix_inspector.ext
+Version 1/EXTENSIONS/registry.ext
+Version 1/EXTENSIONS/template.extension
+Version 1/EXTENSIONS/template_inspector.ext
+Version 1/IMPORT
+Version 1/IMPORT/interpreter.import
+Version 1/IMPORT/schema.import
+Version 1/INTERPRETER
+Version 1/INTERPRETER/loader.fvs
+Version 1/INTERPRETER/registry.cmt
+Version 1/IO
+Version 1/IO/input.io
+Version 1/IO/output.io
+Version 1/LOG
+Version 1/LOG/README.VERSION1
+Version 1/LOG/version.log
+Version 1/MATRIX
+Version 1/MATRIX/schema.avis
+Version 1/META
+Version 1/META/structure.meta
+Version 1/META/version.meta
+Version 1/MONITOR
+Version 1/MONITOR/interpreter.mon
+Version 1/MONITOR/system.mon
+Version 1/PIPELINE
+Version 1/PIPELINE/postprocess.pipe
+Version 1/PIPELINE/preprocess.pipe
+Version 1/PROFILE
+Version 1/PROFILE/interpreter.prof
+Version 1/PROFILE/runtime.prof
+Version 1/QUEUE
+Version 1/QUEUE/runtime.queue
+Version 1/QUEUE/task.queue
+Version 1/REGISTRY
+Version 1/REGISTRY/interpreter.reg
+Version 1/REGISTRY/manifest.reg
+Version 1/RESOURCE
+Version 1/RESOURCE/github.resource
+Version 1/RESOURCE/local.resource
+Version 1/RUNTIME
+Version 1/RUNTIME/core.runtime
+Version 1/RUNTIME/dispatch.runtime
+Version 1/RUNTIME/ignite.runtime
+Version 1/RUNTIME/interpreter.runtime
+Version 1/SCHEMA.AVIS_INTERPRETER.REG
+Version 1/SCHEMA
+Version 1/SCHEMA/core.schema
+Version 1/SCHEMA/interpreter.schema
+Version 1/SEARCH
+Version 1/SEARCH/crawl.search
+Version 1/SEARCH/index.search
+Version 1/SECURITY
+Version 1/SECURITY/permissions.sec
+Version 1/SECURITY/policy.sec
+Version 1/SESSION
+Version 1/SESSION/interpreter.ses
+Version 1/SESSION/session.ses
+Version 1/STATE
+Version 1/STATE/global.state
+Version 1/STATE/interpreter.state
+Version 1/STATUS.VERSION1
+Version 1/TEMP
+Version 1/TEMP/interpreter.tmp
+Version 1/TEMP/runtime.tmp
+Version 1/TEMPLATES
+Version 1/TEMPLATES/bindings.templates
+Version 1/TEMPLATES/install.templates
+Version 1/TEMPLATES/interpreter.artifact
+Version 1/TEMPLATES/matrix.artifact
+Version 1/TEMPLATES/registry.templates
+Version 1/TOOLS
+Version 1/TOOLS/comment_generator.bind
+Version 1/TOOLS/comment_generator.tool
+Version 1/TOOLS/interpreter.tools
+Version 1/TOOLS/util.tools
+Version 1/TRACE
+Version 1/TRACE/interpreter.trace
+Version 1/TRACE/trace.log
+Version 1/VALIDATION
+Version 1/VALIDATION/interpreter.val
+Version 1/VALIDATION/schema.val
+Version 1/VERSION.SEAL
+Version 1/VERSION_ROOT.MANIFEST
+Version 1/matrix
+Version 1/matrix/schema.avis
+Version 1/objects
+Version 1/objects/manifest.cmt
+Version 1/scripts
+Version 1/scripts/manifest.fvs
+google77a4b19e8f99751c.html
+images
+images/Gemini_Generated_Image_7q1tbp7q1tbp7q1t.png
+images/Readme.md
+metadata.json
+robots.txt
+sitemaps.xml
