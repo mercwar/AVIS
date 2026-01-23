@@ -13,24 +13,56 @@ BEGIN ENGINE CYBORG_ENGINE_V1
         LOAD_SCHEMA("AVIS/VERSION 1/matrix/schema.avis");
         LOAD_DEFS("AVIS/VERSION 1/DEFS/matrix.defs");
         LOAD_INTERPRETER("CYBORG-LANG");
+        SET_STATE(INITIALIZED);
 
     [ENGINE_OPS]:
+
+        /* Canonical op for hook binding */
+        OP MATRIX_WRITE(COORD, PAYLOAD):
+            VALIDATE_COORD(COORD);
+            STORE(COORD, PAYLOAD);
+
+        /* Canonical op for hook binding */
+        OP MATRIX_READ(COORD):
+            VALIDATE_COORD(COORD);
+            RETURN FETCH(COORD);
+
+        /* Canonical op for hook binding */
+        OP AUTOGEN(RANGE):
+            FOR EACH LAYER IN RANGE:
+                GENERATE_DEFAULT_CELL(LAYER);
+
+        /* Internal ops (aliases) */
         OP INIT_MATRIX(MATRIX_INSTANCE):
             BIND(MATRIX_INSTANCE);
             SET_STATE(READY);
 
         OP WRITE_CELL(COORD, PAYLOAD):
-            VALIDATE_COORD(COORD);
-            STORE(COORD, PAYLOAD);
+            CALL MATRIX_WRITE(COORD, PAYLOAD);
 
         OP READ_CELL(COORD):
-            VALIDATE_COORD(COORD);
-            RETURN FETCH(COORD);
+            RETURN MATRIX_READ(COORD);
 
         OP AUTOGEN_LAYER(RANGE):
-            FOR EACH LAYER IN RANGE:
-                GENERATE_DEFAULT_CELL(LAYER);
+            CALL AUTOGEN(RANGE);
 
     [ENGINE_STATUS]:
         STATE: IDLE;
 END ENGINE
+
+
+/* EXTENSION: HOOK BINDINGS */
+
+BEGIN ENGINE_HOOK_BINDINGS VERSION_1
+    BIND_PRE_HOOK(MATRIX_WRITE);
+    BIND_PRE_HOOK(MATRIX_READ);
+    BIND_PRE_HOOK(AUTOGEN);
+
+    BIND_POST_HOOK(MATRIX_WRITE);
+    BIND_POST_HOOK(MATRIX_READ);
+    BIND_POST_HOOK(AUTOGEN);
+
+    BIND_LIFECYCLE_HOOK(ENGINE_INIT);
+    BIND_LIFECYCLE_HOOK(RUNTIME_START);
+    BIND_LIFECYCLE_HOOK(RUNTIME_TICK);
+END ENGINE_HOOK_BINDINGS
