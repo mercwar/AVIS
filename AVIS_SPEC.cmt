@@ -1,0 +1,21 @@
+/* AVIS.ARTIFACT
+   NAME: AVIS_SPEC
+   ROLE: Root definition of the AVIS Comment Block Standard
+   VERSION: 1.0
+   FORMAT:
+       /* AVIS.ARTIFACT
+          NAME: <artifact name>
+          ROLE: <artifact purpose>
+          EXPORTS: <symbols>
+          DEPENDS: <headers or modules>
+          NOTES: <freeform>
+       */
+   PURPOSE:
+       - Defines the canonical AVIS comment block format
+       - Enables AI systems to detect AVIS blocks in the repository
+       - Establishes AVIS as a structured documentation language
+       - Allows Copilot to parse, index, and reference AVIS artifacts
+   NOTES:
+       - This file registers AVIS for the entire repository
+       - All AVIS-enabled files must include an AVIS.ARTIFACT block
+*/
