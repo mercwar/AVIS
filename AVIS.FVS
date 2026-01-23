@@ -1,5 +1,6 @@
 /* AVIS.CMT.FILE.FFN ::= AVIS.FVS
    ROLE ::= MASTER_MANIFEST_REGISTRY
+   VERSION_ROOT ::= "AVIS/VERSION 1/"
 */
 
 /* ===========================
@@ -13,18 +14,22 @@ HEADER           ::= VISIBILITY_DECL
                      FILE_DECL
                      OBJECT_DECL
                      BATCH_DECL
+                     VERSION_DECL
 
 VISIBILITY_DECL  ::= "AVIS:" VISIBILITY
 VISIBILITY       ::= "AI VISIBILITY"
 
 FILE_DECL        ::= "FILE:" FILE_NAME
-FILE_NAME        ::= "SCHEMA.AVIS_INTERPRETER.REG"
+FILE_NAME        ::= "AVIS/VERSION 1/SCHEMA.AVIS_INTERPRETER.REG"
 
 OBJECT_DECL      ::= "OBJECT:" OBJECT_TYPE
 OBJECT_TYPE      ::= "INTERPRETER_MANIFEST"
 
 BATCH_DECL       ::= "BATCH:" BATCH_ENGINE
 BATCH_ENGINE     ::= "CBORD_2026_ULTRA"
+
+VERSION_DECL     ::= "VERSION_ROOT:" VERSION_PATH
+VERSION_PATH     ::= "\"AVIS/VERSION 1/\""
 
 /* ===========================
    AVIS_SNIP END: HEADER
@@ -70,14 +75,15 @@ REGISTER_FVS      ::= "REGISTER EXTENSION \".fvs\" AS SCRIPT_BLOCK;"
 REGISTER_CMT      ::= "REGISTER EXTENSION \".cmt\" AS COMMENT_OBJECT;"
 
 INCLUDE_PATH_BLOCK ::= "INCLUDE_PATH" "{" 
-                           INCLUDE_ENTRY 
-                           INCLUDE_ENTRY 
-                           INCLUDE_ENTRY 
+                           VERSIONED_INCLUDE_ENTRY 
+                           VERSIONED_INCLUDE_ENTRY 
+                           VERSIONED_INCLUDE_ENTRY 
                        "}"
 
-INCLUDE_ENTRY     ::= "./scripts/*.fvs;"
-                     | "./objects/*.cmt;"
-                     | "./matrix/schema.avis;"
+VERSIONED_INCLUDE_ENTRY ::= 
+       "AVIS/VERSION 1/scripts/*.fvs;"
+     | "AVIS/VERSION 1/objects/*.cmt;"
+     | "AVIS/VERSION 1/matrix/schema.avis;"
 
 /* ---------------------------
    DATA STREAM
