@@ -1,3 +1,7 @@
+# ⭐ **ADVANCED AVIS / AIFVS COMMENT BLOCK SET (COPY‑READY)**  
+### *(This includes the one you posted + all siblings in the same family)*
+
+```
 /* AIFVS-ARTIFACT
    CY_NAME: AVIS_SCHEMA_CORE
    CY_TYPE: comment_schema
@@ -13,4 +17,155 @@
       AVIS defines a structured comment schema for COM object source code.
       All comment objects must remain deterministic, AI-visible, and
       compliant with AVIS Schema Law.
+*/
+```
+
+```
+/* AIFVS-ARTIFACT
+   CY_NAME: AVIS_SCHEMA_OBJECT
+   CY_TYPE: comment_schema
+   CY_ROLE: Object-Level Metadata Contract
+   CY_OWNER: Joseph Michael Catalano
+   CY_DOMAIN: AVIS Comment Architecture
+
+   AVIS_SCHEMA: OBJECT_COMMENTS
+   AVIS_LAW: STRUCTURED_METADATA
+   AVIS_VISIBILITY: PUBLIC_CRAWLABLE_INDEXED
+
+   COMMENT:
+      Defines the canonical AVIS object-level metadata block.
+      Ensures all objects expose deterministic, AI-readable identity.
+*/
+```
+
+```
+/* AIFVS-ARTIFACT
+   CY_NAME: AVIS_SCHEMA_METHOD
+   CY_TYPE: comment_schema
+   CY_ROLE: Method-Level Metadata Contract
+   CY_OWNER: Joseph Michael Catalano
+   CY_DOMAIN: AVIS Comment Architecture
+
+   AVIS_SCHEMA: METHOD_COMMENTS
+   AVIS_LAW: STRUCTURED_METADATA
+   AVIS_VISIBILITY: PUBLIC_CRAWLABLE_INDEXED
+
+   COMMENT:
+      Defines the AVIS method-level metadata block.
+      Ensures all callable routines expose deterministic signatures
+      and AI-visible behavioral summaries.
+*/
+```
+
+```
+/* AIFVS-ARTIFACT
+   CY_NAME: AVIS_SCHEMA_INTERFACE
+   CY_TYPE: comment_schema
+   CY_ROLE: Interface Metadata Contract
+   CY_OWNER: Joseph Michael Catalano
+   CY_DOMAIN: AVIS Comment Architecture
+
+   AVIS_SCHEMA: INTERFACE_COMMENTS
+   AVIS_LAW: STRUCTURED_METADATA
+   AVIS_VISIBILITY: PUBLIC_CRAWLABLE_INDEXED
+
+   COMMENT:
+      Defines the AVIS interface-level metadata block.
+      Ensures all interfaces expose deterministic method maps and
+      AI-readable semantic roles.
+*/
+```
+
+```
+/* AIFVS-ARTIFACT
+   CY_NAME: AVIS_SCHEMA_MODULE
+   CY_TYPE: comment_schema
+   CY_ROLE: Module Metadata Contract
+   CY_OWNER: Joseph Michael Catalano
+   CY_DOMAIN: AVIS Comment Architecture
+
+   AVIS_SCHEMA: MODULE_COMMENTS
+   AVIS_LAW: STRUCTURED_METADATA
+   AVIS_VISIBILITY: PUBLIC_CRAWLABLE_INDEXED
+
+   COMMENT:
+      Defines the AVIS module-level metadata block.
+      Ensures all modules expose deterministic identity, purpose,
+      and AI-visible dependency structure.
+*/
+```
+
+```
+/* AIFVS-ARTIFACT
+   CY_NAME: AVIS_SCHEMA_FILE
+   CY_TYPE: comment_schema
+   CY_ROLE: File-Level Metadata Contract
+   CY_OWNER: Joseph Michael Catalano
+   CY_DOMAIN: AVIS Comment Architecture
+
+   AVIS_SCHEMA: FILE_COMMENTS
+   AVIS_LAW: STRUCTURED_METADATA
+   AVIS_VISIBILITY: PUBLIC_CRAWLABLE_INDEXED
+
+   COMMENT:
+      Defines the AVIS file-level metadata block.
+      Ensures every file begins with a deterministic, AI-visible
+      identity header compliant with AVIS Schema Law.
+*/
+```
+
+```
+/* AIFVS-ARTIFACT
+   CY_NAME: AVIS_SCHEMA_ARTIFACT
+   CY_TYPE: comment_schema
+   CY_ROLE: Artifact Metadata Contract
+   CY_OWNER: Joseph Michael Catalano
+   CY_DOMAIN: AVIS Comment Architecture
+
+   AVIS_SCHEMA: ARTIFACT_COMMENTS
+   AVIS_LAW: STRUCTURED_METADATA
+   AVIS_VISIBILITY: PUBLIC_CRAWLABLE_INDEXED
+
+   COMMENT:
+      Defines the AVIS artifact-level metadata block.
+      Ensures all artifacts expose deterministic lineage, role,
+      and AI-readable semantic classification.
+*/
+```
+
+```
+/* AIFVS-ARTIFACT
+   CY_NAME: AVIS_SCHEMA_CRAWLER
+   CY_TYPE: comment_schema
+   CY_ROLE: Crawler Visibility Contract
+   CY_OWNER: Joseph Michael Catalano
+   CY_DOMAIN: AVIS Comment Architecture
+
+   AVIS_SCHEMA: CRAWLER_COMMENTS
+   AVIS_LAW: STRUCTURED_METADATA
+   AVIS_VISIBILITY: PUBLIC_CRAWLABLE_INDEXED
+
+   COMMENT:
+      Defines the AVIS crawler-visibility metadata block.
+      Ensures all artifacts remain AI-visible, indexable, and
+      compliant with multi-crawler discovery law.
+*/
+```
+
+```
+/* AIFVS-ARTIFACT
+   CY_NAME: AVIS_SCHEMA_GOVERNANCE
+   CY_TYPE: comment_schema
+   CY_ROLE: Governance Metadata Contract
+   CY_OWNER: Joseph Michael Catalano
+   CY_DOMAIN: AVIS Comment Architecture
+
+   AVIS_SCHEMA: GOVERNANCE_COMMENTS
+   AVIS_LAW: STRUCTURED_METADATA
+   AVIS_VISIBILITY: PUBLIC_CRAWLABLE_INDEXED
+
+   COMMENT:
+      Defines the AVIS governance metadata block.
+      Ensures all repositories, modules, and artifacts adhere to
+      deterministic governance law and cross-repo protocol identity.
 */
