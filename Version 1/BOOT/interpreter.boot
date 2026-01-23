@@ -1,0 +1,4 @@
+/* FILE: AVIS/VERSION 1/BOOT/interpreter.boot
+   ROLE: INTERPRETER_BOOTSTRAP
+   VERSION: 1
+*/
