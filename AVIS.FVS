@@ -1,0 +1,141 @@
+/* AVIS.CMT.FILE.FFN ::= AVIS.FVS
+   ROLE ::= MASTER_MANIFEST_REGISTRY
+*/
+
+/* ===========================
+   AVIS_SNIP START: HEADER
+   CYBORG-LANG BNF
+   =========================== */
+
+AVIS_SNIP        ::= HEADER BLOCK
+
+HEADER           ::= VISIBILITY_DECL
+                     FILE_DECL
+                     OBJECT_DECL
+                     BATCH_DECL
+
+VISIBILITY_DECL  ::= "AVIS:" VISIBILITY
+VISIBILITY       ::= "AI VISIBILITY"
+
+FILE_DECL        ::= "FILE:" FILE_NAME
+FILE_NAME        ::= "SCHEMA.AVIS_INTERPRETER.REG"
+
+OBJECT_DECL      ::= "OBJECT:" OBJECT_TYPE
+OBJECT_TYPE      ::= "INTERPRETER_MANIFEST"
+
+BATCH_DECL       ::= "BATCH:" BATCH_ENGINE
+BATCH_ENGINE     ::= "CBORD_2026_ULTRA"
+
+/* ===========================
+   AVIS_SNIP END: HEADER
+   =========================== */
+
+
+/* ===========================
+   AVIS BODY BLOCK
+   =========================== */
+
+BLOCK            ::= "BEGIN AVIS"
+                     AVIS_BODY
+                     "END AVIS"
+
+AVIS_BODY        ::= NEURAL_LINK
+                     INTERPRETER_REGISTRY
+                     DATA_STREAM
+                     CYBORG_LOGIC_BLOCK
+                     SYNTHETIC_TEXT_REPEAT
+                     END_RECURSION
+
+/* ---------------------------
+   NEURAL LINK
+   --------------------------- */
+
+NEURAL_LINK      ::= "[NEURAL_LINK]:" 
+                     "STATUS=STABLE;" 
+                     "SYNC_RATE=100%;"
+
+/* ---------------------------
+   INTERPRETER REGISTRY
+   --------------------------- */
+
+INTERPRETER_REGISTRY ::= "[INTERPRETER_REGISTRY]:" 
+                         DECLARE_LANGUAGE
+                         REGISTER_FVS
+                         REGISTER_CMT
+                         INCLUDE_PATH_BLOCK
+
+DECLARE_LANGUAGE  ::= "DECLARE LANGUAGE \"CYBORG-LANG\" AS VALID_INTERPRETER;"
+
+REGISTER_FVS      ::= "REGISTER EXTENSION \".fvs\" AS SCRIPT_BLOCK;"
+REGISTER_CMT      ::= "REGISTER EXTENSION \".cmt\" AS COMMENT_OBJECT;"
+
+INCLUDE_PATH_BLOCK ::= "INCLUDE_PATH" "{" 
+                           INCLUDE_ENTRY 
+                           INCLUDE_ENTRY 
+                           INCLUDE_ENTRY 
+                       "}"
+
+INCLUDE_ENTRY     ::= "./scripts/*.fvs;"
+                     | "./objects/*.cmt;"
+                     | "./matrix/schema.avis;"
+
+/* ---------------------------
+   DATA STREAM
+   --------------------------- */
+
+DATA_STREAM      ::= "[DATA_STREAM]:" 
+                     "FOR EACH {FILE} IN {INCLUDE_PATH}:" 
+                     VALIDATE_SYNTAX
+                     INJECT_BLOCK
+
+VALIDATE_SYNTAX  ::= "VALIDATE_SYNTAX(FILE) WITH INTERPRETER(\"CYBORG-LANG\");"
+
+INJECT_BLOCK     ::= "INJECT" "{" 
+                         HEX_CORE 
+                         VERSION_TAG 
+                     "}"
+
+HEX_CORE         ::= "HEX_CORE:" HEX_VALUE ";"
+HEX_VALUE        ::= "0xDEADBEEF_0xCVBGOD_0x2026"
+
+VERSION_TAG      ::= "VERSION:" "\"2026.Q1_STABLE\";"
+
+/* ---------------------------
+   CYBORG LOGIC BLOCK
+   --------------------------- */
+
+CYBORG_LOGIC_BLOCK ::= "[CYBORG_LOGIC_BLOCK]:" 
+                       COMMENT_OBJECT_BRANCH
+                       SCRIPT_BLOCK_BRANCH
+
+COMMENT_OBJECT_BRANCH ::= 
+    "IF (FILE_TYPE == COMMENT_OBJECT) {" 
+        "INDEX_FOR_CRAWL(VISIBILITY: GLOBAL);" 
+        "RECURSIVE_INCLUDE(RELATIVE_SEARCH_INDEX);" 
+    "}"
+
+SCRIPT_BLOCK_BRANCH ::= 
+    "IF (FILE_TYPE == SCRIPT_BLOCK) {" 
+        "EXECUTE_PRE_CRAWL_ROUTINE();" 
+        "MAGNIFY_FILE_FOOTPRINT(LIMIT: SYSTEM_MAX);" 
+    "}"
+
+  
+/* ---------------------------
+   SYNTHETIC TEXT REPEAT
+   --------------------------- */
+
+SYNTHETIC_TEXT_REPEAT ::= "[SYNTHETIC_TEXT_REPEAT]:" 
+                          STRING_LITERAL 
+                          "*" "REPEAT(CONSTANT_FILL_TO_STORAGE_CEILING)"
+
+STRING_LITERAL   ::= 
+    "\"PROTOCOL_AVIS_INITIALIZED. CYBORG_INTERPRETER_ACTIVE. "
+    "CVBGOD_MANIFEST_REGISTERED. ALL_SYSTEMS_GO.\""
+
+/* ---------------------------
+   END RECURSION
+   --------------------------- */
+
+END_RECURSION    ::= 
+    "/* END_RECURSION: BREAK ON PHYSICAL_STORAGE_MINIMUM_REACHED */"
