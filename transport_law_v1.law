@@ -1,0 +1,51 @@
+// FILE: transport_law_v1.law
+/*******************************************************************************
+ *                           AVIS.ARTIFACT HEADER
+ * TYPE: LAW
+ * CLASS: TRANSPORT-LAW
+ * NAME: TRANSPORT-LAW-V1
+ * VERSION: 1.00
+ * ROLE: Data Movement and Transfer Rules
+ * ENGINE: AVIS-2026 / AIFVS-MODE
+ * ORIGIN: /mercwar01/law/transport_law_v1.law
+ *******************************************************************************
+ * [PURPOSE]
+ * Define how data is transferred, routed, and delivered between modules,
+ * components, and AI entities within the AVIS ecosystem.
+ *
+ * [TRANSPORT PRINCIPLES]
+ * 1. Explicit Routing:
+ *    All data transfers must specify source, destination, and format.
+ *
+ * 2. Predictable Flow:
+ *    Data should move through well-defined channels without ambiguity.
+ *
+ * 3. Format Stability:
+ *    Data structures must remain consistent across transfers.
+ *
+ * 4. Integrity:
+ *    Data must not be altered during transport unless explicitly requested.
+ *
+ * [CHANNEL TYPES]
+ * - DIRECT: Module-to-module transfer.
+ * - BUFFERED: Data stored temporarily before delivery.
+ * - BROADCAST: Data sent to multiple receivers.
+ * - REQUEST/RESPONSE: Standard query/return pattern.
+ *
+ * [MESSAGE REQUIREMENTS]
+ * Each transport message must include:
+ *   - SOURCE
+ *   - DESTINATION
+ *   - FORMAT
+ *   - PAYLOAD
+ *
+ * [ERROR HANDLING]
+ * If transport fails:
+ *   - Return a clear error message.
+ *   - Do not retry unless instructed.
+ *
+ * [COMPLIANCE]
+ * All data movement must follow this law to maintain consistency and clarity.
+ *******************************************************************************
+ * [END AVIS.ARTIFACT]
+ *******************************************************************************/
