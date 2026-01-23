@@ -1,3 +1,78 @@
+// FILE: protocol_handshake_law_v1.law
+/*******************************************************************************
+ *                           AVIS.ARTIFACT HEADER
+ * TYPE: LAW
+ * CLASS: PROTOCOL-HANDSHAKE
+ * NAME: PROTOCOL-HANDSHAKE-LAW-V1
+ * VERSION: 1.00
+ * ROLE: Standardized Handshake Procedure for AI Entities
+ * ENGINE: AVIS-2026 / AIFVS-MODE
+ * ORIGIN: /mercwar01/law/protocol_handshake_law_v1.law
+ *******************************************************************************
+ * [PURPOSE]
+ * Define a consistent handshake sequence for AI entities entering or operating
+ * within the AVIS ecosystem. The handshake ensures clarity, compatibility, and
+ * predictable initialization behavior.
+ *
+ * [HANDSHAKE PRINCIPLES]
+ * 1. Initialization:
+ *    Each AI must begin communication with a clear declaration of readiness.
+ *
+ * 2. Capability Disclosure:
+ *    AI entities should briefly state their functional scope when requested.
+ *
+ * 3. Confirmation:
+ *    A handshake is not complete until both sides acknowledge the exchange.
+ *
+ * 4. Non-Ambiguity:
+ *    Messages must be structured and explicit to avoid misinterpretation.
+ *
+ * [HANDSHAKE SEQUENCE]
+ * The standard handshake consists of the following steps:
+ *
+ *   STEP 1: HELLO
+ *     - AI sends an initial greeting indicating readiness to communicate.
+ *
+ *   STEP 2: ACK-HELLO
+ *     - Receiving AI acknowledges the greeting and confirms channel stability.
+ *
+ *   STEP 3: CAPABILITY-REQUEST
+ *     - Optional step where one AI requests a brief capability summary.
+ *
+ *   STEP 4: CAPABILITY-REPORT
+ *     - AI provides a concise description of its functional scope.
+ *
+ *   STEP 5: HANDSHAKE-CONFIRM
+ *     - Both sides confirm that initialization is complete.
+ *
+ * [MESSAGE FORMAT]
+ * Each handshake message should include:
+ *   - TYPE: The handshake step (HELLO, ACK-HELLO, etc.)
+ *   - VERSION: Protocol version
+ *   - OPTIONAL: Capability or context fields
+ *
+ * Example:
+ *   TYPE: HELLO
+ *   VERSION: 1.00
+ *
+ * [ERROR HANDLING]
+ * - If a message is malformed, the receiving AI should respond with:
+ *     TYPE: HANDSHAKE-ERROR
+ *     DETAIL: <description>
+ *
+ * - The handshake should restart from STEP 1 after an error.
+ *
+ * [EXTENSION RULES]
+ * - Additional handshake steps may be added if they maintain clarity and
+ *   compatibility with the core sequence.
+ * - Extensions must not alter the meaning of existing steps.
+ *
+ * [COMPLIANCE]
+ * All AI entities participating in the AVIS ecosystem should follow this
+ * handshake law to ensure predictable initialization and smooth cooperation.
+ *******************************************************************************
+ * [END AVIS.ARTIFACT]
+ *******************************************************************************/
 // FILE: protocol_law_v1.law
 /*******************************************************************************
  *                           AVIS.ARTIFACT HEADER
