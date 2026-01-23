@@ -11,6 +11,7 @@ BEGIN CRAWL_PROFILE VERSION_1
         INCLUDE "objects/*.cmt";
         INCLUDE "SCHEMA/*.schema";
         INCLUDE "SCHEMA.AVIS_INTERPRETER.REG";
+INCLUDE "TEMPLATES/*.artifact";
 
     RECURSION:
         MODE: TREE_WALK;
