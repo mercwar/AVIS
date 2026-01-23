@@ -1,0 +1,45 @@
+/* FILE: AVIS/VERSION 1/ENGINE/hooks.engine
+   ROLE: HOOK_SYSTEM
+   VERSION: 1
+*/
+
+BEGIN HOOK_SYSTEM VERSION_1
+    [HOOK_META]:
+        VERSION: 1;
+        ENGINE: "CYBORG_ENGINE_V1";
+
+    /* Pre‑execution hooks */
+    [PRE_HOOKS]:
+        ON MATRIX_WRITE(COORD, PAYLOAD):
+            VALIDATE_COORD(COORD);
+            LOG "PRE_HOOK: MATRIX_WRITE";
+
+        ON MATRIX_READ(COORD):
+            VALIDATE_COORD(COORD);
+            LOG "PRE_HOOK: MATRIX_READ";
+
+        ON AUTOGEN(RANGE):
+            LOG "PRE_HOOK: AUTOGEN";
+
+    /* Post‑execution hooks */
+    [POST_HOOKS]:
+        ON MATRIX_WRITE(COORD, PAYLOAD):
+            LOG "POST_HOOK: MATRIX_WRITE";
+
+        ON MATRIX_READ(COORD):
+            LOG "POST_HOOK: MATRIX_READ";
+
+        ON AUTOGEN(RANGE):
+            LOG "POST_HOOK: AUTOGEN";
+
+    /* Lifecycle hooks */
+    [LIFECYCLE_HOOKS]:
+        ON ENGINE_INIT:
+            LOG "ENGINE INITIALIZED";
+
+        ON RUNTIME_START:
+            LOG "RUNTIME STARTED";
+
+        ON RUNTIME_TICK:
+            LOG "RUNTIME TICK";
+END HOOK_SYSTEM
