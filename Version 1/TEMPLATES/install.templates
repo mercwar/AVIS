@@ -1,0 +1,24 @@
+/* FILE: AVIS/VERSION 1/TEMPLATES/install.templates
+   ROLE: TEMPLATE_INSTALLER
+   VERSION: 1
+*/
+
+BEGIN TEMPLATE_INSTALLER VERSION_1
+    [INSTALL_META]:
+        VERSION: 1;
+        REGISTRY: "AVIS/VERSION 1/TEMPLATES/registry.templates";
+        BINDINGS: "AVIS/VERSION 1/TEMPLATES/bindings.templates";
+
+    [INSTALL_OPS]:
+        OP INSTALL_ALL():
+            LOAD(REGISTRY);
+            LOAD(BINDINGS);
+            LOG "TEMPLATE_ARTIFACTS_INSTALLED";
+
+        OP INSTALL_SINGLE(NAME):
+            TEMPLATE = REGISTRY.GET_TEMPLATE(NAME);
+            IF TEMPLATE:
+                LOG "TEMPLATE_INSTALLED: " + NAME;
+            ELSE:
+                ERROR "TEMPLATE_NOT_FOUND";
+END TEMPLATE_INSTALLER
