@@ -1,0 +1,67 @@
+/* AVIS.ARTIFACT
+   FILE: <ARTIFACT_NAME>.art
+   NAME: <ARTIFACT_NAME>
+   ROLE: <Primary purpose of this subsystem or component>
+
+   EXPORTS:
+       <Symbol_1>
+       <Symbol_2>
+       <Symbol_3>
+       <Add as many as needed>
+
+   IMPORTS:
+       <Imported_Artifact_1>
+       <Imported_Artifact_2>
+       <Imported_Artifact_3>
+
+   DEPENDS:
+       <header_or_module_1>
+       <header_or_module_2>
+       <header_or_module_3>
+
+   SUBSYSTEM:
+       FAMILY: <e.g., MASTER, CORE, AVIS, MC, UI, NET>
+       LAYER: <e.g., Root, Engine, Utility, Interface>
+       TIER: <e.g., 0, 1, 2, 3>
+       STATUS: <Active | Legacy | Experimental | Deprecated>
+
+   IDENTITY:
+       VERSION: 1.0
+       AUTHOR: <Your Name or System>
+       CREATED: <Date>
+       UPDATED: <Date>
+       SIGNATURE: <Unique ceremonial identifier>
+
+   DESCRIPTION:
+       <Long-form explanation of what this artifact represents>
+       <Subsystem purpose, behavior, and conceptual role>
+       <How it interacts with other AVIS artifacts>
+
+   NOTES:
+       - <Any special rules or constraints>
+       - <Naming law exceptions>
+       - <Memory or buffer rules>
+       - <Export table behavior>
+       - <Subsystem-specific rituals>
+
+   REGISTRY:
+       - Registered in AVIS global registry
+       - Referenced by: <Other artifacts>
+       - Provides identity for: <Subsystems or modules>
+
+   LAW:
+       PREFIX: <Required prefix for all symbols>
+       NAMING: <Rules for naming functions, files, buffers>
+       STRUCTURE: <Rules for how this subsystem must be organized>
+
+   HISTORY:
+       [v1.0] <Initial creation>
+       [v1.1] <Changes or expansions>
+       [v1.2] <More changes>
+
+   FUTURE:
+       - <Planned expansions>
+       - <Subsystems to integrate>
+       - <Features to add>
+
+*/
