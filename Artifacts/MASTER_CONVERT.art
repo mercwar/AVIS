@@ -1,0 +1,29 @@
+/* AVIS.ARTIFACT
+   FILE: MASTER_CONVERT.art
+   NAME: MASTER_CONVERT
+   ROLE: Cyborg Conversion Engine (MC Subsystem Root)
+   EXPORTS:
+       MC_WCT
+       MC_ACT
+       MC_ATW
+       MC_WTA
+       MC_WTW
+       MC_CCP
+       MC_WCP
+       MC_ACP
+       MC_WCPTR
+       MC_STR2W
+       MC_STR2A
+       MC_A2STR
+       MC_W2STR
+       NUM2STR
+   DEPENDS:
+       windows.h
+       wchar.h
+       stdlib.h
+       string.h
+   NOTES:
+       - This artifact defines the identity of the MASTER_CONVERT subsystem.
+       - Implementation lives in code files; identity lives here.
+       - AVIS registry systems reference this artifact for subsystem metadata.
+*/
