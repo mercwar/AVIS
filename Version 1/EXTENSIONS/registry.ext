@@ -1,0 +1,28 @@
+/* FILE: AVIS/VERSION 1/EXTENSIONS/registry.ext
+   ROLE: EXTENSION_REGISTRY
+   VERSION: 1
+*/
+
+BEGIN EXTENSION_REGISTRY VERSION_1
+    [REGISTRY_META]:
+        VERSION: 1;
+        MODE: DYNAMIC_LOAD;
+
+    [EXTENSION_TABLE]:
+        /* Extensions will be added here dynamically */
+        TABLE: EMPTY;
+
+    [REGISTRY_OPS]:
+        OP REGISTER_EXTENSION(NAME, PATH):
+            TABLE.ADD(NAME, PATH);
+
+        OP LOAD_EXTENSION(NAME):
+            PATH = TABLE.GET(NAME);
+            IF PATH:
+                EXECUTE_FILE(PATH);
+            ELSE:
+                ERROR "EXTENSION_NOT_FOUND";
+
+        OP LIST_EXTENSIONS():
+            RETURN TABLE.LIST();
+END EXTENSION_REGISTRY
