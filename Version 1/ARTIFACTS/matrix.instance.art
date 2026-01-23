@@ -1,0 +1,52 @@
+/* FILE: AVIS/VERSION 1/ARTIFACTS/matrix.instance.art
+   ROLE: HYPER_MATRIX_INSTANCE
+   VERSION: 1
+*/
+
+AVIS: AI VISIBILITY
+FILE: MATRIX_INSTANCE_V1
+OBJECT: HYPER_MATRIX_INSTANCE
+BATCH: CBORD_2026_ULTRA
+
+BEGIN AVIS
+    [MATRIX_INSTANCE_META]:
+        VERSION: 1;
+        INSTANCE_ID: "MATRIX.V1.ROOT";
+        ORIGIN: "AVIS_VERSION_1_BOOTSTRAP";
+        OWNER: "CVBGOD_CORE";
+
+    [MATRIX_BOUNDS]:
+        DIMENSIONS: 4;
+        LAYER_MIN: 1;
+        LAYER_MAX: 99999;
+        COORDINATE_SYSTEM: CARTESIAN_4D;
+
+    [MATRIX_LINK]:
+        SCHEMA: "AVIS/VERSION 1/matrix/schema.avis";
+        DEFS:   "AVIS/VERSION 1/DEFS/matrix.defs";
+        ENGINE: "AVIS/VERSION 1/ENGINE/cyborg.engine";
+        INTERPRETER: "CYBORG-LANG";
+
+    [MATRIX_PAYLOAD_PROFILE]:
+        PAYLOAD_TYPE: BIONIC_TEXT;
+        MAX_PAYLOAD_SIZE: 4096 BYTES;
+        FLAGS: { IMMUTABLE, ADDRESSABLE, INDEXED };
+
+    [MATRIX_SEED]:
+        /* Initial seed cell for Version 1 */
+        COORDINATE: (0, 0, 0, 1);
+        PAYLOAD: "AVIS_MATRIX_V1_INITIALIZED";
+        FLAGS: { IMMUTABLE };
+
+    [MATRIX_AUTOGEN]:
+        /* Auto‑generate the first revision layer */
+        GENERATE_LAYER RANGE(1..32) WITH {
+            PAYLOAD: "MATRIX_V1_AUTOGEN_CELL";
+            FLAGS: { ADDRESSABLE };
+        };
+
+    [MATRIX_VERSION_BINDINGS]:
+        VERSION_ROOT: "AVIS/VERSION 1/";
+        VERSION_FVS:  "AVIS/VERSION 1/AVIS.FVS";
+        VERSION_META: "AVIS/VERSION 1/META/version.meta";
+END AVIS
