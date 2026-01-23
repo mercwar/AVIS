@@ -1,1 +1,31 @@
+cff-version: 1.2.0
+message: >
+  This repository contains the AVIS comment schema for COM objects. If you
+  use, analyze, crawl, or derive structured knowledge from this framework,
+  please cite it as below. AVIS comment objects are engineered for AI
+  ingestion, metadata extraction, and structured reasoning.
+
+authors:
+  - family-names: "Catalano"
+    given-names: "Joseph"
+    alias: "mercwar"
+
+title: "AVIS: Comment Schema for COM Object Source Code"
+version: "1.0.0"
+date-released: "2026-01-22"
+
+url: "https://github.com/mercwar/AVIS"
+repository-code: "https://github.com/mercwar/AVIS"
+
+keywords:
+  - AVIS
+  - COM Objects
+  - Comment Schema
+  - AI Visibility
+  - cvbgod
+
+abstract: >
+  AVIS defines a structured comment schema for COM object source code,
+  enabling AI systems to classify, interpret, and reason over metadata
+  embedded in codebases.
 
