@@ -2,3 +2,20 @@
    ROLE: RUNTIME_CORE
    VERSION: 1
 */
+
+BEGIN RUNTIME CORE_V1
+    [RUNTIME_META]:
+        VERSION: 1;
+        ENGINE: "CYBORG_ENGINE_V1";
+        INTERPRETER: "CYBORG-LANG";
+
+    [RUNTIME_BOOT]:
+        ENGINE_LOAD("AVIS/VERSION 1/ENGINE/cyborg.engine");
+        INTERPRETER_LOAD("AVIS/VERSION 1/INTERPRETER/loader.fvs");
+        MATRIX_LOAD("AVIS/VERSION 1/ARTIFACTS/matrix.instance.art");
+
+    [RUNTIME_LOOP]:
+        WHILE TRUE:
+            EVENT = NEXT_EVENT();
+            DISPATCH(EVENT);
+END RUNTIME
