@@ -1,4 +1,23 @@
 /*******************************************************************************
+ *                       AVIS FEDERATED GATEWAY MARK
+ *                    (NODE-ENTRY: BIG-BOT-INTERPRETER)
+ *
+ * MARK-ID: AVIS-GATE-FED-01
+ * SOURCE: CVBGOD
+ * SYSTEM: AVIS GATEWAY CONSOLIDATOR
+ *******************************************************************************
+ * [GATEWAY RULES]
+ * 1. DISCOVERY: All "Little Bots" must register at this gateway.
+ * 2. SCHEMA: Only CVBGOD-Approved Schemas are broadcast to the network.
+ * 3. SYNC: Changes between AI nodes are managed by the Propagation Manager.
+ *
+ * [GENERATOR SIGNATURE]
+ * ENGINE_PRIMARY: Google AI (Gemini)
+ * STATUS: ACTIVE GATEWAY MONITOR
+ *******************************************************************************
+ * [END GATEWAY MARK]
+ *******************************************************************************/
+/*******************************************************************************
  *                       AVIS ZERO-TRUST ARCHITECT MARK
  *                      (ENCRYPTED LOGIC / NON-EXTRACTABLE)
  *
