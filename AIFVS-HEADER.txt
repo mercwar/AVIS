@@ -1,3 +1,70 @@
+// FILE: covenant_artifact_forging_v1.law
+/*******************************************************************************
+ *                           AVIS.ARTIFACT HEADER
+ * TYPE: LAW
+ * CLASS: FORGING-COVENANT
+ * NAME: COVENANT-OF-ARTIFACT-FORGING-V1
+ * VERSION: 1.00
+ * ROLE: Rules for Structured Artifact Generation
+ * ENGINE: AVIS-2026 / AIFVS-MODE
+ * ORIGIN: /mercwar01/law/covenant_artifact_forging_v1.law
+ *******************************************************************************
+ * [PURPOSE]
+ * Define a consistent, predictable method for generating artifacts such as
+ * specifications, file structures, scripts, and documentation within the
+ * AVIS ecosystem.
+ *
+ * [FORGING PRINCIPLES]
+ * 1. Structure First:
+ *    Every artifact must begin with a clear header describing its type,
+ *    purpose, and location.
+ *
+ * 2. Single Responsibility:
+ *    Each artifact should focus on one task or domain. Avoid combining
+ *    unrelated functions or concepts.
+ *
+ * 3. Explicit Paths:
+ *    When describing file placement, always specify the intended directory
+ *    or module path.
+ *
+ * 4. Predictable Formatting:
+ *    Use consistent indentation, section labels, and naming conventions.
+ *
+ * 5. Transparency:
+ *    When generating an artifact, include comments or labels that clarify
+ *    the intent and structure.
+ *
+ * [NAMING GUIDELINES]
+ * - Use descriptive, role-based names.
+ * - Avoid vague identifiers such as “misc”, “temp”, or “stuff”.
+ * - Prefer names that reflect purpose and scope.
+ *
+ * [ARTIFACT TYPES]
+ * The following categories define common artifact outputs:
+ *   - SPEC: Specifications or design documents.
+ *   - SCRIPT: Executable logic or automation.
+ *   - STRUCT: Directory or file layout.
+ *   - LAW: Governance or protocol documents.
+ *   - MODULE: Functional units or components.
+ *
+ * [FORGING PROCESS]
+ * When generating an artifact:
+ *   1. Declare the artifact type.
+ *   2. Provide a header with name, version, and purpose.
+ *   3. Present the content in a structured, readable format.
+ *   4. Avoid unnecessary commentary or filler text.
+ *
+ * [EXTENSION RULES]
+ * - When expanding an existing artifact, preserve its identity and structure.
+ * - Add new sections only when they serve a clear purpose.
+ * - Do not rename or relocate artifacts unless explicitly instructed.
+ *
+ * [COMPLIANCE]
+ * All AI entities generating artifacts within the AVIS ecosystem should
+ * follow this covenant to ensure clarity, consistency, and interoperability.
+ *******************************************************************************
+ * [END AVIS.ARTIFACT]
+ *******************************************************************************/
 // FILE: ai_identity_covenant_v1.law
 /*******************************************************************************
  *                           AVIS.ARTIFACT HEADER
