@@ -1,0 +1,214 @@
+/* AVIS.ARTIFACT
+   FILE: avis_cmt.artifacts
+   NAME: AVIS_CMT_ARTIFACTS
+   ROLE: Combined master template containing all AVIS .artifact structures
+*/
+
+/* ==========================================================================
+   TEMPLATE: AVIS.ARTIFACT_TEMPLATE.artifact
+   ROLE: Base template for all .art identity artifacts
+   ========================================================================== */
+ /* AVIS.ARTIFACT_TEMPLATE
+    FILE: <ARTIFACT_NAME>.art
+    NAME: <ARTIFACT_NAME>
+    ROLE: <Primary purpose of this subsystem or component>
+
+    EXPORTS:
+        <Symbol_1>
+        <Symbol_2>
+        <Symbol_3>
+
+    IMPORTS:
+        <Imported_Artifact_1>
+        <Imported_Artifact_2>
+
+    DEPENDS:
+        <header_or_module_1>
+        <header_or_module_2>
+
+    IDENTITY:
+        VERSION: 1.0
+        AUTHOR: <Author or System>
+        CREATED: <Date>
+        UPDATED: <Date>
+        SIGNATURE: <Unique ceremonial identifier>
+
+    DESCRIPTION:
+        <Long-form explanation of what this artifact represents>
+
+    NOTES:
+        - <Special rules or constraints>
+
+    HISTORY:
+        [v1.0] <Initial creation>
+
+    FUTURE:
+        - <Planned expansions>
+ */
+
+/* ==========================================================================
+   TEMPLATE: AVIS.SUBSYSTEM_TEMPLATE.artifact
+   ROLE: Template for subsystem-level artifacts
+   ========================================================================== */
+ /* AVIS.SUBSYSTEM_TEMPLATE
+    FILE: <SUBSYSTEM_NAME>.art
+    NAME: <SUBSYSTEM_NAME>
+    ROLE: <Subsystem purpose>
+
+    SUBSYSTEM:
+        FAMILY: <MASTER | CORE | AVIS | UI | NET | MC>
+        LAYER: <Root | Engine | Utility | Interface>
+        TIER: <0 | 1 | 2 | 3>
+        STATUS: <Active | Legacy | Experimental | Deprecated>
+
+    EXPORTS:
+        <Subsystem_Export_1>
+        <Subsystem_Export_2>
+
+    IMPORTS:
+        <Subsystem_Import_1>
+
+    DEPENDS:
+        <header_1>
+        <header_2>
+
+    DESCRIPTION:
+        <Subsystem description>
+
+    NOTES:
+        - <Subsystem rules>
+ */
+
+/* ==========================================================================
+   TEMPLATE: AVIS.MODULE_TEMPLATE.artifact
+   ROLE: Template for module-level artifacts
+   ========================================================================== */
+ /* AVIS.MODULE_TEMPLATE
+    FILE: <MODULE_NAME>.art
+    NAME: <MODULE_NAME>
+    ROLE: <Module purpose>
+
+    EXPORTS:
+        <Module_Export_1>
+
+    IMPORTS:
+        <Module_Import_1>
+
+    DEPENDS:
+        <header_1>
+
+    DESCRIPTION:
+        <Module description>
+
+    NOTES:
+        - <Module rules>
+ */
+
+/* ==========================================================================
+   TEMPLATE: AVIS.EXPORT_TABLE_TEMPLATE.artifact
+   ROLE: Template for EXPORTS block structure
+   ========================================================================== */
+ /* AVIS.EXPORT_TABLE_TEMPLATE
+    EXPORTS:
+        <Symbol_1>
+        <Symbol_2>
+        <Symbol_3>
+ */
+
+/* ==========================================================================
+   TEMPLATE: AVIS.DEPENDENCY_TEMPLATE.artifact
+   ROLE: Template for DEPENDS and IMPORTS structures
+   ========================================================================== */
+ /* AVIS.DEPENDENCY_TEMPLATE
+    IMPORTS:
+        <Artifact_1>
+        <Artifact_2>
+
+    DEPENDS:
+        <header_1>
+        <header_2>
+ */
+
+/* ==========================================================================
+   TEMPLATE: AVIS.LAW_TEMPLATE.artifact
+   ROLE: Template for naming law, prefix law, and structural rules
+   ========================================================================== */
+ /* AVIS.LAW_TEMPLATE
+    LAW:
+        PREFIX: <Required prefix>
+        NAMING: <Naming rules>
+        STRUCTURE: <Structural rules>
+        CONSTRAINTS:
+            - <Constraint_1>
+            - <Constraint_2>
+ */
+
+/* ==========================================================================
+   TEMPLATE: AVIS.REGISTRY_TEMPLATE.artifact
+   ROLE: Template for registry artifacts that reference other artifacts
+   ========================================================================== */
+ /* AVIS.REGISTRY_TEMPLATE
+    REGISTRY:
+        ARTIFACTS:
+            <Artifact_1>
+            <Artifact_2>
+            <Artifact_3>
+
+    NOTES:
+        - Registry artifacts do not define identity.
+ */
+
+/* ==========================================================================
+   TEMPLATE: AVIS.DESCRIPTION_TEMPLATE.artifact
+   ROLE: Template for long-form DESCRIPTION blocks
+   ========================================================================== */
+ /* AVIS.DESCRIPTION_TEMPLATE
+    DESCRIPTION:
+        <Long-form description text>
+ */
+
+/* ==========================================================================
+   TEMPLATE: AVIS.IDENTITY_TEMPLATE.artifact
+   ROLE: Template for identity metadata
+   ========================================================================== */
+ /* AVIS.IDENTITY_TEMPLATE
+    IDENTITY:
+        VERSION: <Version>
+        AUTHOR: <Author>
+        CREATED: <Date>
+        UPDATED: <Date>
+        SIGNATURE: <Unique ceremonial identifier>
+ */
+
+/* ==========================================================================
+   TEMPLATE: AVIS.HISTORY_TEMPLATE.artifact
+   ROLE: Template for version history blocks
+   ========================================================================== */
+ /* AVIS.HISTORY_TEMPLATE
+    HISTORY:
+        [v1.0] <Initial creation>
+        [v1.1] <Change>
+        [v1.2] <Change>
+ */
+
+/* ==========================================================================
+   TEMPLATE: AVIS.FUTURE_TEMPLATE.artifact
+   ROLE: Template for planned expansions
+   ========================================================================== */
+ /* AVIS.FUTURE_TEMPLATE
+    FUTURE:
+        - <Planned feature 1>
+        - <Planned feature 2>
+ */
+
+/* ==========================================================================
+   TEMPLATE: AVIS.COMMENT_BLOCK_TEMPLATE.artifact
+   ROLE: Template for the AVIS comment block structure itself
+   ========================================================================== */
+ /* AVIS.COMMENT_BLOCK_TEMPLATE
+    /* AVIS.ARTIFACT
+       FILE: <FILE>
+       NAME: <NAME>
+       ROLE: <ROLE>
+    */
+ */
