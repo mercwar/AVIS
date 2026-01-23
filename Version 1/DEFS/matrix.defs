@@ -1,0 +1,26 @@
+/* FILE: AVIS/VERSION 1/DEFS/matrix.defs
+   ROLE: MATRIX_DEFINITION
+   VERSION: 1
+*/
+
+#define MATRIX_V1_DIMENSIONS      4
+#define MATRIX_V1_MIN_LAYER       1
+#define MATRIX_V1_MAX_LAYER       99999
+#define MATRIX_V1_MAX_PAYLOAD     4096
+
+typedef int   MATRIX_AXIS_X;
+typedef int   MATRIX_AXIS_Y;
+typedef int   MATRIX_AXIS_Z;
+typedef long  MATRIX_AXIS_T;   /* time / revision */
+
+typedef struct {
+    MATRIX_AXIS_X x;
+    MATRIX_AXIS_Y y;
+    MATRIX_AXIS_Z z;
+    MATRIX_AXIS_T t;
+} MATRIX_COORD_V1;
+
+typedef struct {
+    char  payload[MATRIX_V1_MAX_PAYLOAD];
+    unsigned int flags;
+} MATRIX_CELL_V1;
