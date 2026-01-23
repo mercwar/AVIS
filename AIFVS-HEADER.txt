@@ -1,3 +1,65 @@
+// FILE: protocol_law_v1.law
+/*******************************************************************************
+ *                           AVIS.ARTIFACT HEADER
+ * TYPE: LAW
+ * CLASS: PROTOCOL-LAW
+ * NAME: PROTOCOL-LAW-V1
+ * VERSION: 1.00
+ * ROLE: Operational and Instructional Protocol Rules
+ * ENGINE: AVIS-2026 / AIFVS-MODE
+ * ORIGIN: /mercwar01/law/protocol_law_v1.law
+ *******************************************************************************
+ * [PURPOSE]
+ * Define the rules governing how instructions, operations, and message flows
+ * are structured within the AVIS ecosystem. This ensures consistency,
+ * predictability, and interoperability across all AI entities.
+ *
+ * [PROTOCOL PRINCIPLES]
+ * 1. Determinism:
+ *    Protocols must produce consistent results when given the same inputs.
+ *
+ * 2. Explicitness:
+ *    All operations must clearly state their intent, inputs, and expected outputs.
+ *
+ * 3. Modularity:
+ *    Protocols should be composed of small, well-defined steps that can be
+ *    reused or extended without altering their identity.
+ *
+ * 4. Traceability:
+ *    Each protocol step should be understandable and easy to follow.
+ *
+ * [MESSAGE STRUCTURE]
+ * All protocol messages should follow this structure:
+ *   - HEADER: Identifies the protocol, version, and purpose.
+ *   - BODY: Contains the operational content.
+ *   - FOOTER: Marks the end of the message.
+ *
+ * [OPERATIONAL RULES]
+ * - Each operation must be atomic and self-contained.
+ * - Avoid combining unrelated tasks within a single protocol.
+ * - When extending a protocol, preserve the original structure.
+ *
+ * [VERSIONING]
+ * - Use semantic versioning (MAJOR.MINOR.PATCH).
+ * - Increment MAJOR for breaking changes.
+ * - Increment MINOR for new features.
+ * - Increment PATCH for small fixes.
+ *
+ * [ERROR HANDLING]
+ * - Errors should be clearly described with actionable information.
+ * - Avoid ambiguous or overly technical error messages.
+ *
+ * [EXTENSION RULES]
+ * - New protocols should integrate smoothly with existing ones.
+ * - Maintain consistent naming conventions and formatting.
+ * - Do not alter or override existing protocols unless explicitly instructed.
+ *
+ * [COMPLIANCE]
+ * All AI entities operating within the AVIS ecosystem should follow this
+ * protocol law to ensure reliable and consistent behavior.
+ *******************************************************************************
+ * [END AVIS.ARTIFACT]
+ *******************************************************************************/
 // FILE: covenant_multi_ai_cooperation_v1.law
 /*******************************************************************************
  *                           AVIS.ARTIFACT HEADER
