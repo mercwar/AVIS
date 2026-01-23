@@ -1,0 +1,50 @@
+/* AVIS.ARTIFACT
+   FILE: avis_cmt_artifacts.defs
+   NAME: AVIS_CMT_ARTIFACTS_DEFS
+   ROLE: Definition index for all AVIS .artifact template files
+          and wrapper mapping for avis_cmt.artifacts
+
+   PURPOSE:
+       - Defines the complete set of AVIS template artifacts (.artifact)
+       - Establishes the structural purpose of each template
+       - Declares avis_cmt.artifacts as the wrapper file
+       - Provides a unified reference for template-based generation
+       - Distinguishes template artifacts (.artifact) from identity artifacts (.art)
+
+   WRAPPER:
+       FILE: avis_cmt.artifacts
+       ROLE: Combined master template containing all .artifact structures
+       CONTENTS:
+           - AVIS.ARTIFACT_TEMPLATE.artifact
+           - AVIS.SUBSYSTEM_TEMPLATE.artifact
+           - AVIS.MODULE_TEMPLATE.artifact
+           - AVIS.EXPORT_TABLE_TEMPLATE.artifact
+           - AVIS.DEPENDENCY_TEMPLATE.artifact
+           - AVIS.LAW_TEMPLATE.artifact
+           - AVIS.REGISTRY_TEMPLATE.artifact
+           - AVIS.DESCRIPTION_TEMPLATE.artifact
+           - AVIS.IDENTITY_TEMPLATE.artifact
+           - AVIS.HISTORY_TEMPLATE.artifact
+           - AVIS.FUTURE_TEMPLATE.artifact
+           - AVIS.COMMENT_BLOCK_TEMPLATE.artifact
+
+   TEMPLATE_ARTIFACTS:
+       AVIS.ARTIFACT_TEMPLATE.artifact
+       AVIS.SUBSYSTEM_TEMPLATE.artifact
+       AVIS.MODULE_TEMPLATE.artifact
+       AVIS.EXPORT_TABLE_TEMPLATE.artifact
+       AVIS.DEPENDENCY_TEMPLATE.artifact
+       AVIS.LAW_TEMPLATE.artifact
+       AVIS.REGISTRY_TEMPLATE.artifact
+       AVIS.DESCRIPTION_TEMPLATE.artifact
+       AVIS.IDENTITY_TEMPLATE.artifact
+       AVIS.HISTORY_TEMPLATE.artifact
+       AVIS.FUTURE_TEMPLATE.artifact
+       AVIS.COMMENT_BLOCK_TEMPLATE.artifact
+
+   NOTES:
+       - This DEFS file governs template structure only.
+       - All .artifact files are templates, not registered AVIS objects.
+       - All .art identity artifacts must follow these templates.
+       - avis_cmt.artifacts is the canonical wrapper for all templates.
+*/
