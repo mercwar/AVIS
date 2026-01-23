@@ -1,4 +1,3 @@
-
 /* FILE: AVIS/VERSION 1/EXTENSIONS/registry.ext
    ROLE: EXTENSION_REGISTRY
    VERSION: 1
@@ -10,7 +9,6 @@ BEGIN EXTENSION_REGISTRY VERSION_1
         MODE: DYNAMIC_LOAD;
 
     [EXTENSION_TABLE]:
-        /* Extensions will be added here dynamically */
         TABLE: EMPTY;
 
     [REGISTRY_OPS]:
@@ -26,6 +24,9 @@ BEGIN EXTENSION_REGISTRY VERSION_1
 
         OP LIST_EXTENSIONS():
             RETURN TABLE.LIST();
+
+    [REGISTRY_BOOT]:
+        /* Boot‑time extension registration */
+        REGISTER_EXTENSION("MATRIX_INSPECTOR",
+                           "AVIS/VERSION 1/EXTENSIONS/matrix_inspector.ext");
 END EXTENSION_REGISTRY
-/* EXTENSION REGISTRATION */
-REGISTER_EXTENSION("MATRIX_INSPECTOR", "AVIS/VERSION 1/EXTENSIONS/matrix_inspector.ext");
