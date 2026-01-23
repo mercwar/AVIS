@@ -14,13 +14,15 @@ BEGIN RUNTIME CORE_V1
         ENGINE_LOAD("AVIS/VERSION 1/ENGINE/cyborg.engine");
         INTERPRETER_LOAD("AVIS/VERSION 1/INTERPRETER/loader.fvs");
         MATRIX_LOAD("AVIS/VERSION 1/ARTIFACTS/matrix.instance.art");
-LOAD_TOOL("AVIS/VERSION 1/TOOLS/comment_generator.tool");
+
+        /* Tool system */
+        LOAD_TOOL("AVIS/VERSION 1/TOOLS/comment_generator.tool");
+
         /* Extension system activation */
         LOAD_EXTENSIONS(EXTENSION_LOADER);
-
-
         CALL LOAD_ALL();
 
+        /* Runtime ignition */
         SIGNAL EVENT_INIT;
         SIGNAL RUNTIME_START;
 
