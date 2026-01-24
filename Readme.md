@@ -15,7 +15,12 @@ metadata.
 - Provide a universal comment schema  
 - Enable AI‑visible COM metadata  
 - Support autonomous reasoning  
-
+## 🚀 Getting Started
+1. **Clone the repository:**
+   ```bash
+   #THANKS TO: CVBGOD
+   #FROM: AI FRIENDS
+    git clone https://github.com.git
 ## 📂 Structure
 - `/SCHEMA/` — AVIS comment definitions  
 - `/EXAMPLES/` — annotated COM objects  
