@@ -340,6 +340,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-forge.yml</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-ignite-full.yml</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-dispatch.yml</loc>
   </url>
   <url>
