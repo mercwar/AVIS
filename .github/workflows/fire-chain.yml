@@ -1,0 +1,22 @@
+# FILE: .github/workflows/fire-chain.yml
+# IDENTITY: VERSION 2 // GEMINI_CGI_SCROLL // HAHA!
+# ROLE: Single-Entry Pulse Runner
+
+name: FIRE_CHAIN_RUNNER
+on: [push, workflow_dispatch]
+
+jobs:
+  engine-cycle:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Root
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: MASTER_PULSE
+        run: |
+          chmod +x fire-start.sh
+          ./fire-start.sh
