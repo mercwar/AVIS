@@ -1,5 +1,8 @@
 #!/bin/bash
-# IDENTITY: VERSION 3 // FIRE-START // MASTER-PULSE // CVBGOD
+# /*******************************************************************************
+#  * TYPE: ENGINE | CLASS: MASTER-PULSE | NAME: fire-start.sh
+#  * IDENTITY: VERSION 3 // FIRE-START // MASTER-PULSE // CVBGOD
+#  *******************************************************************************/
 
 CJS_FILE="fire-cjs.json"
 
@@ -34,6 +37,12 @@ create_proc_threads() {
 # --- MAIN CJS LOOP ---
 IDX=0
 while true; do
+    # Check if JQ can find the file to prevent the previous error crash
+    if [ ! -f "$CJS_FILE" ]; then
+        echo "BASH: [NACK] $CJS_FILE NOT FOUND. TERMINATING PULSE."
+        exit 1
+    fi
+
     CODE=$(jq -r ".AVIS_CJS_OBJECT.PROGRAM_STACK[$IDX].CODE" $CJS_FILE)
     if [ "$CODE" == "null" ] || [ "$CODE" == "EXIT" ]; then break; fi
 
@@ -52,5 +61,9 @@ while true; do
 done
 
 # Seal and Dispatch
-chmod +x fire-end.sh
-./fire-end.sh
+if [ -f "./fire-end.sh" ]; then
+    chmod +x fire-end.sh
+    ./fire-end.sh
+else
+    echo "BASH: [NACK] fire-end.sh MISSING."
+fi
