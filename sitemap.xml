@@ -7,6 +7,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/covenant_multi_ai_cooperation_v1.law</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn.o</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/covenant_artifact_forging_v1.law</loc>
   </url>
   <url>
@@ -19,7 +22,13 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/state_law_v1.law</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/versioning_law_v1.law</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/LICENSE</loc>
@@ -334,6 +343,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-sync.yml</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery.o</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/.gitattributes</loc>
   </url>
   <url>
@@ -364,6 +376,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Artifacts/avis_cmt_artifacts.defs</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync.o</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/AIFVS-HEADER.h</loc>
   </url>
   <url>
@@ -392,6 +407,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/SITEMAP.SH</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery.asm</loc>
