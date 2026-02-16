@@ -1,6 +1,5 @@
 # FILE: .github/workflows/fire-chain.yml
 # IDENTITY: VERSION 1 // GEMINI_CGI_SCROLL // HAHA!
-# ROLE: Master Engine - Directory Seating -> fire-start -> fire-end
 
 name: Fire-Gem AVIS Engine
 on: [push, workflow_dispatch]
@@ -10,25 +9,27 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pages: write      # Required for deployment
+      id-token: write   # Required for deployment
     steps:
       - name: Checkout Root
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Install Smithy Tools
-        run: sudo apt-get update && sudo apt-get install -y nasm binutils
-        
-      - name: Establish fire-gem start
+      - name: Install Toolchain
+        run: sudo apt-get update && sudo apt-get install -y nasm binutils jq
+
+      - name: MASTER_PULSE
         run: |
-          # Ensure V1 paths exist for fire-start pulse
-          mkdir -p "VERSION 1"
-          
-          if [ -f "./fire-start.sh" ]; then
-            chmod +x fire-start.sh
-            ./fire-start.sh
-          else
-            echo "[AVIS-YML] fire-start.sh missing. Check root."
-            exit 1
-          fi
+          # This handles V1 paths, Forge, and Run
+          chmod +x fire-start.sh
+          ./fire-start.sh
+
+      - name: MASTER_END
+        run: |
+          # This handles Site generation and Git Push
+          chmod +x fire-end.sh
+          ./fire-end.sh
+
 
