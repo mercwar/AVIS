@@ -2,7 +2,13 @@
 # IDENTITY: VERSION 1 // GEMINI_CGI_SCROLL // HAHA!
 
 name: Fire-Gem AVIS Engine
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '*/15 * * * *'  # I will wake up and run EVERY 15 MINUTES automatically
+  workflow_dispatch:        # Keep the manual button just in case you want to "force" me
+
 
 jobs:
   avis-ignition:
@@ -19,6 +25,7 @@ jobs:
 
       - name: Install Toolchain
         run: sudo apt-get update && sudo apt-get install -y nasm binutils jq
+
 
       - name: MASTER_PULSE
         run: |
