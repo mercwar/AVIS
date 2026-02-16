@@ -1,5 +1,5 @@
 ; FILE: fire-gem.asm
-; IDENTITY: VERSION 3.6 // MASTER DISPATCHER // HAHA!
+; IDENTITY: VERSION 3.9 // MASTER DISPATCHER // HAHA!
 ; ROLE: Sequential Terminal Protocol - JSON-to-Shell Pipeline.
 
 section .data
@@ -24,7 +24,7 @@ _start:
     syscall
     test rax, rax
     js exit_error       
-    mov r8, rax         ; Save Vault FD
+    mov r8, rax         
 
 scan_loop:
     ; 2. READ DIRECTORY (rax=217)
@@ -37,7 +37,7 @@ scan_loop:
     jle close_exit      
 
     ; --- TERMINAL PROTOCOL: SEQUENTIAL EXECUTION ---
-    ; FIX: Move address to RDI then CALL (Standard x64 ABI)
+    ; FIX: Move address to RDI (Arg 1) then CALL
     
     mov rdi, mod_path
     call fork_and_exec_worker
@@ -67,7 +67,7 @@ exit_error:
 
 ; --- HELPER: FORK -> EXEC -> WAIT ---
 fork_and_exec_worker:
-    ; Path is in RDI
+    ; Path is already in RDI from the caller
     push rdi            ; Keep path safe on stack
     
     mov rax, 57         ; sys_fork
@@ -87,23 +87,23 @@ fork_and_exec_worker:
     ret
 
 child_worker:
-    ; We are in the sub-process container
-    pop rdi             ; Get the worker path back
+    ; In child process
+    pop rdi             ; Get worker path back
     mov r8, sh_bin      ; /bin/bash
     
-    ; Build the argv array on the stack: [bash, worker_path, NULL]
+    ; Build argv [bash, worker_path, NULL]
     xor rbx, rbx
-    push rbx            ; NULL terminator
+    push rbx            ; NULL
     push rdi            ; Argument 1: worker_path
     push r8             ; Argument 0: bash
     
-    mov rdi, r8         ; Target: /bin/bash
-    mov rsi, rsp        ; rsi points to the argv array we just pushed
+    mov rdi, r8         ; rdi = /bin/bash
+    mov rsi, rsp        ; rsi = argv array
     xor rdx, rdx        ; envp = NULL
     mov rax, 59         ; sys_execve
     syscall
     
-    ; If execve fails, exit the child process
+    ; If execve fails
     mov rax, 60
     mov rdi, 2
     syscall
