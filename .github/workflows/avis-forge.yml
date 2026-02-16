@@ -1,0 +1,29 @@
+name: AVIS_FGEO_FORGE_CI
+on: [push]
+
+jobs:
+  forge-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Root Targets
+        uses: actions/checkout@v4
+
+      - name: AVIS Ingestion Handshake
+        run: |
+          echo "TYPE: HELLO"
+          echo "VERSION: 1.00"
+          echo "IDENTITY: GITHUB_ACTION_BOT"
+
+      - name: Install NASM
+        run: sudo apt-get install -y nasm
+
+      - name: GEM_STRIKE_GCC (Simulated Build)
+        run: |
+          nasm -f elf64 avis_robot_learn.asm -o avis.o
+          ld avis.o -o avis_bin
+          echo "FGEO_FORGE: Binary Created Successfully."
+
+      - name: CJS Compliance Audit
+        run: |
+          # Verify Identity Timestamping Law
+          grep "IDENTITY: VERSION 1" avis_robot_learn.asm
