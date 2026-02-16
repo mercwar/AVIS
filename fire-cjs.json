@@ -29,6 +29,12 @@
         "CLASS_NAME": "AVIS_DISCOVERY_CLASS"
       },
       {
+        "ID": "MASTER-DISPATCH",
+        "CODE": "WM_REGISTER_CLASS",
+        "SOURCE": "fire-gem.asm",
+        "CLASS_NAME": "FIRE_GEM_CLASS"
+      },
+      {
         "ID": "PROC-AVIS-MAIN",
         "CODE": "WM_CREATE_PROC",
         "TARGET": "avis_robot_learn_bin",
@@ -44,6 +50,12 @@
             "FUNCTION": "SITEMAP.SH"
           }
         ]
+      },
+      {
+        "ID": "PROC-DISPATCH",
+        "CODE": "WM_CREATE_PROC",
+        "TARGET": "fire-gem_bin",
+        "WAIT": "TRUE"
       },
       { "CODE": "EXIT", "MACRO": "wm_macro_ack" }
     ]
