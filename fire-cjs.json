@@ -1,0 +1,37 @@
+{
+  "AVIS_CJS_OBJECT": {
+    "WRAPPER_GUID": "SENTINEL-MASTER-V2-2026-X86",
+    "PROGRAM_STACK": [
+      {
+        "ID": "CLASS_ASM_01",
+        "CODE": "WM_REGISTER_CLASS",
+        "SOURCE": "avis_robot_learn.asm",
+        "CLASS_NAME": "AVIS_LEARNER_CLASS"
+      },
+      {
+        "ID": "CLASS_ASM_02",
+        "CODE": "WM_REGISTER_CLASS",
+        "SOURCE": "avis_discovery.asm",
+        "CLASS_NAME": "AVIS_DISCOVERY_CLASS"
+      },
+      {
+        "ID": "PROC-AVIS-MAIN",
+        "CODE": "WM_CREATE_PROC",
+        "TARGET": "avis_robot_learn_bin",
+        "THREADS": [
+          {
+            "ID": "T1_INGEST",
+            "CODE": "WM_CREATE_THREAD",
+            "FUNCTION": "fire-site.sh"
+          },
+          {
+            "ID": "T2_SITEMAP",
+            "CODE": "WM_CREATE_THREAD",
+            "FUNCTION": "SITEMAP.SH"
+          }
+        ]
+      },
+      { "CODE": "EXIT", "MACRO": "wm_macro_ack" }
+    ]
+  }
+}
