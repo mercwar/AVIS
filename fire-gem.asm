@@ -1,5 +1,5 @@
 ; FILE: fire-gem.asm
-; IDENTITY: VERSION 3.55 // MASTER DISPATCHER // HAHA!
+; IDENTITY: VERSION 3.6 // MASTER DISPATCHER // HAHA!
 ; ROLE: Sequential Terminal Protocol - JSON-to-Shell Pipeline.
 
 section .data
@@ -20,11 +20,11 @@ _start:
     ; 1. OPEN VAULT DIRECTORY (rax=2)
     mov rax, 2          
     mov rdi, vault_path
-    xor rsi, rsi        
+    xor rsi, rsi        ; O_RDONLY
     syscall
     test rax, rax
     js exit_error       
-    mov r8, rax         
+    mov r8, rax         ; Save Vault FD
 
 scan_loop:
     ; 2. READ DIRECTORY (rax=217)
@@ -37,7 +37,7 @@ scan_loop:
     jle close_exit      
 
     ; --- TERMINAL PROTOCOL: SEQUENTIAL EXECUTION ---
-    ; FIX: Push address to stack before calling the worker
+    ; FIX: Move address to RDI then CALL (Standard x64 ABI)
     
     mov rdi, mod_path
     call fork_and_exec_worker
@@ -51,31 +51,31 @@ scan_loop:
     jmp scan_loop       
 
 close_exit:
-    mov rax, 3          
+    mov rax, 3          ; sys_close
     mov rdi, r8
     syscall
 
 exit_success:
-    mov rax, 60         
+    mov rax, 60         ; sys_exit
     xor rdi, rdi
     syscall
 
 exit_error:
-    mov rax, 60         
-    mov rdi, 1          
+    mov rax, 60         ; sys_exit
+    mov rdi, 1          ; Exit code 1
     syscall
 
 ; --- HELPER: FORK -> EXEC -> WAIT ---
 fork_and_exec_worker:
-    ; rdi contains the path to the worker script
-    push rdi            ; Save path
+    ; Path is in RDI
+    push rdi            ; Keep path safe on stack
     
     mov rax, 57         ; sys_fork
     syscall
     test rax, rax
     jz child_worker     
     
-    ; PARENT: WAIT
+    ; PARENT LOGIC: WAIT4 (rax=61)
     pop rdi             ; Clean stack
     mov [child_pid], rax
     mov rax, 61
@@ -87,22 +87,23 @@ fork_and_exec_worker:
     ret
 
 child_worker:
-    pop rdi             ; Get path from stack
-    mov rax, 59         ; sys_execve
-    mov r8, sh_bin      ; Load /bin/bash
+    ; We are in the sub-process container
+    pop rdi             ; Get the worker path back
+    mov r8, sh_bin      ; /bin/bash
     
-    ; Build argv [bash, worker_path, NULL]
+    ; Build the argv array on the stack: [bash, worker_path, NULL]
     xor rbx, rbx
-    push rbx            ; NULL
-    push rdi            ; worker_path
-    push r8             ; /bin/bash
+    push rbx            ; NULL terminator
+    push rdi            ; Argument 1: worker_path
+    push r8             ; Argument 0: bash
     
-    mov rdi, r8         ; rdi = /bin/bash
-    mov rsi, rsp        ; rsi = argv
-    xor rdx, rdx        ; rdx = envp = NULL
+    mov rdi, r8         ; Target: /bin/bash
+    mov rsi, rsp        ; rsi points to the argv array we just pushed
+    xor rdx, rdx        ; envp = NULL
+    mov rax, 59         ; sys_execve
     syscall
     
-    ; If execve fails, exit child
+    ; If execve fails, exit the child process
     mov rax, 60
     mov rdi, 2
     syscall
