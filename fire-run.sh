@@ -1,46 +1,32 @@
 #!/bin/bash
-# FILE: fire-run.sh
-# IDENTITY: VERSION 2 // FIRE-RUN // CVBGOD
-# ROLE: Asynchronous Binary Execution and Macro Signaling
+/*******************************************************************************
+ * TYPE: ENGINE | CLASS: RUN-ENGINE | NAME: fire-run.sh
+ * IDENTITY: VERSION 1 // GEMINI_CGI_SCROLL // HAHA!
+ *******************************************************************************/
 
-JSON_FILE=".github/workflows/json/resource.json"
+JSON_FILE="fire-cjs.json"
+echo "FIRE_RUN: Engaging Background Execution Vectors..."
 
-echo "AVIS: Fire-Run Vector Engaged. Ingesting Background Tasks..."
-
-# 1. EXTRACT RUN-TARGETS FROM FLOW_SCOPE
-# This only pulls files where TYPE is exactly 'RUN'
+# Pull only files marked as TYPE: RUN from FLOW_SCOPE
 RUN_TARGETS=$(jq -r '.AVIS_COMM_OBJECT.FLOW_SCOPE[] | select(.TYPE=="RUN") | .FILE' $JSON_FILE)
 
-if [ -z "$RUN_TARGETS" ]; then
-    echo "FIRE_RUN: No active RUN targets detected in FLOW_SCOPE."
-    exit 0
-fi
-
-# 2. EXECUTION LOOP
 for bin in $RUN_TARGETS; do
-    # Check for direct file or compiled _bin variant
-    TARGET_EXEC=""
-    if [ -f "./$bin" ]; then
-        TARGET_EXEC="./$bin"
-    elif [ -f "./${bin}_bin" ]; then
-        TARGET_EXEC="./${bin}_bin"
-    fi
+    # Check for the binary or the _bin variant
+    target_exec=""
+    [ -f "./$bin" ] && target_exec="./$bin"
+    [ -f "./${bin}_bin" ] && target_exec="./${bin}_bin"
 
-    if [ -n "$TARGET_EXEC" ]; then
-        echo "SIGNAL: wm_macro_rack - Initializing $TARGET_EXEC"
-        chmod +x "$TARGET_EXEC"
+    if [ -n "$target_exec" ]; then
+        echo "SIGNAL: wm_macro_rack - Dispatching $target_exec"
         
-        # EXECUTE IN BACKGROUND (&)
-        # Redirect output to a log for the Master OS Audit Surface
-        $TARGET_EXEC > "fire-run-$(basename $TARGET_EXEC).log" 2>&1 &
+        # EXECUTE AS BACKGROUND THREAD (&)
+        # Redirect output to .log for the Master OS Audit Surface
+        $target_exec > "fire-run-$(basename $target_exec).log" 2>&1 &
         
-        PID=$!
-        echo "AVIS_RUN: $TARGET_EXEC seated at PID: $PID"
+        echo "BASH: [ACK] THREAD_START: $target_exec [PID: $!]"
     else
-        echo "wm_macro_nack: Execution target $bin NOT FOUND."
+        echo "BASH: [NACK] RUN_ERROR: Target $bin not found."
     fi
 done
 
-# 3. ACKNOWLEDGE TRIGGER COMPLETE
-echo "FIRE_RUN: All background vectors dispatched. [wm_macro_ack]"
 exit 0
