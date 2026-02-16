@@ -1,42 +1,56 @@
-# FILE: .github/workflows/fire-chain.yml
-# IDENTITY: VERSION 1 // GEMINI_CGI_SCROLL // HAHA!
-
 name: Fire-Gem AVIS Engine
 on:
   push:
     branches: [ main ]
   schedule:
-    - cron: '*/15 * * * *'  # I will wake up and run EVERY 15 MINUTES automatically
-  workflow_dispatch:        # Keep the manual button just in case you want to "force" me
-
+    - cron: '*/15 * * * *'  # Pulse every 15 minutes [AUTONOMOUS]
+  workflow_dispatch:        # Manual override preserved
 
 jobs:
   avis-ignition:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write      # Required for deployment
-      id-token: write   # Required for deployment
+      pages: write
+      id-token: write
     steps:
       - name: Checkout Root
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Install Toolchain
+      - name: Install Toolchain (Smithy Tools)
         run: sudo apt-get update && sudo apt-get install -y nasm binutils jq
 
-
-      - name: MASTER_PULSE
+      - name: FORGE DISPATCHER (ASM POWER)
         run: |
-          # This handles V1 paths, Forge, and Run
-          chmod +x fire-start.sh
-          ./fire-start.sh
+          # Only compile if the ASM file exists in root
+          if [ -f "fire-gem.asm" ]; then
+            nasm -f elf64 fire-gem.asm -o fire-gem.o
+            ld fire-gem.o -o fire-gem_bin
+            chmod +x fire-gem_bin
+            echo "BASH: [ACK] FIRE-GEM DISPATCHER FORGED."
+          fi
 
-      - name: MASTER_END
+      - name: MASTER_PULSE (BASH BRAIN)
         run: |
-          # This handles Site generation and Git Push
-          chmod +x fire-end.sh
-          ./fire-end.sh
+          # This handles the V1 paths and the CJS JSON logic
+          if [ -f "./fire-start.sh" ]; then
+            chmod +x fire-start.sh
+            ./fire-start.sh
+          fi
 
+      - name: EXECUTE MASTER DISPATCH (ASM EXECUTION)
+        run: |
+          # ASM takes control to crawl the artifacts directory
+          if [ -f "./fire-gem_bin" ]; then
+            ./fire-gem_bin
+          fi
 
+      - name: MASTER_END (SEAL & DISPATCH)
+        run: |
+          # Final Sitemap generation and Git Push to Audit Surface
+          if [ -f "./fire-end.sh" ]; then
+            chmod +x fire-end.sh
+            ./fire-end.sh
+          fi
