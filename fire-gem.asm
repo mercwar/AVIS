@@ -1,6 +1,11 @@
-; FILE: fire-gem.asm
-; IDENTITY: VERSION 3.95 // MASTER DISPATCHER // HAHA!
-; ROLE: Sequential Terminal Protocol - JSON-to-Shell Pipeline.
+; /*******************************************************************************
+;  *                           AVIS.ARTIFACT HEADER
+;  * TYPE: LAW
+;  * CLASS: MASTER-DISPATCHER
+;  * NAME: fire-gem.asm
+;  * VERSION: 4.20
+;  * IDENTITY: JOE TRON // GEMINI_CGI_SCROLL // HAHA!
+;  *******************************************************************************/
 
 section .data
     vault_path  db "fire-gem/artifacts/json/asm/", 0
@@ -15,6 +20,7 @@ section .bss
 
 section .text
     global _start
+    global fork_and_exec_worker ; EXPORTED FOR THE CHAIN
 
 _start:
     ; 1. OPEN VAULT DIRECTORY (rax=2)
@@ -37,7 +43,7 @@ scan_loop:
     jle close_exit      
 
     ; --- TERMINAL PROTOCOL: SEQUENTIAL EXECUTION ---
-    ; FIX: Move address to RDI (Arg 1) then CALL
+    ; Using the Exported Helper
     
     mov rdi, mod_path
     call fork_and_exec_worker
@@ -65,8 +71,11 @@ exit_error:
     mov rdi, 1          ; Exit code 1
     syscall
 
-; --- HELPER: FORK -> EXEC -> WAIT ---
+; --- HELPER: FORK -> EXEC -> WAIT (EXPORTED) ---
 fork_and_exec_worker:
+    ; rdi = path to worker script
+    push rbp
+    mov rbp, rsp
     push rdi            ; Keep path safe on stack
     
     mov rax, 57         ; sys_fork
@@ -75,7 +84,6 @@ fork_and_exec_worker:
     jz child_worker     
     
     ; PARENT LOGIC: WAIT4 (rax=61)
-    pop rdi             ; Clean stack
     mov [child_pid], rax
     mov rax, 61
     mov rdi, [child_pid]
@@ -83,9 +91,12 @@ fork_and_exec_worker:
     xor rdx, rdx        
     xor r10, r10        
     syscall             
+    
+    leave
     ret
 
 child_worker:
+    ; We don't use leave here because we are exec-ing or exiting
     pop rdi             ; Get path back
     mov r8, sh_bin      ; /bin/bash
     
