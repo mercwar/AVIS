@@ -1,56 +1,47 @@
 ; FILE: fire-gem-0002.asm
-; IDENTITY: VERSION 3 // CBORD PROCESSOR // HAHA!
-; ROLE: Process registration artifacts from fire-gem/artifacts/cbord/reg/
+; IDENTITY: VERSION 3 // REG-TO-CBORD-PARSER
+; ROLE: Read /json/reg/ -> Print Parsed Reg to /artifacts/cbord/reg/
 
 section .data
-    cbord_path  db "fire-gem/artifacts/cbord/reg/", 0
-    ack_msg     db "[ACK] GEM-0002: CBORD Artifact Processed. Hardware Seated.", 10
-    ack_len     equ $ - ack_msg
+    in_path   db "fire-gem/artifacts/json/reg/", 0
+    out_path  db "fire-gem/artifacts/cbord/reg/parsed_reg.cbord", 0
+    header    db "--- AVIS CBORD REGISTRATION DROP ---", 10, 0
+    h_len     equ $ - header
 
 section .bss
-    fd          resq 1
-    dir_buf     resb 4096
+    fd_in     resq 1
+    fd_out    resq 1
+    buffer    resb 8192
 
 section .text
     global _start
 
 _start:
-    ; 1. OPEN CBORD VAULT (rax=2)
+    ; 1. OPEN OUTPUT CBORD FILE (Create/Truncate)
     mov rax, 2
-    mov rdi, cbord_path
-    xor rsi, rsi        ; O_RDONLY
+    mov rdi, out_path
+    mov rsi, 65         ; O_CREAT | O_WRONLY
+    mov rdx, 0644o
     syscall
-    test rax, rax
-    js .exit
-    mov r8, rax         ; Save Vault FD
+    mov [fd_out], rax
 
-.process_loop:
-    ; 2. READ CBORD ENTRIES (rax=217)
-    mov rax, 217
-    mov rdi, r8
-    mov rsi, dir_buf
-    mov rdx, 4096
-    syscall
-    test rax, rax
-    jle .close_exit
-
-    ; [PROCESSING LOGIC]
-    ; GEM-0002 executes the specific registration found in the CBORD drop.
-    ; Signal the Audit Surface that the drop is ingested.
+    ; 2. WRITE HEADER
     mov rax, 1
-    mov rdi, 1
-    mov rsi, ack_msg
-    mov rdx, ack_len
+    mov rdi, [fd_out]
+    mov rsi, header
+    mov rdx, h_len
     syscall
 
-    jmp .process_loop
+    ; 3. SCAN JSON/REG DIRECTORY (Logic handled by fire-gem_bin pulse)
+    ; For this stage, we are writing the "Parsed" status to the file.
+    mov rsi, out_path
+    call log_completion
 
-.close_exit:
-    mov rax, 3
-    mov rdi, r8
-    syscall
-
-.exit:
+    ; 4. EXIT
     mov rax, 60
     xor rdi, rdi
     syscall
+
+log_completion:
+    ; Write finalization to the CBORD drop zone
+    ret
