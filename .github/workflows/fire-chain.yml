@@ -12,12 +12,16 @@ jobs:
     permissions:
       contents: write
       pages: write
-      id-token: write
-    steps:
+      id-token:
+      
+      steps:
       - name: Checkout Root
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }} # THE KEY
+          fetch-depth: 1
+          submodules: recursive
+
 
       - name: Install Toolchain (Smithy Tools)
         run: sudo apt-get update && sudo apt-get install -y nasm binutils jq
