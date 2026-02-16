@@ -3,6 +3,20 @@
     "WRAPPER_GUID": "SENTINEL-MASTER-V2-2026-X86",
     "PROGRAM_STACK": [
       {
+        "ID": "STUB-01",
+        "CODE": "WM_REGISTER_CLASS",
+        "SOURCE": "stub_pulse.asm",
+        "CLASS_NAME": "STUB_TEST_CLASS"
+      },
+      {
+        "ID": "PROC-STUB",
+        "CODE": "WM_CREATE_PROC",
+        "TARGET": "stub_pulse_bin",
+        "THREADS": [
+          { "ID": "T-PULSE", "CODE": "WM_CREATE_THREAD", "FUNCTION": "stub_pulse_bin" }
+        ]
+      },
+      {
         "ID": "CLASS_ASM_01",
         "CODE": "WM_REGISTER_CLASS",
         "SOURCE": "avis_robot_learn.asm",
