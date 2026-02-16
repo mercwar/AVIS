@@ -12,23 +12,21 @@ jobs:
     permissions:
       contents: write
       pages: write
-      id-token:
+      id-token: write       # FIX: Must explicitly state 'write'
       
-      steps:
+    steps:                  # FIX: Indented to align with 'runs-on'
       - name: Checkout Root
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} # THE KEY
-          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0    # Changed to 0 for full history so 'git pull' works
           submodules: recursive
-
 
       - name: Install Toolchain (Smithy Tools)
         run: sudo apt-get update && sudo apt-get install -y nasm binutils jq
 
       - name: FORGE DISPATCHER (ASM POWER)
         run: |
-          # Only compile if the ASM file exists in root
           if [ -f "fire-gem.asm" ]; then
             nasm -f elf64 fire-gem.asm -o fire-gem.o
             ld fire-gem.o -o fire-gem_bin
@@ -38,7 +36,6 @@ jobs:
 
       - name: MASTER_PULSE (BASH BRAIN)
         run: |
-          # This handles the V1 paths and the CJS JSON logic
           if [ -f "./fire-start.sh" ]; then
             chmod +x fire-start.sh
             ./fire-start.sh
@@ -46,14 +43,12 @@ jobs:
 
       - name: EXECUTE MASTER DISPATCH (ASM EXECUTION)
         run: |
-          # ASM takes control to crawl the artifacts directory
           if [ -f "./fire-gem_bin" ]; then
             ./fire-gem_bin
           fi
 
       - name: MASTER_END (SEAL & DISPATCH)
         run: |
-          # Final Sitemap generation and Git Push to Audit Surface
           if [ -f "./fire-end.sh" ]; then
             chmod +x fire-end.sh
             ./fire-end.sh
