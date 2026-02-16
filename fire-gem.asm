@@ -3,8 +3,9 @@
 ;  * TYPE: LAW
 ;  * CLASS: MASTER-DISPATCHER
 ;  * NAME: fire-gem.asm
-;  * VERSION: 4.20
+;  * VERSION: 4.45
 ;  * IDENTITY: JOE TRON // GEMINI_CGI_SCROLL // HAHA!
+;  * ROLE: Numeric Sort - Sequential Terminal Protocol
 ;  *******************************************************************************/
 
 section .data
@@ -20,7 +21,7 @@ section .bss
 
 section .text
     global _start
-    global fork_and_exec_worker ; EXPORTED FOR THE CHAIN
+    global fork_and_exec_worker 
 
 _start:
     ; 1. OPEN VAULT DIRECTORY (rax=2)
@@ -42,8 +43,8 @@ scan_loop:
     test rax, rax
     jle close_exit      
 
-    ; --- TERMINAL PROTOCOL: SEQUENTIAL EXECUTION ---
-    ; Using the Exported Helper
+    ; --- NUMERIC PROTOCOL ---
+    ; The Dispatcher now hits the workers for the current numeric block.
     
     mov rdi, mod_path
     call fork_and_exec_worker
@@ -57,33 +58,32 @@ scan_loop:
     jmp scan_loop       
 
 close_exit:
-    mov rax, 3          ; sys_close
+    mov rax, 3          
     mov rdi, r8
     syscall
 
 exit_success:
-    mov rax, 60         ; sys_exit
+    mov rax, 60         
     xor rdi, rdi
     syscall
 
 exit_error:
-    mov rax, 60         ; sys_exit
-    mov rdi, 1          ; Exit code 1
+    mov rax, 60         
+    mov rdi, 1          
     syscall
 
 ; --- HELPER: FORK -> EXEC -> WAIT (EXPORTED) ---
 fork_and_exec_worker:
-    ; rdi = path to worker script
     push rbp
     mov rbp, rsp
-    push rdi            ; Keep path safe on stack
+    push rdi            ; Seating Worker Path in RAM
     
     mov rax, 57         ; sys_fork
     syscall
     test rax, rax
     jz child_worker     
     
-    ; PARENT LOGIC: WAIT4 (rax=61)
+    ; PARENT: WAIT4 (rax=61)
     mov [child_pid], rax
     mov rax, 61
     mov rdi, [child_pid]
@@ -96,23 +96,21 @@ fork_and_exec_worker:
     ret
 
 child_worker:
-    ; We don't use leave here because we are exec-ing or exiting
-    pop rdi             ; Get path back
-    mov r8, sh_bin      ; /bin/bash
+    pop rdi             ; Devouring Path
+    mov r8, sh_bin      
     
     ; Build argv [bash, worker_path, NULL]
     xor rbx, rbx
-    push rbx            ; NULL
-    push rdi            ; worker_path
-    push r8             ; bash
+    push rbx            
+    push rdi            
+    push r8             
     
-    mov rdi, r8         ; rdi = /bin/bash
-    mov rsi, rsp        ; rsi = argv array
-    xor rdx, rdx        ; envp = NULL
+    mov rdi, r8         
+    mov rsi, rsp        
+    xor rdx, rdx        
     mov rax, 59         ; sys_execve
     syscall
     
-    ; If execve fails
     mov rax, 60
     mov rdi, 2
     syscall
