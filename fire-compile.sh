@@ -4,7 +4,8 @@
  * IDENTITY: VERSION 1 // GEMINI_CGI_SCROLL // HAHA!
  *******************************************************************************/
 
-JSON_FILE="fire-cjs.json"
+# EXPLICIT PATHING FOR GITHUB WORKSPACE
+JSON_FILE="./fire-cjs.json"
 
 echo "FIRE_COMPILE: Initializing Forge for ASM Targets..."
 
@@ -12,12 +13,15 @@ echo "FIRE_COMPILE: Initializing Forge for ASM Targets..."
 if [ -f "$JSON_FILE" ]; then
     echo "FIRE_COMPILE: Ingesting ASM Registry from $JSON_FILE..."
     # Extracts NAMES specifically from the ROOT_ASM DIR_ID
-    ASM_FILES=$(jq -r '.AVIS_CJS_OBJECT.REGISTRY[] | select(.DIR_ID=="ROOT_ASM") | .FILES[].NAME' $JSON_FILE 2>/dev/null)
+    # Added error handling to verify JQ can parse the file
+    ASM_FILES=$(jq -r '.AVIS_CJS_OBJECT.REGISTRY[] | select(.DIR_ID=="ROOT_ASM") | .FILES[].NAME' "$JSON_FILE" 2>/dev/null)
+else
+    echo "BASH: [NACK] $JSON_FILE NOT FOUND in $(pwd). Skipping JQ ingestion."
 fi
 
-# 2. AUTONOMOUS FALLBACK (If JSON fails or is empty, crawl the directory)
+# 2. AUTONOMOUS FALLBACK (If JSON fails, is empty, or missing)
 if [ -z "$ASM_FILES" ] || [ "$ASM_FILES" == "null" ]; then
-    echo "FIRE_COMPILE: Registry empty. Executing Autonomous Discovery..."
+    echo "FIRE_COMPILE: Registry empty or JSON missing. Executing Autonomous Discovery..."
     ASM_FILES=$(find . -maxdepth 2 -name "*.asm")
 fi
 
@@ -31,6 +35,7 @@ for source in $ASM_FILES; do
     echo "FORGE: Compiling $source -> $binary"
 
     # X86_64 NASM ASSEMBLE -> LD LINK
+    # Ensure binary tools are available in the path
     nasm -f elf64 "$source" -o temp.o && ld temp.o -o "$binary"
     
     if [ $? -eq 0 ]; then
