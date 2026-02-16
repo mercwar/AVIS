@@ -1,31 +1,22 @@
 {
-  "AVIS_COMM_OBJECT": {
-    "WRAPPER_GUID": "SENTINEL-MASTER-V2-2026-X86",
-    "FLOW_SCOPE": [
+  "AVIS_REGISTRY_OBJECT": {
+    "ID": "CYHY-REG-0001",
+    "DIRECTIVE": "CYHY:GENERATE_ASM_CBORD",
+    "EVAL_STACK": [
       {
-        "ID": "BOOT-01",
-        "FILE": "fire-gem-0001.asm",
-        "TYPE": "COMPILE",
-        "MACRO": "wm_macro_ack",
-        "WAIT": "TRUE"
+        "OP": "MAP_KERNEL_SYSCALL",
+        "ACTION": "SYS_WRITE",
+        "RAX": 1,
+        "RDI": 1
       },
       {
-        "ID": "BOOT-02",
-        "FILE": "fire-gem-0001.exe",
-        "TYPE": "RUN",
-        "MACRO": "wm_macro_rack",
-        "WAIT": "FALSE"
-      }
-    ],
-    "REGISTRY": [
+        "OP": "EXEC_SHELL_PULSE",
+        "TARGET": "/bin/bash",
+        "PAYLOAD": "fire-gem/artifacts/sh/fire-run.sh"
+      },
       {
-        "DIR_ID": "ROOT_ASM",
-        "FILES": [
-          {
-            "GUID": "ASM-0001",
-            "NAME": "fire-gem-0001.asm"
-          }
-        ]
+        "OP": "FILE_SINK",
+        "PATH": "fire-gem/artifacts/cbord/reg/0002-logic.cbord"
       }
     ],
     "COMPLIANCE": "IDENTITY: VERSION 1 // HAHA!"
