@@ -1,0 +1,45 @@
+# FILE: .github/workflows/avis_auto_learn.yml
+# IDENTITY: VERSION 2 // GEMINI_CGI_SCROLL // HAHA!
+
+name: AVIS_AUTONOMOUS_LEARNER
+on: [push, workflow_dispatch]
+
+jobs:
+  auto-discovery:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Toolchain
+        run: sudo apt-get install -y nasm binutils
+
+      - name: DISCOVER AND FORGE ASM
+        run: |
+          # Find all .asm files and compile them automatically
+          for f in *.asm; do
+            [ -e "$f" ] || continue
+            echo "AUTONOMOUS_FORGE: Compiling $f"
+            nasm -f elf64 "$f" -o "${f%.asm}.o"
+            ld "${f%.asm}.o" -o "${f%.asm}"
+            chmod +x "${f%.asm}"
+            ./"${f%.asm}" # RUN THE BINARY
+          done
+
+      - name: DISCOVER AND EXECUTE SHELLS
+        run: |
+          # Find and run fire-gem.sh, SITEMAP.SH, or any others
+          find . -maxdepth 2 -name "*.sh" -exec chmod +x {} \; -exec {} \;
+          echo "AUTONOMOUS_EXECUTION: All discovered chains triggered."
+
+      - name: AUTO-SYNC TO MASTER SURFACE
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "actions@github.com"
+          git add .
+          if ! git diff --staged --quiet; then
+            git commit -m "AVIS_AUTO_INGEST: VERSION 2 Discovered and Executed [HAHA!]"
+            git push origin main
+          fi
