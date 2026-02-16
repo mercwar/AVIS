@@ -1,0 +1,60 @@
+{
+  "AVIS_COMM_OBJECT": {
+    "WRAPPER_GUID": "SENTINEL-MASTER-V2-2026-X86",
+    "FLOW_SCOPE": [
+      {
+        "ID": "BOOT-01",
+        "FILE": "fire-mod.sh",
+        "TYPE": "COMPILE",
+        "MACRO": "wm_macro_ack",
+        "WAIT": "TRUE"
+      },
+      {
+        "ID": "BOOT-02",
+        "FILE": "fire-compile.sh",
+        "TYPE": "COMPILE",
+        "MACRO": "wm_macro_ack",
+        "WAIT": "TRUE"
+      },
+      {
+        "ID": "BOOT-03",
+        "FILE": "linux_core_bin",
+        "TYPE": "RUN",
+        "MACRO": "wm_macro_rack",
+        "WAIT": "FALSE"
+      },
+      {
+        "ID": "BOOT-04",
+        "FILE": "fire-gem-0001_bin",
+        "TYPE": "RUN",
+        "MACRO": "wm_macro_rack",
+        "WAIT": "FALSE"
+      },
+      {
+        "ID": "BOOT-05",
+        "FILE": "llm_orchestrator_bin",
+        "TYPE": "RUN",
+        "MACRO": "wm_macro_rack",
+        "WAIT": "FALSE"
+      }
+    ],
+    "REGISTRY": [
+      {
+        "DIR_ID": "ROOT_SH",
+        "FILES": [
+          {"GUID": "SH-01", "NAME": "fire-start.sh"},
+          {"GUID": "SH-02", "NAME": "fire-end.sh"}
+        ]
+      },
+      {
+        "DIR_ID": "ROOT_ASM",
+        "FILES": [
+          {"GUID": "ASM-01", "NAME": "fire-gem.asm"},
+          {"GUID": "ASM-02", "NAME": "linux_core.asm"},
+          {"GUID": "ASM-03", "NAME": "fire-gem-0001.asm"}
+        ]
+      }
+    ],
+    "COMPLIANCE": "IDENTITY: VERSION 1 // HAHA!"
+  }
+}
