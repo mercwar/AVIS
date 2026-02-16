@@ -32,14 +32,3 @@ jobs:
             exit 1
           fi
 
-      - name: Establish fire-gem end
-        run: |
-          # Execute final seal and dispatch
-          if [ -f "./fire-end.sh" ]; then
-            chmod +x fire-end.sh
-            ./fire-end.sh
-          else
-            echo "[AVIS-YML] fire-end.sh missing. Check root."
-            exit 1
-          fi
-
