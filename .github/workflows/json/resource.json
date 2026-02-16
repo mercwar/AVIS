@@ -1,9 +1,60 @@
 {
-  "files": [
-    "fire-start.sh",
-    "fire-compile.sh",
-    "fire-end.sh",
-    "SITEMAP.SH",
-    "avis_robot_learn.asm"
-  ]
+  "AVIS_COMM_OBJECT": {
+    "WRAPPER_GUID": "SENTINEL-MASTER-V2-2026-X86",
+    "FLOW_SCOPE": [
+      {
+        "ID": "FS-001",
+        "FILE": "fire-mod.sh",
+        "TYPE": "COMPILE",
+        "MACRO": "wm_macro_ack",
+        "WAIT": "TRUE"
+      },
+      {
+        "ID": "FS-002",
+        "FILE": "fire-compile.sh",
+        "TYPE": "COMPILE",
+        "MACRO": "wm_macro_ack",
+        "WAIT": "TRUE"
+      },
+      {
+        "ID": "FS-003",
+        "FILE": "avis_robot_learn_bin",
+        "TYPE": "RUN",
+        "MACRO": "wm_macro_rack",
+        "WAIT": "FALSE"
+      },
+      {
+        "ID": "FS-004",
+        "FILE": "fire-end.sh",
+        "TYPE": "COMPILE",
+        "MACRO": "wm_macro_ack",
+        "WAIT": "TRUE"
+      }
+    ],
+    "REGISTRY": [
+      {
+        "DIR_ID": "ROOT_SH",
+        "PATH": "./",
+        "EXT": ".sh",
+        "FILES": [
+          {"GUID": "SH-001", "NAME": "fire-start.sh"},
+          {"GUID": "SH-002", "NAME": "fire-mod.sh"},
+          {"GUID": "SH-003", "NAME": "fire-compile.sh"},
+          {"GUID": "SH-004", "NAME": "fire-end.sh"},
+          {"GUID": "SH-005", "NAME": "SITEMAP.SH"}
+        ]
+      },
+      {
+        "DIR_ID": "ROOT_ASM",
+        "PATH": "./",
+        "EXT": ".asm",
+        "FILES": [
+          {"GUID": "ASM-001", "NAME": "avis_robot_learn.asm"},
+          {"GUID": "ASM-002", "NAME": "avis_discovery.asm"}
+        ]
+      }
+    ],
+    "OVERWRITE_TARGET": "MOST_RECENT",
+    "COMPLIANCE": "AVIS-2026-AIFVS"
+  }
 }
