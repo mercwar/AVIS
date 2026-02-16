@@ -1,44 +1,44 @@
 ; FILE: fire-gem.asm
 ; IDENTITY: VERSION 3 // MASTER DISPATCHER // HAHA!
-; ROLE: Straight-line processing of all CJS artifacts in the target vault.
+; TARGET: x86_64 Linux
 
 section .data
-    ; Root path for JSON artifacts
-    path        db "fire-gem/artifacts/json/asm/", 0
-    sh_cmd      db "./fire-start.sh", 0
+    path    db "fire-gem/artifacts/json/asm/", 0
+    sh_path db "/bin/bash", 0
+    sh_arg  db "./fire-start.sh", 0
     
 section .bss
-    dir_buf     resb 4096   ; Buffer for getdents64 entries
+    dir_buf resb 4096
 
 section .text
     global _start
 
 _start:
-    ; 1. OPEN DIRECTORY (sys_open: rax=2)
-    mov rax, 2          
-    mov rdi, path       ; Target: /AVIS/fire-gem/artifacts/json/asm/
-    xor rsi, rsi        ; O_RDONLY
+    ; 1. OPEN DIRECTORY (rax=2)
+    mov rax, 2
+    mov rdi, path
+    xor rsi, rsi
     syscall
     test rax, rax
-    js .exit            ; Error handle
-    mov r8, rax         ; Save Directory File Descriptor
+    js .exit
+    mov r8, rax         ; Save FD
 
 .scan_loop:
-    ; 2. READ DIRECTORY ENTRIES (sys_getdents64: rax=217)
-    mov rax, 217        
+    ; 2. READ ENTRIES (rax=217)
+    mov rax, 217
     mov rdi, r8
     mov rsi, dir_buf
     mov rdx, 4096
     syscall
     test rax, rax
-    jle .close_exit     ; End of stream or error
+    jle .close_exit
 
-    ; [DISPATCH LOGIC]
-    ; In a straight line, this binary triggers fire-start.sh for each CJS.
-    ; This replaces the 'little bot' manual clicks with ASM authority.
-    mov rax, 1          ; sys_write log dispatch
+    ; [STRAIGHT-LINE EXECUTION]
+    ; For every file in the vault, we pulse fire-start.sh
+    ; Note: Full implementation would parse filename here
+    mov rax, 1          ; sys_write log pulse
     mov rdi, 1
-    mov rsi, sh_cmd
+    mov rsi, sh_arg
     mov rdx, 15
     syscall
 
