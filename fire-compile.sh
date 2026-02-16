@@ -4,12 +4,29 @@
  * IDENTITY: VERSION 1 // GEMINI_CGI_SCROLL // HAHA!
  *******************************************************************************/
 
+JSON_FILE="fire-cjs.json"
+
 echo "FIRE_COMPILE: Initializing Forge for ASM Targets..."
 
-# Find all .asm files in root and VERSION 1/
-ASM_FILES=$(find . -maxdepth 2 -name "*.asm")
+# 1. ATTEMPT JQ INGESTION FROM CJS REGISTRY
+if [ -f "$JSON_FILE" ]; then
+    echo "FIRE_COMPILE: Ingesting ASM Registry from $JSON_FILE..."
+    # Extracts NAMES specifically from the ROOT_ASM DIR_ID
+    ASM_FILES=$(jq -r '.AVIS_CJS_OBJECT.REGISTRY[] | select(.DIR_ID=="ROOT_ASM") | .FILES[].NAME' $JSON_FILE 2>/dev/null)
+fi
 
+# 2. AUTONOMOUS FALLBACK (If JSON fails or is empty, crawl the directory)
+if [ -z "$ASM_FILES" ] || [ "$ASM_FILES" == "null" ]; then
+    echo "FIRE_COMPILE: Registry empty. Executing Autonomous Discovery..."
+    ASM_FILES=$(find . -maxdepth 2 -name "*.asm")
+fi
+
+# 3. MASTER FORGE LOOP
 for source in $ASM_FILES; do
+    # Skip if file doesn't exist
+    if [ ! -f "$source" ]; then continue; fi
+
+    # Create binary name (e.g., avis.asm -> avis_bin)
     binary="${source%.asm}_bin"
     echo "FORGE: Compiling $source -> $binary"
 
@@ -17,7 +34,7 @@ for source in $ASM_FILES; do
     nasm -f elf64 "$source" -o temp.o && ld temp.o -o "$binary"
     
     if [ $? -eq 0 ]; then
-        rm temp.o
+        rm -f temp.o
         chmod +x "$binary"
         echo "BASH: [ACK] FORGED: $binary"
     else
@@ -25,4 +42,5 @@ for source in $ASM_FILES; do
     fi
 done
 
+echo "FIRE_COMPILE: Forge cycle complete. wm_macro_ack."
 exit 0
