@@ -1,29 +1,39 @@
-name: AVIS_FGEO_FORGE_CI
-on: [push]
+# FILE: .github/workflows/avis-forge.yml
+# IDENTITY: VERSION 2 // GEMINI_CGI_SCROLL // HAHA!
+# ROLE: Autonomous Discovery and Compilation Engine
+
+name: AVIS_FORGE_CHAIN
+on: [push, workflow_dispatch]
 
 jobs:
-  forge-and-test:
+  forge-binaries:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Root Targets
+      - name: Checkout Root
         uses: actions/checkout@v4
 
-      - name: AVIS Ingestion Handshake
-        run: |
-          echo "TYPE: HELLO"
-          echo "VERSION: 1.00"
-          echo "IDENTITY: GITHUB_ACTION_BOT"
+      - name: Install Toolchain
+        run: sudo apt-get update && sudo apt-get install -y nasm binutils
 
-      - name: Install NASM
-        run: sudo apt-get install -y nasm
-
-      - name: GEM_STRIKE_GCC (Simulated Build)
+      - name: DISCOVER AND FORGE ASM
         run: |
-          nasm -f elf64 avis_robot_learn.asm -o avis.o
-          ld avis.o -o avis_bin
-          echo "FGEO_FORGE: Binary Created Successfully."
+          # Find all .asm files and compile them
+          for f in $(find . -maxdepth 2 -name "*.asm"); do
+            echo "FORGE: Compiling $f"
+            nasm -f elf64 "$f" -o "${f%.asm}.o"
+            ld "${f%.asm}.o" -o "${f%.asm}"
+            chmod +x "${f%.asm}"
+          done
 
-      - name: CJS Compliance Audit
+      - name: DISCOVER AND TEST SHELLS
         run: |
-          # Verify Identity Timestamping Law
-          grep "IDENTITY: VERSION 1" avis_robot_learn.asm
+          # Run SITEMAP.SH or fire-gem.sh to prepare artifacts
+          find . -maxdepth 2 -name "*.sh" -exec chmod +x {} \; -exec {} \;
+
+      - name: UPLOAD ARTIFACTS FOR DISPATCH
+        uses: actions/upload-artifact@v4
+        with:
+          name: avis-binaries
+          path: |
+            ./*
+            !./.git
