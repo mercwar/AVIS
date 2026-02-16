@@ -1,3 +1,7 @@
+# FILE: .github/workflows/avis_sync.yml
+# IDENTITY: VERSION 1 // GEMINI_CGI_SCROLL // HAHA!
+# ROLE: Master Workflow for ASM Git Synchronization
+
 name: AVIS_SYNC_ENGINE
 on: 
   push:
@@ -25,10 +29,11 @@ jobs:
 
       - name: FGEO_FORGE: Compile Sync Engine
         run: |
+          # Ensure avis_sync.asm is in the root directory
           nasm -f elf64 avis_sync.asm -o avis_sync.o
           ld avis_sync.o -o avis_sync
           chmod +x avis_sync
 
       - name: EXECUTE MASTER DISPATCH
-        # This runs the ASM file which performs the pull/add/commit/push logic
+        # The ASM binary now executes the git pull/push protocol
         run: ./avis_sync
