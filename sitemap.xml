@@ -168,17 +168,26 @@
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ENGINE/events.engine</loc>
   </url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/IMPORT/interpreter.import</loc>
+  </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ENGINE/cyborg.engine</loc>
   </url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ENGINE/hooks.engine</loc>
+  </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ENGINE/cbord.engine</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ENGINE/events.engine</loc>
+  </url>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/META/version.meta</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/META/structure.meta</loc>
+  <url>
+  </url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ENGINE/cbord.engine</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/objects/manifest.cmt</loc>
@@ -471,6 +480,10 @@
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/transport_law_v1.law</loc>
   </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/robots.txt</loc>
+  </url>
+</urlset>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/ai_identity_covenant_v1.law</loc>
   </url>
