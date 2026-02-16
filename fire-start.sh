@@ -1,43 +1,56 @@
 #!/bin/bash
-# IDENTITY: VERSION 2 // FIRE-START // MASTER-BRAIN
-# ROLE: Automated Flow Orchestrator
+# IDENTITY: VERSION 3 // FIRE-START // MASTER-PULSE // CVBGOD
 
-JSON_FILE=".github/workflows/json/resource.json"
+CJS_FILE="fire-cjs.json"
 
-# 1. INITIALIZE & MOD
-chmod +x fire-mod.sh
-./fire-mod.sh
+# --- WIN43 / CJS FUNCTIONS ---
+register_class() {
+    local src=$1
+    local name=$2
+    echo "WIN43: Registering Class $name from $src..."
+    nasm -f elf64 "$src" -o temp.o && ld temp.o -o "${src%.asm}_bin"
+    rm temp.o
+    echo "BASH: [ACK] WM_CLASS_REGISTERED: $name"
+}
 
-# 2. INGEST FLOW SCOPE
-COUNT=$(jq '.AVIS_COMM_OBJECT.FLOW_SCOPE | length' $JSON_FILE)
+create_proc_threads() {
+    local id=$1
+    local idx=$2
+    echo "WIN43: WM_CREATE_PROC for $id"
+    (
+        T_COUNT=$(jq ".AVIS_CJS_OBJECT.PROGRAM_STACK[$idx].THREADS | length" $CJS_FILE)
+        for (( j=0; j<$T_COUNT; j++ )); do
+            T_FILE=$(jq -r ".AVIS_CJS_OBJECT.PROGRAM_STACK[$idx].THREADS[$j].FUNCTION" $CJS_FILE)
+            if [ -f "$T_FILE" ]; then
+                chmod +x "$T_FILE"
+                ./"$T_FILE" &
+                echo "THREAD_ACK: $T_FILE running [PID: $!]"
+            fi
+        done
+        wait
+    ) &
+}
 
-for (( i=0; i<$COUNT; i++ )); do
-    FILE=$(jq -r ".AVIS_COMM_OBJECT.FLOW_SCOPE[$i].FILE" $JSON_FILE)
-    TYPE=$(jq -r ".AVIS_COMM_OBJECT.FLOW_SCOPE[$i].TYPE" $JSON_FILE)
-    WAIT=$(jq -r ".AVIS_COMM_OBJECT.FLOW_SCOPE[$i].WAIT" $JSON_FILE)
-    
-    echo "AVIS_FLOW: Processing $FILE [$TYPE]"
+# --- MAIN CJS LOOP ---
+IDX=0
+while true; do
+    CODE=$(jq -r ".AVIS_CJS_OBJECT.PROGRAM_STACK[$IDX].CODE" $CJS_FILE)
+    if [ "$CODE" == "null" ] || [ "$CODE" == "EXIT" ]; then break; fi
 
-    if [ "$TYPE" == "COMPILE" ]; then
-        # SEQUENTIAL COMPILE (Wait for Acknowledge)
-        chmod +x "./$FILE"
-        ./"$FILE"
-        if [ $? -eq 0 ]; then
-            echo "wm_macro_ack: $FILE complete."
-        else
-            echo "wm_macro_nack: $FILE failed."
-            exit 1
-        fi
-    elif [ "$TYPE" == "RUN" ]; then
-        # ASYNC RUN (Fire and Forget)
-        chmod +x "./$FILE"
-        ./"$FILE" &
-        echo "wm_macro_rack: $FILE running in background."
-    fi
+    case $CODE in
+        "WM_REGISTER_CLASS")
+            SRC=$(jq -r ".AVIS_CJS_OBJECT.PROGRAM_STACK[$IDX].SOURCE" $CJS_FILE)
+            CLS=$(jq -r ".AVIS_CJS_OBJECT.PROGRAM_STACK[$IDX].CLASS_NAME" $CJS_FILE)
+            register_class "$SRC" "$CLS"
+            ;;
+        "WM_CREATE_PROC")
+            ID=$(jq -r ".AVIS_CJS_OBJECT.PROGRAM_STACK[$IDX].ID" $CJS_FILE)
+            create_proc_threads "$ID" "$IDX"
+            ;;
+    esac
+    IDX=$((IDX + 1))
 done
 
-# 3. AUTO-SEAL (If fire-end isn't in JSON, we call it last anyway)
-if [[ ! $(grep "fire-end.sh" $JSON_FILE) ]]; then
-    chmod +x fire-end.sh
-    ./fire-end.sh
-fi
+# Seal and Dispatch
+chmod +x fire-end.sh
+./fire-end.sh
