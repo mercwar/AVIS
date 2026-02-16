@@ -1,75 +1,96 @@
 ; FILE: fire-gem.asm
 ; IDENTITY: VERSION 3 // MASTER DISPATCHER // HAHA!
-; ROLE: Terminal Protocol - Sequential JSON-to-Shell Pipeline.
+; TARGET: x86_64 Linux System Calls
 
 section .data
     vault_path  db "fire-gem/artifacts/json/asm/", 0
-    sh_path     db "/bin/bash", 0
-    arg_sh      db "./fire-start.sh", 0
+    mod_path    db "fire-gem/artifacts/sh/fire-mod.sh", 0
+    comp_path   db "fire-gem/artifacts/sh/fire-compile.sh", 0
+    run_path    db "fire-gem/artifacts/sh/fire-run.sh", 0
+    sh_bin      db "/bin/bash", 0
 
 section .bss
     dir_buf     resb 4096
-    pid         resq 1
+    child_pid   resq 1
 
 section .text
     global _start
 
 _start:
-    ; 1. OPEN VAULT (rax=2)
-    mov rax, 2
+    ; 1. OPEN VAULT DIRECTORY (rax=2)
+    mov rax, 2          
     mov rdi, vault_path
-    xor rsi, rsi
+    xor rsi, rsi        ; O_RDONLY
     syscall
-    mov r8, rax         ; Save Directory FD
+    test rax, rax
+    js .exit            ; NACK: Directory missing
+    mov r8, rax         ; Save Vault File Descriptor
 
 .scan_loop:
-    ; 2. GETDENTS (rax=217)
-    mov rax, 217
+    ; 2. READ DIRECTORY ENTRIES (rax=217)
+    mov rax, 217        ; sys_getdents64
     mov rdi, r8
     mov rsi, dir_buf
     mov rdx, 4096
     syscall
     test rax, rax
-    jle .close_exit     ; End of Vault
+    jle .close_exit     ; Pulse Finished
 
-    ; 3. FORK (rax=57) - Creating the Terminal Process
-    mov rax, 57
-    syscall
-    test rax, rax
-    jz .child_exec      ; Child handles the fire-start.sh call
+    ; --- TERMINAL PROTOCOL: SEQUENTIAL EXECUTION ---
 
-    ; 4. PARENT: WAIT (rax=61) - Terminal Protocol Wait-State
-    mov [pid], rax
-    mov rax, 61         ; sys_wait4
-    mov rdi, [pid]
-    xor rsi, rsi
-    xor rdx, rdx
-    xor r10, r10
-    syscall             ; PAUSE UNTIL fire-start EXITS
+    ; STEP A: FIRE-MOD (rax=57 fork)
+    call fork_and_exec_worker, mod_path
     
-    jmp .scan_loop      ; RESUME TO NEXT JSON
+    ; STEP B: FIRE-COMPILE (rax=57 fork)
+    call fork_and_exec_worker, comp_path
+    
+    ; STEP C: FIRE-RUN (rax=57 fork)
+    call fork_and_exec_worker, run_path
 
-.child_exec:
-    ; 5. EXECVE (rax=59) - Passing JSON to the Interpreter
-    ; This runs: ./fire-start.sh [current_json_from_dir_buf]
-    mov rax, 59
-    mov rdi, sh_path
-    ; [Stack Frame for argv: bash, fire-start.sh, JSON_NAME, NULL]
-    xor rsi, rsi
-    push rsi            ; NULL
-    ; (Simplified: In practice, extract filename from dir_buf here)
-    lea rbx, [arg_sh]
-    push rbx
-    mov rsi, rsp        ; argv
-    xor rdx, rdx        ; envp
-    syscall
+    jmp .scan_loop      ; RESUME TO NEXT CJS BLOCK
 
 .close_exit:
-    mov rax, 3
+    mov rax, 3          ; sys_close
     mov rdi, r8
     syscall
 
 .exit:
-    mov rax, 60
+    mov rax, 60         ; sys_exit
     xor rdi, rdi
     syscall
+
+; --- HELPER: FORK -> EXEC -> WAIT ---
+fork_and_exec_worker:
+    pop r9              ; Return address
+    pop rdi             ; Worker path argument
+    
+    mov rax, 57         ; sys_fork
+    syscall
+    test rax, rax
+    jz .child_worker    ; Child logic
+    
+    ; PARENT: WAIT4 (rax=61)
+    mov [child_pid], rax
+    mov rax, 61
+    mov rdi, [child_pid]
+    xor rsi, rsi        ; status = NULL
+    xor rdx, rdx        ; options = 0
+    xor r10, r10        ; rusage = NULL
+    syscall             ; SLEEP UNTIL WORKER EXITS
+    
+    push r9             ; Restore return address
+    ret
+
+.child_worker:
+    ; EXECVE: /bin/bash <worker_path>
+    mov rax, 59         ; sys_execve
+    mov rdi, sh_bin
+    
+    ; Build argv [bash, worker, NULL]
+    push 0
+    push rdi            ; worker path (from rdi)
+    push sh_bin
+    mov rsi, rsp
+    xor rdx, rdx        ; envp = NULL
+    syscall
+    jmp .exit           ; Fail-safe
