@@ -1,6 +1,6 @@
 ; FILE: fire-gem.asm
-; IDENTITY: VERSION 3 // MASTER DISPATCHER // HAHA!
-; TARGET: x86_64 Linux System Calls
+; IDENTITY: VERSION 3.3 // MEMORY-MAPPED DISPATCHER // HAHA!
+; ROLE: Load JSON instructions into RAM for high-speed Linux Installation.
 
 section .data
     vault_path  db "fire-gem/artifacts/json/asm/", 0
@@ -12,85 +12,94 @@ section .data
 section .bss
     dir_buf     resb 4096
     child_pid   resq 1
+    mem_addr    resq 1      ; Address of the JSON in RAM
 
 section .text
     global _start
+    global FIRE_GEM_LOAD_MEM ; EXPORTED FOR 0001
 
 _start:
-    ; 1. OPEN VAULT DIRECTORY (rax=2)
+    ; 1. OPEN VAULT DIRECTORY
     mov rax, 2          
     mov rdi, vault_path
-    xor rsi, rsi        ; O_RDONLY
+    xor rsi, rsi
     syscall
     test rax, rax
-    js .exit            ; NACK: Directory missing
-    mov r8, rax         ; Save Vault File Descriptor
+    js .exit
+    mov r8, rax         ; Save Vault FD
 
 .scan_loop:
-    ; 2. READ DIRECTORY ENTRIES (rax=217)
     mov rax, 217        ; sys_getdents64
     mov rdi, r8
     mov rsi, dir_buf
     mov rdx, 4096
     syscall
     test rax, rax
-    jle .close_exit     ; Pulse Finished
+    jle .close_exit
+
+    ; --- MEMORY MAPPING PHASE ---
+    ; Here we would parse the filename and call LOAD_MEM
+    ; call FIRE_GEM_LOAD_MEM, <filename>
 
     ; --- TERMINAL PROTOCOL: SEQUENTIAL EXECUTION ---
-
-    ; STEP A: FIRE-MOD (rax=57 fork)
-    call fork_and_exec_worker, mod_path
+    push mod_path
+    call fork_and_exec_worker
     
-    ; STEP B: FIRE-COMPILE (rax=57 fork)
-    call fork_and_exec_worker, comp_path
+    push comp_path
+    call fork_and_exec_worker
     
-    ; STEP C: FIRE-RUN (rax=57 fork)
-    call fork_and_exec_worker, run_path
+    push run_path
+    call fork_and_exec_worker
 
-    jmp .scan_loop      ; RESUME TO NEXT CJS BLOCK
+    jmp .scan_loop
+
+FIRE_GEM_LOAD_MEM:
+    ; 2. MAP JSON TO MEMORY (rax=9: sys_mmap)
+    ; This puts the JSON instructions in the heap for the ASM to devour
+    mov rax, 9          ; sys_mmap
+    xor rdi, rdi        ; addr = NULL
+    mov rsi, 8192       ; len = 8KB
+    mov rdx, 3          ; prot = PROT_READ | PROT_WRITE
+    mov r10, 34         ; flags = MAP_PRIVATE | MAP_ANONYMOUS
+    mov r8, -1          ; fd = -1
+    xor r9, r9          ; offset = 0
+    syscall
+    mov [mem_addr], rax ; Seated in RAM
+    ret
 
 .close_exit:
-    mov rax, 3          ; sys_close
+    mov rax, 3
     mov rdi, r8
     syscall
 
 .exit:
-    mov rax, 60         ; sys_exit
+    mov rax, 60
     xor rdi, rdi
     syscall
 
-; --- HELPER: FORK -> EXEC -> WAIT ---
 fork_and_exec_worker:
-    pop r9              ; Return address
-    pop rdi             ; Worker path argument
-    
+    pop r9
+    pop rdi             
     mov rax, 57         ; sys_fork
     syscall
     test rax, rax
-    jz .child_worker    ; Child logic
-    
-    ; PARENT: WAIT4 (rax=61)
+    jz .child_worker
     mov [child_pid], rax
-    mov rax, 61
+    mov rax, 61         ; sys_wait4
     mov rdi, [child_pid]
-    xor rsi, rsi        ; status = NULL
-    xor rdx, rdx        ; options = 0
-    xor r10, r10        ; rusage = NULL
-    syscall             ; SLEEP UNTIL WORKER EXITS
-    
-    push r9             ; Restore return address
+    xor rsi, rsi
+    xor rdx, rdx
+    xor r10, r10
+    syscall
+    push r9
     ret
 
 .child_worker:
-    ; EXECVE: /bin/bash <worker_path>
-    mov rax, 59         ; sys_execve
+    mov rax, 59
     mov rdi, sh_bin
-    
-    ; Build argv [bash, worker, NULL]
     push 0
-    push rdi            ; worker path (from rdi)
+    push rdi
     push sh_bin
     mov rsi, rsp
-    xor rdx, rdx        ; envp = NULL
+    xor rdx, rdx
     syscall
-    jmp .exit           ; Fail-safe
