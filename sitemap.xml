@@ -7,7 +7,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/covenant_multi_ai_cooperation_v1.law</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn.o</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery_bin</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/covenant_artifact_forging_v1.law</loc>
@@ -19,10 +19,16 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/sitemaps.xml</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync_bin</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/state_law_v1.law</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-mod.sh</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/versioning_law_v1.law</loc>
@@ -346,6 +352,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-ignite-full.yml</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/fire-chain.yml</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-dispatch.yml</loc>
   </url>
   <url>
@@ -355,13 +364,22 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-sync.yml</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery.o</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/json/resource.json</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-end.sh</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/.gitattributes</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn.asm</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-compile.sh</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-run.sh</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Artifacts/CVBgod_Verified_Protocol.art</loc>
@@ -386,9 +404,6 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Artifacts/avis_cmt_artifacts.defs</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync.o</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/AIFVS-HEADER.h</loc>
@@ -418,6 +433,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/images/Gemini_Generated_Image_7q1tbp7q1tbp7q1t.png</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn_bin</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/SITEMAP.SH</loc>
   </url>
   <url>
@@ -440,6 +458,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/metadata.json</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-start.sh</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/transport_law_v1.law</loc>
