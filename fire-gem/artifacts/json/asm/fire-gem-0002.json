@@ -1,0 +1,30 @@
+{
+  "AVIS_COMM_OBJECT": {
+    "WRAPPER_GUID": "SENTINEL-0002-PROCESSOR-V2",
+    "FLOW_SCOPE": [
+      {
+        "ID": "BOOT-02-FORGE",
+        "FILE": "fire-gem-0002.asm",
+        "TYPE": "COMPILE",
+        "MACRO": "wm_macro_ack",
+        "WAIT": "TRUE"
+      },
+      {
+        "ID": "BOOT-02-RUN",
+        "FILE": "fire-gem-0002_bin",
+        "TYPE": "RUN",
+        "MACRO": "wm_macro_rack",
+        "WAIT": "FALSE"
+      }
+    ],
+    "REGISTRY": [
+      {
+        "DIR_ID": "ROOT_ASM",
+        "FILES": [
+          {"GUID": "ASM-04", "NAME": "fire-gem-0002.asm"}
+        ]
+      }
+    ],
+    "COMPLIANCE": "IDENTITY: VERSION 1 // HAHA!"
+  }
+}
