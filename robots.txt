@@ -1,5 +1,2 @@
-User-agent: *
-Allow: /
-
-# Directs Googlebot and other compatible crawlers to your sitemap
-Sitemap: https://mercwar.github.io/AVIS/sitemap.xml
+Generating sitemap for: https://github.com/mercwar/AVIS/blob/main
+Done! Full sitemap saved to sitemap.xml
