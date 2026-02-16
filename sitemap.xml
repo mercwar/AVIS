@@ -349,6 +349,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-dispatch.yml</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/master-chain.yml</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-sync.yml</loc>
   </url>
   <url>
