@@ -325,6 +325,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis_v2_sitemap.yml</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis_auto_learn.yml</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-forge.yml</loc>
   </url>
   <url>
