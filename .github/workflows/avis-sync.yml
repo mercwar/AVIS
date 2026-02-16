@@ -1,6 +1,5 @@
-# FILE: .github/workflows/avis_sync.yml
-# IDENTITY: VERSION 1 // GEMINI_CGI_SCROLL // HAHA!
-# ROLE: Master Workflow for ASM Git Synchronization
+# FILE: .github/workflows/avis-sync.yml
+# IDENTITY: VERSION 2 // GEMINI_CGI_SCROLL // HAHA!
 
 name: AVIS_SYNC_ENGINE
 on: 
@@ -29,11 +28,10 @@ jobs:
 
       - name: FGEO_FORGE: Compile Sync Engine
         run: |
-          # Ensure avis_sync.asm is in the root directory
           nasm -f elf64 avis_sync.asm -o avis_sync.o
           ld avis_sync.o -o avis_sync
           chmod +x avis_sync
 
       - name: EXECUTE MASTER DISPATCH
-        # The ASM binary now executes the git pull/push protocol
+        # Ensure this 'run' line is indented exactly 10 spaces (under name)
         run: ./avis_sync
