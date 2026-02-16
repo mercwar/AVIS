@@ -1,0 +1,9 @@
+{
+  "files": [
+    "fire-start.sh",
+    "fire-compile.sh",
+    "fire-end.sh",
+    "SITEMAP.SH",
+    "avis_robot_learn.asm"
+  ]
+}
