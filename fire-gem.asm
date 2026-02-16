@@ -1,5 +1,5 @@
 ; FILE: fire-gem.asm
-; IDENTITY: VERSION 3.4 // MASTER DISPATCHER // HAHA!
+; IDENTITY: VERSION 3.55 // MASTER DISPATCHER // HAHA!
 ; ROLE: Sequential Terminal Protocol - JSON-to-Shell Pipeline.
 
 section .data
@@ -20,90 +20,89 @@ _start:
     ; 1. OPEN VAULT DIRECTORY (rax=2)
     mov rax, 2          
     mov rdi, vault_path
-    xor rsi, rsi        ; O_RDONLY
+    xor rsi, rsi        
     syscall
     test rax, rax
-    js exit_error       ; Jump to error if directory missing
-    mov r8, rax         ; Save Vault File Descriptor (FD)
+    js exit_error       
+    mov r8, rax         
 
 scan_loop:
-    ; 2. READ DIRECTORY ENTRIES (rax=217)
-    mov rax, 217        ; sys_getdents64
+    ; 2. READ DIRECTORY (rax=217)
+    mov rax, 217        
     mov rdi, r8
     mov rsi, dir_buf
     mov rdx, 4096
     syscall
     test rax, rax
-    jle close_exit      ; End of Vault reached
+    jle close_exit      
 
     ; --- TERMINAL PROTOCOL: SEQUENTIAL EXECUTION ---
-    ; STEP A: FIRE-MOD
-    push mod_path
+    ; FIX: Push address to stack before calling the worker
+    
+    mov rdi, mod_path
     call fork_and_exec_worker
     
-    ; STEP B: FIRE-COMPILE
-    push comp_path
+    mov rdi, comp_path
     call fork_and_exec_worker
     
-    ; STEP C: FIRE-RUN
-    push run_path
+    mov rdi, run_path
     call fork_and_exec_worker
 
-    jmp scan_loop       ; RESUME TO NEXT CJS BLOCK
+    jmp scan_loop       
 
 close_exit:
-    mov rax, 3          ; sys_close
+    mov rax, 3          
     mov rdi, r8
     syscall
 
 exit_success:
-    mov rax, 60         ; sys_exit
+    mov rax, 60         
     xor rdi, rdi
     syscall
 
 exit_error:
-    mov rax, 60         ; sys_exit
-    mov rdi, 1          ; error code 1
+    mov rax, 60         
+    mov rdi, 1          
     syscall
 
 ; --- HELPER: FORK -> EXEC -> WAIT ---
 fork_and_exec_worker:
-    pop r12             ; Save return address in r12
-    pop rdi             ; Get worker path from stack
+    ; rdi contains the path to the worker script
+    push rdi            ; Save path
     
     mov rax, 57         ; sys_fork
     syscall
     test rax, rax
-    jz child_worker     ; If rax=0, we are in the child process
+    jz child_worker     
     
-    ; PARENT LOGIC: WAIT4 (rax=61)
+    ; PARENT: WAIT
+    pop rdi             ; Clean stack
     mov [child_pid], rax
     mov rax, 61
     mov rdi, [child_pid]
-    xor rsi, rsi        ; status = NULL
-    xor rdx, rdx        ; options = 0
-    xor r10, r10        ; rusage = NULL
-    syscall             ; PAUSE UNTIL WORKER EXITS
-    
-    push r12            ; Restore return address
+    xor rsi, rsi        
+    xor rdx, rdx        
+    xor r10, r10        
+    syscall             
     ret
 
 child_worker:
-    ; EXECVE: /bin/bash <worker_path>
+    pop rdi             ; Get path from stack
     mov rax, 59         ; sys_execve
-    mov rdi, sh_bin
+    mov r8, sh_bin      ; Load /bin/bash
     
     ; Build argv [bash, worker_path, NULL]
-    xor rax, rax
-    push rax            ; NULL terminator
+    xor rbx, rbx
+    push rbx            ; NULL
     push rdi            ; worker_path
-    push sh_bin         ; "bash"
-    mov rsi, rsp        ; rsi = argv pointer
-    xor rdx, rdx        ; envp = NULL
-    mov rax, 59         ; sys_execve
+    push r8             ; /bin/bash
+    
+    mov rdi, r8         ; rdi = /bin/bash
+    mov rsi, rsp        ; rsi = argv
+    xor rdx, rdx        ; rdx = envp = NULL
     syscall
     
-    ; If execve fails
+    ; If execve fails, exit child
     mov rax, 60
     mov rdi, 2
     syscall
