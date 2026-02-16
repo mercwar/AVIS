@@ -1,0 +1,34 @@
+name: AVIS_SYNC_ENGINE
+on: 
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  forge-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git Identity
+        run: |
+          git config --global user.name "cvbgod-bot"
+          git config --global user.email "mercwar@sentinel.shell"
+
+      - name: Install NASM Toolchain
+        run: sudo apt-get install -y nasm
+
+      - name: FGEO_FORGE: Compile Sync Engine
+        run: |
+          nasm -f elf64 avis_sync.asm -o avis_sync.o
+          ld avis_sync.o -o avis_sync
+          chmod +x avis_sync
+
+      - name: EXECUTE MASTER DISPATCH
+        # This runs the ASM file which performs the pull/add/commit/push logic
+        run: ./avis_sync
