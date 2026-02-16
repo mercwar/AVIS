@@ -1,12 +1,12 @@
 # FILE: .github/workflows/fire-chain.yml
-# IDENTITY: VERSION 2 // GEMINI_CGI_SCROLL // HAHA!
-# ROLE: Single-Entry Pulse Runner
+# IDENTITY: VERSION 1 // GEMINI_CGI_SCROLL // HAHA!
+# ROLE: Master Engine - Directory Seating -> fire-start -> fire-end
 
-name: FIRE_CHAIN_RUNNER
+name: Fire-Gem AVIS Engine
 on: [push, workflow_dispatch]
 
 jobs:
-  engine-cycle:
+  avis-ignition:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -16,7 +16,30 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: MASTER_PULSE
+      - name: Install Smithy Tools
+        run: sudo apt-get update && sudo apt-get install -y nasm binutils
+        
+      - name: Establish fire-gem start
         run: |
-          chmod +x fire-start.sh
-          ./fire-start.sh
+          # Ensure V1 paths exist for fire-start pulse
+          mkdir -p "VERSION 1"
+          
+          if [ -f "./fire-start.sh" ]; then
+            chmod +x fire-start.sh
+            ./fire-start.sh
+          else
+            echo "[AVIS-YML] fire-start.sh missing. Check root."
+            exit 1
+          fi
+
+      - name: Establish fire-gem end
+        run: |
+          # Execute final seal and dispatch
+          if [ -f "./fire-end.sh" ]; then
+            chmod +x fire-end.sh
+            ./fire-end.sh
+          else
+            echo "[AVIS-YML] fire-end.sh missing. Check root."
+            exit 1
+          fi
+
