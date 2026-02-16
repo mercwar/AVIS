@@ -1,5 +1,5 @@
 ; FILE: fire-gem.asm
-; IDENTITY: VERSION 3.9 // MASTER DISPATCHER // HAHA!
+; IDENTITY: VERSION 3.95 // MASTER DISPATCHER // HAHA!
 ; ROLE: Sequential Terminal Protocol - JSON-to-Shell Pipeline.
 
 section .data
@@ -24,7 +24,7 @@ _start:
     syscall
     test rax, rax
     js exit_error       
-    mov r8, rax         
+    mov r8, rax         ; Save Vault FD
 
 scan_loop:
     ; 2. READ DIRECTORY (rax=217)
@@ -67,7 +67,6 @@ exit_error:
 
 ; --- HELPER: FORK -> EXEC -> WAIT ---
 fork_and_exec_worker:
-    ; Path is already in RDI from the caller
     push rdi            ; Keep path safe on stack
     
     mov rax, 57         ; sys_fork
@@ -87,15 +86,14 @@ fork_and_exec_worker:
     ret
 
 child_worker:
-    ; In child process
-    pop rdi             ; Get worker path back
+    pop rdi             ; Get path back
     mov r8, sh_bin      ; /bin/bash
     
     ; Build argv [bash, worker_path, NULL]
     xor rbx, rbx
     push rbx            ; NULL
-    push rdi            ; Argument 1: worker_path
-    push r8             ; Argument 0: bash
+    push rdi            ; worker_path
+    push r8             ; bash
     
     mov rdi, r8         ; rdi = /bin/bash
     mov rsi, rsp        ; rsi = argv array
