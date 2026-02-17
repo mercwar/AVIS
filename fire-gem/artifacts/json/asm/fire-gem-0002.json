@@ -10,8 +10,14 @@
         "WAIT": "TRUE"
       },
       {
+        "ID": "PIPE-02-AUDIT",
+        "WORKER": "fire-gem/artifacts/sh/fire-run.sh",
+        "COMMAND": "ls -la fire-gem/artifacts/cbord/reg/",
+        "SINK": "fire-gem-0002-vault-check.log"
+      },
+      {
         "ID": "BOOT-02-RUN",
-        "FILE": "fire-gem-0002_bin",
+        "FILE": "fire-gem-0002.exe",
         "TYPE": "RUN",
         "MACRO": "wm_macro_rack",
         "WAIT": "FALSE"
@@ -21,11 +27,10 @@
       {
         "DIR_ID": "ROOT_ASM",
         "FILES": [
-          {"GUID": "ASM-04", "NAME": "fire-gem-0002.asm"}
+          {"GUID": "ASM-0002", "NAME": "fire-gem-0002.asm"}
         ]
       }
     ],
     "COMPLIANCE": "IDENTITY: VERSION 1 // HAHA!"
   }
 }
-
