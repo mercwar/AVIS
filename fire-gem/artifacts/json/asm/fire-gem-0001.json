@@ -2,6 +2,14 @@
   "AVIS_REGISTRY_OBJECT": {
     "ID": "CYHY-REG-0001",
     "DIRECTIVE": "CYHY:GENERATE_ASM_CBORD",
+    "PIPELINE": [
+      {
+        "ID": "PIPE-01",
+        "WORKER": "fire-gem/artifacts/sh/fire-run.sh",
+        "COMMAND": "ls -la fire-gem/artifacts/cbord/reg/",
+        "SINK": "fire-gem-0002-audit.log"
+      }
+    ],
     "EVAL_STACK": [
       {
         "OP": "MAP_KERNEL_SYSCALL",
@@ -10,13 +18,8 @@
         "RDI": 1
       },
       {
-        "OP": "EXEC_SHELL_PULSE",
-        "TARGET": "/bin/bash",
-        "PAYLOAD": "fire-gem/artifacts/sh/fire-run.sh"
-      },
-      {
         "OP": "FILE_SINK",
-        "PATH": "fire-gem/artifacts/cbord/reg/0002-logic.cbord"
+        "PATH": "fire-gem/artifacts/cbord/reg/0001.cbord"
       }
     ],
     "COMPLIANCE": "IDENTITY: VERSION 1 // HAHA!"
