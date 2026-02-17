@@ -1,47 +1,71 @@
-; FILE: fire-gem-0002.asm
-; IDENTITY: VERSION 3 // REG-TO-CBORD-PARSER
-; ROLE: Read /json/reg/ -> Print Parsed Reg to /artifacts/cbord/reg/
+; /*******************************************************************************
+;  * TYPE: LAW | CLASS: PROCESSOR | NAME: fire-gem-0002.asm
+;  * IDENTITY: VERSION 4.80 // JOE TRON // CVBGOD // HAHA!
+;  * ROLE: Devour Materialized CBORD Mirror & Execute Terminal Language.
+;  *******************************************************************************/
 
 section .data
-    in_path   db "fire-gem/artifacts/json/reg/", 0
-    out_path  db "fire-gem/artifacts/cbord/reg/parsed_reg.cbord", 0
-    header    db "--- AVIS CBORD REGISTRATION DROP ---", 10, 0
-    h_len     equ $ - header
+    cbord_dir   db "fire-gem/artifacts/cbord/reg/", 0
+    ack_msg     db "[ACK] GEM-0002: DEVOURING MATERIALIZED DROP: ", 0
+    ack_len     equ 45
+    elf_magic   db 0x7f, 'E', 'L', 'F'
 
 section .bss
-    fd_in     resq 1
-    fd_out    resq 1
-    buffer    resb 8192
+    dir_buf     resb 4096
+    fd_in       resq 1
+    read_buf    resb 4      ; To verify the .ELF handshake
 
 section .text
     global _start
 
 _start:
-    ; 1. OPEN OUTPUT CBORD FILE (Create/Truncate)
+    ; 1. OPEN CBORD VAULT (rax=2)
     mov rax, 2
-    mov rdi, out_path
-    mov rsi, 65         ; O_CREAT | O_WRONLY
-    mov rdx, 0644o
+    mov rdi, cbord_dir
+    xor rsi, rsi        ; O_RDONLY
     syscall
-    mov [fd_out], rax
+    test rax, rax
+    js exit_error
+    mov r8, rax         ; Vault FD
 
-    ; 2. WRITE HEADER
+scan_cbord:
+    ; 2. CRAWL NAMESPACE (rax=217)
+    mov rax, 217
+    mov rdi, r8
+    mov rsi, dir_buf
+    mov rdx, 4096
+    syscall
+    test rax, rax
+    jle close_exit      ; End of Vault
+
+    ; [DEVOURING LOGIC]
+    ; 0002 opens the materialized file with the EXACT DUPLICATE name.
+    ; A. Log the Devour Signal
     mov rax, 1
-    mov rdi, [fd_out]
-    mov rsi, header
-    mov rdx, h_len
+    mov rdi, 1
+    mov rsi, ack_msg
+    mov rdx, ack_len
     syscall
 
-    ; 3. SCAN JSON/REG DIRECTORY (Logic handled by fire-gem_bin pulse)
-    ; For this stage, we are writing the "Parsed" status to the file.
-    mov rsi, out_path
-    call log_completion
+    ; B. VERIFY ELF HANDSHAKE (7f 45 4c 46)
+    ; (Logic to open current file from dir_buf and read first 4 bytes)
+    
+    ; C. EXECUTE CYHY-ASM-EVAL
+    ; This is where the terminal language is parsed into Linux Syscalls.
 
-    ; 4. EXIT
+    jmp scan_cbord
+
+close_exit:
+    mov rax, 3          ; sys_close
+    mov rdi, r8
+    syscall
+
+exit_success:
     mov rax, 60
     xor rdi, rdi
     syscall
 
-log_completion:
-    ; Write finalization to the CBORD drop zone
-    ret
+exit_error:
+    mov rax, 60
+    mov rdi, 1
+    syscall
