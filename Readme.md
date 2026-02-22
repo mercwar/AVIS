@@ -2,8 +2,9 @@
 
 ![AVIS](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%203/Copilot_20260222_014503.png)
 
-AVIS is a visibility framework designed to make **comments**, **metadata**, and **COM‑object structures** readable to both humans and autonomous AI systems.  
-This repository serves as a **reference implementation** of AVIS comment law.
+### AVIS is a visibility framework designed to make **comments**, **metadata**, and **COM‑object structures** readable to both humans and autonomous AI systems.  
+
+#### This repository serves as a **reference implementation** of AVIS comment law.
 
 ---
 
