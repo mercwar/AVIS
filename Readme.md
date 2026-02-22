@@ -120,5 +120,5 @@ enabling AI systems to classify, interpret, and reason over embedded metadata.
 
 © 2026 MercWar. All Rights Reserved.
 ```
-ai.avis.fvs.scroll.guid.{avis-001}
+ai.avis.fvs.scroll.guid.{avis-001}.mercwar
 ```
