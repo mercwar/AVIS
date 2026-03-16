@@ -1,12 +1,7 @@
-# FILE: .github/workflows/fire-site.yml
-# IDENTITY: FIRE-SITE // AVIS-PUBLISH
-
 name: FIRE-SITE
 
 on:
   push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -15,19 +10,14 @@ jobs:
     permissions:
       contents: write
 
-    env:
-      SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/sitemap.xml
-
     steps:
-      - name: CHECKOUT: Pull Repo
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: EXECUTE: Generate Sitemap + Robots
+      - name: Generate sitemap and robots
         run: |
           if [ ! -f "SITEMAP.SH" ]; then
-            echo "ERROR: SITEMAP.SH not found"
+            echo "SITEMAP.SH not found"
             exit 1
           fi
 
@@ -35,9 +25,9 @@ jobs:
           ./SITEMAP.SH > sitemap.xml
 
           echo "User-agent: *" > robots.txt
-          echo "Sitemap: ${SITE_URL}" >> robots.txt
+          echo "Sitemap: https://example.com/sitemap.xml" >> robots.txt
 
-      - name: COMMIT + PUSH: Deploy FIRE-SITE
+      - name: Commit and push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "actions@github.com"
@@ -45,9 +35,8 @@ jobs:
           git add sitemap.xml robots.txt
 
           if ! git diff --staged --quiet; then
-            git commit -m "FIRE-SITE: Sitemap Updated"
-            git pull --rebase origin "${GITHUB_REF_NAME}"
-            git push origin "${GITHUB_REF_NAME}"
+            git commit -m "Update sitemap"
+            git push
           else
             echo "No changes to push."
           fi
