@@ -361,6 +361,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-forge.yml</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/FIRE-SITE.yml</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-master-chain.yml</loc>
   </url>
   <url>
@@ -371,9 +374,6 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-dispatch.yml</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/master-chain.yml</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-sync.yml</loc>
