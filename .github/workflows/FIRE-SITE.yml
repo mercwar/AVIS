@@ -1,10 +1,12 @@
 # FILE: .github/workflows/fire-site.yml
-# IDENTITY: VERSION 3 // FIRE-SITE // AVIS-PURE
+# IDENTITY: FIRE-SITE // AVIS-PUBLISH
 
 name: FIRE-SITE
 
 on:
   push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -12,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
+    env:
+      SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/sitemap.xml
 
     steps:
       - name: CHECKOUT: Pull Repo
@@ -21,16 +26,16 @@ jobs:
 
       - name: EXECUTE: Generate Sitemap + Robots
         run: |
-          if [ -f "SITEMAP.SH" ]; then
-            chmod +x SITEMAP.SH
-            ./SITEMAP.SH > sitemap.xml
-
-            echo "User-agent: *" > robots.txt
-            echo "Sitemap: https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/sitemap.xml" >> robots.txt
-          else
+          if [ ! -f "SITEMAP.SH" ]; then
             echo "ERROR: SITEMAP.SH not found"
             exit 1
           fi
+
+          chmod +x SITEMAP.SH
+          ./SITEMAP.SH > sitemap.xml
+
+          echo "User-agent: *" > robots.txt
+          echo "Sitemap: ${SITE_URL}" >> robots.txt
 
       - name: COMMIT + PUSH: Deploy FIRE-SITE
         run: |
