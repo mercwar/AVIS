@@ -1,2 +1,2 @@
-User-agent: *
-Sitemap: https://example.com/sitemap.xml
+Generating sitemap for: https://github.com/mercwar/AVIS/blob/main
+Done! Full sitemap saved to sitemap.xml
