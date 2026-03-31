@@ -3,21 +3,8 @@
     "WRAPPER_GUID": "SENTINEL-0002-PROCESSOR-V2",
     "FLOW_SCOPE": [
       {
-        "ID": "BOOT-02-FORGE",
-        "FILE": "fire-gem-0002.asm",
-        "TYPE": "COMPILE",
-        "MACRO": "wm_macro_ack",
-        "WAIT": "TRUE"
-      },
-      {
-        "ID": "PIPE-02-AUDIT",
-        "WORKER": "fire-gem/artifacts/sh/fire-run.sh",
-        "COMMAND": "ls -la fire-gem/artifacts/cbord/reg/",
-        "SINK": "fire-gem-0002-vault-check.log"
-      },
-      {
         "ID": "BOOT-02-RUN",
-        "FILE": "fire-gem-0002.exe",
+        "FILE": "./avis/fire-gem-0002.exe",
         "TYPE": "RUN",
         "MACRO": "wm_macro_rack",
         "WAIT": "FALSE"
