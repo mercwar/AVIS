@@ -9,30 +9,47 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Toolchain
         run: sudo apt-get update && sudo apt-get install -y nasm binutils coreutils
+
       - name: Global Forge Cycle
         run: |
           # 1. Strike all .asm into .bin and preserve .o identity
           find . -maxdepth 2 -name "*.asm" | while read -r f; do
             OBJ="${f%.asm}.o"
             BIN="${f%.asm}.bin"
+            echo "FORGE: [STRIKE] $f -> $BIN"
             nasm -f elf64 "$f" -o "$OBJ"
             ld "$OBJ" -o "$BIN"
             chmod +x "$BIN"
+            # Cleanup command (rm -f) is REMOVED to keep .o files seated
           done
+
       - name: Execute Pulse
         run: |
           # 2. Force zero-buffer execution for all shell workers
+          mkdir -p ./logs/
           find . -maxdepth 2 -name "*.sh" -not -path "*/.*" | while read -r sh_file; do
             chmod +x "$sh_file"
+            echo "PULSE: Executing $sh_file..."
+            # -o0 forces every byte to the log immediately
             stdbuf -o0 -e0 "$sh_file"
           done
+
       - name: Sync Dispatch
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "AVIS_V2: Object Identity & Log Flush [skip ci]" || echo "No changes"
-          git push origin HEAD:main
+          # Commit the binaries, objects, and logs back to the origin
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "AVIS_V2: Identity & Log Flush [skip ci]"
+            git push origin HEAD:main
+          else
+            echo "AVIS: No changes detected."
+          fi
