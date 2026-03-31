@@ -92,7 +92,6 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/scripts/manifest.fvs</loc>
-  </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ACTIVE.VERSION</loc>
   </url>
@@ -493,6 +492,15 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/covenant_multi_ai_cooperation_v1.law</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/covenant_multi_ai_cooperation_v1.law</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0001_bin</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/images/Readme.md</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/.gitattributes</loc>
   </url>
   <url>
@@ -552,6 +560,7 @@
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn.asm</loc>
   </url>
+</urlset>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/protocol_handshake_law_v1.law</loc>
   </url>
