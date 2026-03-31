@@ -1,63 +1,59 @@
 ; /*******************************************************************************
-;  * TYPE: LAW | CLASS: INGESTOR | NAME: fire-gem-0003.asm
-;  * IDENTITY: VERSION 1.0 // THE GAUNTLET // HAHA!
-;  * ROLE: Force-Write Registry & Seal Namespace.
+;  * TYPE: LAW | CLASS: PROCESSOR | NAME: fire-gem-0002.asm
+;  * IDENTITY: VERSION 4.86 // LOOP_BREAK_PROTOCOL // HAHA!
+;  * ROLE: Scan Vault once. Report. Exit. Stop the spam.
 ;  *******************************************************************************/
 
 section .data
-    target_dir  db "fire-gem/artifacts/json/cbord/reg/", 0
-    payload_out db "fire-gem/artifacts/json/cbord/reg/AVIS_003.exe", 0
-    
-    ack_msg     db "[ACK] GEM-0003: INGESTION INITIALIZED...", 10
-    ack_len     equ 41
-    seal_msg    db "[ACK] GEM-0003: REGISTRY SEALED. DISPATCH COMPLETE.", 10
-    seal_len    equ 51
-    elf_magic   db 0x7f, 'E', 'L', 'F'
+    cbord_dir   db "fire-gem/artifacts/json/cbord/reg/", 0
+    ack_msg     db "[ACK] GEM-0002: VAULT DETECTED. SCANNING...", 10
+    ack_len     equ 44
+    fin_msg     db "[ACK] GEM-0002: SCAN COMPLETE. RELEASING THREAD.", 10
+    fin_len     equ 48
 
 section .bss
-    fd_out      resq 1
+    dir_buf     resb 4096
 
 section .text
     global _start
 
 _start:
-    ; 1. SIGNAL START
+    ; 1. SIGNAL START (Once)
     mov rax, 1
     mov rdi, 1
     mov rsi, ack_msg
     mov rdx, ack_len
     syscall
 
-    ; 2. FORCE MATERIALIZE AVIS_003.exe
-    mov rax, 2          ; sys_open
-    mov rdi, payload_out
-    mov rsi, 65         ; O_CREAT | O_WRONLY
-    mov rdx, 0755o      ; Read/Write/Execute
+    ; 2. OPEN VAULT
+    mov rax, 2
+    mov rdi, cbord_dir
+    xor rsi, rsi        
     syscall
     test rax, rax
     js exit_error
-    mov [fd_out], rax
+    mov r8, rax         ; Vault FD
 
-    ; 3. DROP ELF HANDSHAKE
-    mov rax, 1
-    mov rdi, [fd_out]
-    mov rsi, elf_magic
-    mov rdx, 4
+    ; 3. PERFORM SINGLE SCAN
+    mov rax, 217        ; sys_getdents64
+    mov rdi, r8
+    mov rsi, dir_buf
+    mov rdx, 4096
     syscall
 
-    ; 4. CLOSE AND SEAL
+    ; 4. CLOSE IMMEDIATELY (Break the Loop)
     mov rax, 3
-    mov rdi, [fd_out]
+    mov rdi, r8
     syscall
 
-    ; 5. SIGNAL SUCCESS
+    ; 5. SIGNAL FINISH (Once)
     mov rax, 1
     mov rdi, 1
-    mov rsi, seal_msg
-    mov rdx, seal_len
+    mov rsi, fin_msg
+    mov rdx, fin_len
     syscall
 
-    ; 6. TERMINATE (CLEAN EXIT)
+    ; 6. TERMINATE
     mov rax, 60
     xor rdi, rdi
     syscall
