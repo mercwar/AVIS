@@ -1,15 +1,17 @@
 ; /*******************************************************************************
 ;  * TYPE: LAW | CLASS: PROCESSOR | NAME: fire-gem-0002.asm
-;  * IDENTITY: VERSION 4.83 // FORCE_FLUSH_PROTOCOL // HAHA!
+;  * IDENTITY: VERSION 4.84 // PATH_ALIGNED // HAHA!
 ;  * ROLE: Devour Materialized CBORD Mirror & Execute Terminal Language.
 ;  *******************************************************************************/
 
 section .data
-    cbord_dir   db "fire-gem/artifacts/cbord/reg/", 0
-    ack_msg     db "[ACK] GEM-0002: DEVOURING MATERIALIZED DROP...", 10
-    ack_len     equ 47
-    err_msg     db "[NACK] GEM-0002: VAULT NOT FOUND OR ACCESS DENIED.", 10
-    err_len     equ 51
+    ; UPDATED PATH TO MATCH YOUR TARGET
+    cbord_dir   db "fire-gem/artifacts/json/cbord/reg/", 0
+    
+    ack_msg     db "[ACK] GEM-0002: VAULT DETECTED. DEVOURING DROP...", 10
+    ack_len     equ 48
+    err_msg     db "[NACK] GEM-0002: VAULT NOT FOUND AT JSON/CBORD/REG/", 10
+    err_len     equ 52
 
 section .bss
     dir_buf     resb 4096
@@ -26,7 +28,7 @@ _start:
     syscall
     
     test rax, rax
-    js exit_error       ; If folder missing, jump to error log
+    js exit_error       
     
     mov r8, rax         ; Save FD
 
@@ -41,20 +43,19 @@ scan_cbord:
     cmp rax, 0
     jle close_exit      
 
-    ; --- FORCE FLUSH PROTOCOL ---
-    ; We write the ACK 100 times to fill the 4KB buffer and force a disk write.
-    mov rcx, 100        
+    ; --- FLUSH PROTOCOL (Ensures Log Visibility) ---
+    mov rcx, 10         ; Reduced to 10 for cleaner logs now that it works
 .flush:
     push rcx
-    push rax            ; Save bytes-read from getdents
-    mov rax, 1          ; sys_write
-    mov rdi, 1          ; STDOUT (Redirected to log)
+    push rax            
+    mov rax, 1          
+    mov rdi, 1          
     mov rsi, ack_msg
     mov rdx, ack_len
     syscall
     pop rax
     pop rcx
-    loop .flush         ; Repeat until rcx is 0
+    loop .flush         
 
     jmp scan_cbord
 
@@ -70,8 +71,8 @@ exit_success:
     syscall
 
 exit_error:
-    ; 3. ERROR LOGGING (Forces NACK into the log)
-    mov rcx, 100        ; Flush the error too
+    ; 3. ERROR LOGGING
+    mov rcx, 10        
 .err_flush:
     push rcx
     mov rax, 1
