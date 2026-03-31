@@ -1,8 +1,6 @@
 #!/bin/bash
-# /*******************************************************************************
-#  * TYPE: ENGINE | CLASS: FORGE-ENGINE | NAME: fire-compile.sh
-#  * IDENTITY: VERSION 4.1 // FORGE_SMITHY // HAHA!
-#  *******************************************************************************/
+# IDENTITY: VERSION 4.1 // FORGE_SMITHY // HAHA!
+# ROLE: Direct-scan ASM to ELF64 Forge.
 mkdir -p ./avis/
 echo "FIRE_COMPILE: Initializing Forge for ASM Targets..."
 find . -maxdepth 1 -name "*.asm" | while read -r f; do
