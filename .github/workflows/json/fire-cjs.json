@@ -1,35 +1,27 @@
 {
   "AVIS_CJS_OBJECT": {
-    "WRAPPER_GUID": "SENTINEL-MASTER-V2-2026-X86",
+    "WRAPPER_GUID": "SENTINEL-MASTER-V2-REBUILD-2026",
     "PROGRAM_STACK": [
       {
-        "ID": "CLASS_ASM_01",
-        "CODE": "WM_REGISTER_CLASS",
-        "SOURCE": "avis_robot_learn.asm",
-        "CLASS_NAME": "AVIS_LEARNER_CLASS"
-      },
-      {
-        "ID": "CLASS_ASM_02",
-        "CODE": "WM_REGISTER_CLASS",
-        "SOURCE": "avis_discovery.asm",
-        "CLASS_NAME": "AVIS_DISCOVERY_CLASS"
-      },
-      {
-        "ID": "PROC-AVIS-MAIN",
+        "ID": "INIT_V2",
         "CODE": "WM_CREATE_PROC",
-        "TARGET": "avis_robot_learn_bin",
-        "THREADS": [
-          {
-            "ID": "T1_INGEST",
-            "CODE": "WM_CREATE_THREAD",
-            "FUNCTION": "fire-site.sh"
-          },
-          {
-            "ID": "T2_SITEMAP",
-            "CODE": "WM_CREATE_THREAD",
-            "FUNCTION": "SITEMAP.SH"
-          }
-        ]
+        "FUNCTION": "fire-gem/artifacts/sh/fire-mod.sh"
+      },
+      {
+        "ID": "FORGE_V2",
+        "CODE": "WM_CREATE_PROC",
+        "FUNCTION": "fire-gem/artifacts/sh/fire-compile.sh"
+      },
+      {
+        "ID": "CLASS_V2_03",
+        "CODE": "WM_REGISTER_CLASS",
+        "SOURCE": "fire-gem-0003.asm",
+        "CLASS_NAME": "COORDINATE_MATERIALIZER_V2"
+      },
+      {
+        "ID": "RUN_V2",
+        "CODE": "WM_CREATE_PROC",
+        "FUNCTION": "fire-gem/artifacts/sh/fire-run.sh"
       },
       { "CODE": "EXIT", "MACRO": "wm_macro_ack" }
     ]
