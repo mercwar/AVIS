@@ -4,6 +4,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0003.asm</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-run-fire-gem-0003.exe.log</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/linux_core_bin</loc>
   </url>
   <url>
@@ -530,6 +533,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/json/cbord/reg/v2/AVIS.avis</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/json/cbord/reg/cvbgod</loc>
