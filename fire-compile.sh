@@ -1,8 +1,8 @@
 #!/bin/bash
-/*******************************************************************************
- * TYPE: ENGINE | CLASS: FORGE-ENGINE | NAME: fire-compile.sh
- * IDENTITY: VERSION 1 // GEMINI_CGI_SCROLL // HAHA!
- *******************************************************************************/
+# /*******************************************************************************
+#  * TYPE: ENGINE | CLASS: FORGE-ENGINE | NAME: fire-compile.sh
+#  * IDENTITY: VERSION 1.1 // GEMINI_CGI_SCROLL // HEADER_FIXED // HAHA!
+#  *******************************************************************************/
 
 # EXPLICIT PATHING FOR GITHUB WORKSPACE
 JSON_FILE="./fire-cjs.json"
@@ -13,7 +13,6 @@ echo "FIRE_COMPILE: Initializing Forge for ASM Targets..."
 if [ -f "$JSON_FILE" ]; then
     echo "FIRE_COMPILE: Ingesting ASM Registry from $JSON_FILE..."
     # Extracts NAMES specifically from the ROOT_ASM DIR_ID
-    # Added error handling to verify JQ can parse the file
     ASM_FILES=$(jq -r '.AVIS_CJS_OBJECT.REGISTRY[] | select(.DIR_ID=="ROOT_ASM") | .FILES[].NAME' "$JSON_FILE" 2>/dev/null)
 else
     echo "BASH: [NACK] $JSON_FILE NOT FOUND in $(pwd). Skipping JQ ingestion."
@@ -32,10 +31,15 @@ for source in $ASM_FILES; do
 
     # Create binary name (e.g., avis.asm -> avis_bin)
     binary="${source%.asm}_bin"
+    
+    # Check if a directory with this name exists to avoid ld 403/Is a directory error
+    if [ -d "$binary" ]; then
+        binary="${binary}_out"
+    fi
+
     echo "FORGE: Compiling $source -> $binary"
 
     # X86_64 NASM ASSEMBLE -> LD LINK
-    # Ensure binary tools are available in the path
     nasm -f elf64 "$source" -o temp.o && ld temp.o -o "$binary"
     
     if [ $? -eq 0 ]; then
@@ -44,6 +48,7 @@ for source in $ASM_FILES; do
         echo "BASH: [ACK] FORGED: $binary"
     else
         echo "BASH: [NACK] COMPILE_ERROR: $source"
+        rm -f temp.o
     fi
 done
 
