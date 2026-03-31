@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+    <loc>https://github.com/mercwar/AVIS/blob/main/stub_pulse.bin</loc>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/linux_core_bin</loc>
@@ -25,7 +26,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CRASH/interpreter.crash</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SESSION/interpreter.ses</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SECURITY/permissions.sec</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SESSION/session.ses</loc>
@@ -238,7 +239,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/QUEUE/task.queue</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TOOLS/comment_generator.tool</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TOOLS/interpreter.tools</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TOOLS/interpreter.tools</loc>
@@ -364,13 +365,13 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis_auto_learn.yml</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-dispatch.yml</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-sync.yml</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-master-chain.yml</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-sync.yml</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/SYSTEM.INDEX</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0002.bin</loc>
@@ -420,11 +421,18 @@
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-cjs.json</loc>
   </url>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/sitemap.txt</loc>
+  </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/covenant_artifact_forging_v1.law</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/sitemap.txt</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/covenant_artifact_forging_v1.law</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn</loc>
@@ -442,7 +450,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync.bin</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/google77a4b19e8f99751c.html</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/AVIS.FVS</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-run-fire-gem-0001.exe.log</loc>
@@ -451,7 +459,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery_bin</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/AVIS.FVS</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem.asm</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/LICENSE</loc>
@@ -460,7 +468,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem.asm</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem_bin</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/stub_pulse_bin</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/artifact_registration_law_v1.law</loc>
@@ -469,13 +477,13 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/stub_pulse_bin</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/robots.txt</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/versioning_law_v1.law</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0001.bin</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/versioning_law_v1.law</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/CITATION.cff</loc>
@@ -529,7 +537,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/json/cbord/reg/cvbgod</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/json/asm/fire-gem-0002.json</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/json/asm/fire-gem-0002.json</loc>
@@ -538,7 +546,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/json/asm/fire-gem-0001.json</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/json/reg/init_reg.json</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/sh/fire-compile.sh</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/sh/fire-run.sh</loc>
@@ -547,7 +555,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/sh/fire-compile.sh</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/sh/fire-mod.sh</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn.asm</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/CONTRIBUTING.md</loc>
