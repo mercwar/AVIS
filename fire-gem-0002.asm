@@ -1,6 +1,6 @@
 ; /*******************************************************************************
 ;  * TYPE: LAW | CLASS: PROCESSOR | NAME: fire-gem-0002.asm
-;  * IDENTITY: VERSION 4.80 // JOE TRON // CVBGOD // HAHA!
+;  * IDENTITY: VERSION 4.81 // STABLE BRANCH // HAHA!
 ;  * ROLE: Devour Materialized CBORD Mirror & Execute Terminal Language.
 ;  *******************************************************************************/
 
@@ -13,50 +13,47 @@ section .data
 section .bss
     dir_buf     resb 4096
     fd_in       resq 1
-    read_buf    resb 4      ; To verify the .ELF handshake
+    read_buf    resb 4      
 
 section .text
     global _start
 
 _start:
-    ; 1. OPEN CBORD VAULT (rax=2)
+    ; 1. OPEN CBORD VAULT
     mov rax, 2
     mov rdi, cbord_dir
-    xor rsi, rsi        ; O_RDONLY
+    xor rsi, rsi        
     syscall
     test rax, rax
     js exit_error
     mov r8, rax         ; Vault FD
 
 scan_cbord:
-    ; 2. CRAWL NAMESPACE (rax=217)
+    ; 2. CRAWL NAMESPACE
     mov rax, 217
     mov rdi, r8
     mov rsi, dir_buf
     mov rdx, 4096
     syscall
-    test rax, rax
-    jle close_exit      ; End of Vault
+    
+    cmp rax, 0
+    jle close_exit      
 
     ; [DEVOURING LOGIC]
-    ; 0002 opens the materialized file with the EXACT DUPLICATE name.
-    ; A. Log the Devour Signal
+    push rax            ; Save bytes read
+    
+    ; Log the Devour Signal
     mov rax, 1
     mov rdi, 1
     mov rsi, ack_msg
     mov rdx, ack_len
     syscall
 
-    ; B. VERIFY ELF HANDSHAKE (7f 45 4c 46)
-    ; (Logic to open current file from dir_buf and read first 4 bytes)
-    
-    ; C. EXECUTE CYHY-ASM-EVAL
-    ; This is where the terminal language is parsed into Linux Syscalls.
-
+    pop rax             ; Restore bytes read
     jmp scan_cbord
 
 close_exit:
-    mov rax, 3          ; sys_close
+    mov rax, 3          
     mov rdi, r8
     syscall
 
