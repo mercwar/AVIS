@@ -1,8 +1,10 @@
-; IDENTITY: VERSION 5.1 // FLUSH_ENABLED_INGESTOR // HAHA!
+; IDENTITY: VERSION 5.2 // VERIFIED_INGESTOR // HAHA!
 section .data
     source_file db "avis.AVIS", 0
-    ack_msg     db "[ACK] GEM-0003: DYNAMIC TEACHING ACTIVE", 10, 0
-    ack_len     equ 42
+    ack_msg     db "[ACK] GEM-0003: avis.AVIS LOADED. STREAMING BNF...", 10, 0
+    ack_len     equ 48
+    err_msg     db "[NACK] GEM-0003: FATAL - avis.AVIS NOT FOUND", 10, 0
+    err_len     equ 43
 
 section .bss
     fd_in       resq 1
@@ -11,47 +13,45 @@ section .bss
 section .text
     global _start
 _start:
-    ; 1. ANNOUNCE WITH NEWLINE (Forces Line Flush)
+    ; 1. ATTEMPT OPEN
+    mov rax, 2          ; sys_open
+    mov rdi, source_file
+    xor rsi, rsi        ; O_RDONLY
+    syscall
+    test rax, rax
+    js .file_error      ; If RAX < 0, handle error
+    mov [fd_in], rax
+
+    ; 2. SIGNAL SUCCESSFUL LOAD
     mov rax, 1
     mov rdi, 1
     mov rsi, ack_msg
     mov rdx, ack_len
     syscall
 
-    ; 2. OPEN & READ
-    mov rax, 2
-    mov rdi, source_file
-    mov rsi, 0
-    syscall
-    test rax, rax
-    js exit_error
-    mov [fd_in], rax
-
-    mov rax, 0
+    ; 3. READ & STREAM
+    mov rax, 0          ; sys_read
     mov rdi, [fd_in]
     mov rsi, buffer
     mov rdx, 4096
     syscall
-
-    ; 3. WRITE CONTENT TO LOG
-    mov rdx, rax
-    mov rax, 1
-    mov rdi, 1
+    
+    mov rdx, rax        ; Bytes read
+    mov rax, 1          ; sys_write
+    mov rdi, 1          ; stdout
     mov rsi, buffer
     syscall
 
-    ; 4. FSYNC (Forces OS to write to disk)
-    mov rax, 74         ; sys_fsync
-    mov rdi, 1          ; stdout
+    jmp .exit_clean
+
+.file_error:
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, err_msg
+    mov rdx, err_len
     syscall
 
-    ; 5. EXIT
+.exit_clean:
     mov rax, 60
     xor rdi, rdi
     syscall
-
-exit_error:
-    mov rax, 60
-    mov rdi, 1
-    syscall
-
