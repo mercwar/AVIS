@@ -1,19 +1,21 @@
 #!/bin/bash
-# IDENTITY: VERSION 4.1 // FORGE_SMITHY // HAHA!
-# ROLE: Direct-scan ASM to ELF64 Forge.
+# IDENTITY: VERSION 4.3 // PATH_EXPLICIT_FORGE // HAHA!
+# ROLE: Strike root .asm into the ./avis/ vault.
+echo "FORGE: Initializing Version 2 Rebuild in ./avis/..."
+
 mkdir -p ./avis/
-echo "FIRE_COMPILE: Initializing Forge for ASM Targets..."
+
+# Find only root-level .asm to prevent V1/V2 source collision
 find . -maxdepth 1 -name "*.asm" | while read -r f; do
     BASE=$(basename "${f%.asm}")
     OUT="./avis/${BASE}.exe"
+    
     echo "FORGE: [STRIKE] Compiling $f -> $OUT"
     nasm -f elf64 "$f" -o "${BASE}.o" && ld "${BASE}.o" -o "$OUT"
+    
     if [ $? -eq 0 ]; then
         chmod +x "$OUT"
         rm -f "${BASE}.o"
         echo "BASH: [ACK] FORGED: $OUT"
-    else
-        echo "BASH: [NACK] COMPILE_ERROR: $f"
-        rm -f "${BASE}.o"
     fi
 done
