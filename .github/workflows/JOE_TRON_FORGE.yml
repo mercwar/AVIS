@@ -9,56 +9,30 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Install Toolchain
+      - uses: actions/checkout@v4
+      - name: Toolchain
         run: sudo apt-get update && sudo apt-get install -y nasm binutils coreutils
-
       - name: Global Forge Cycle
         run: |
-          # Strike all .asm into .bin and preserve .o identity
+          # 1. Strike all .asm into .bin and preserve .o identity
           find . -maxdepth 2 -name "*.asm" | while read -r f; do
             OBJ="${f%.asm}.o"
             BIN="${f%.asm}.bin"
-            echo "FORGE: [STRIKE] $f -> $BIN"
             nasm -f elf64 "$f" -o "$OBJ"
             ld "$OBJ" -o "$BIN"
             chmod +x "$BIN"
           done
-
       - name: Execute Pulse
         run: |
-          # Ensure logs directory exists
-          mkdir -p ./logs/
-          # Seat permissions and execute all .sh with zero-buffer logging
+          # 2. Force zero-buffer execution for all shell workers
           find . -maxdepth 2 -name "*.sh" -not -path "*/.*" | while read -r sh_file; do
             chmod +x "$sh_file"
-            echo "PULSE: Executing $sh_file..."
             stdbuf -o0 -e0 "$sh_file"
           done
-
-      - name: Git Dispatch
+      - name: Sync Dispatch
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@://github.com"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
-          # Commit the binaries, objects, and logs
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "AVIS_V2: Joe Tron Pulse - Identity & Objects Preserved [skip ci]"
-            git push origin HEAD:main
-          else
-            echo "AVIS: No changes detected in vault."
-          fi
-
-      - name: Artifact Archive
-        uses: actions/upload-artifact@v4
-        with:
-          name: avis-v2-payload
-          path: |
-            *.bin
-            *.o
-            logs/*.log
-            avis.AVIS
+          git commit -m "AVIS_V2: Object Identity & Log Flush [skip ci]" || echo "No changes"
+          git push origin HEAD:main
