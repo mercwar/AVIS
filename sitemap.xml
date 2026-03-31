@@ -310,6 +310,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/SITEMAP.SH</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0001.o</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn_bin</loc>
   </url>
   <url>
@@ -338,9 +341,6 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-run-fire-gem-0002.exe.log</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0003.o</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync.asm</loc>
@@ -455,9 +455,6 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/linux_core.bin</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0002.o</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync.bin</loc>
