@@ -37,7 +37,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SECURITY/permissions.sec</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SECURITY/permissions.sec</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TEMPLATES/registry.templates</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TEMPLATES/install.templates</loc>
@@ -235,7 +235,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/QUEUE/runtime.queue</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ACTIVATE.VERSION1</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/QUEUE/task.queue</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TOOLS/comment_generator.tool</loc>
@@ -247,7 +247,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TOOLS/comment_generator.bind</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TOOLS/interpreter.tools</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TOOLS/util.tools</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CMT/interpreter.cmt</loc>
@@ -292,25 +292,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/META/structure.meta</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem.o</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/INTERPRETER/loader.fvs</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/META/version.meta</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/INTERPRETER/loader.fvs</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/INTERPRETER/registry.cmt</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/META/structure.meta</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/INTERPRETER/registry.cmt</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/transport_law_v1.law</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/protocol_law_v1.law</loc>
@@ -328,7 +310,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/index_law_v1.law</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/SITEMAP.SH</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery.bin</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/SYSTEM.MANIFEST</loc>
@@ -337,7 +319,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-site.sh</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/index_law_v1.law</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/META.JSON</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-run-fire-gem-0002.exe.log</loc>
@@ -346,16 +328,7 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync.asm</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/SYSTEM.MANIFEST</loc>
-  </url>
-  <url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/fire-site.sh</loc>
-    <loc>https://github.com/mercwar/AVIS/blob/main/META.JSON</loc>
-  </url>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/fire-site.sh</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem.bin</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/AIFVS-HEADER.h</loc>
@@ -490,12 +463,6 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/artifact_registration_law_v1.law</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/artifact_registration_law_v1.law</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem_bin</loc>
-  </url>
-  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/stub_pulse_bin</loc>
   </url>
   <url>
@@ -599,7 +566,6 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/sitemap.xml</loc>
-  </url>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Readme.md</loc>
