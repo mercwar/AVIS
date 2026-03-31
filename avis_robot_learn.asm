@@ -1,8 +1,7 @@
-; IDENTITY: VERSION 1 // ROBOTIC LEARNING // HAHA!
+; IDENTITY: VERSION 1 // ROBOT_LEARN // HAHA!
 section .data
-    msg db "<div class='avis-alert'>HARDWARE SEATED: ROBOT_LEARN_01 ONLINE</div>", 10
+    msg db "AVIS_V2: ROBOT_LEARN_01 ONLINE [vbgod_dispatch]", 10
     len equ $ - msg
-
 section .text
     global _start
 _start:
