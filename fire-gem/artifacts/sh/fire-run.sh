@@ -1,53 +1,34 @@
 #!/bin/bash
 # /*******************************************************************************
-#  * TYPE: SERVICE | CLASS: RUN-ENGINE | NAME: fire-run.sh
-#  * IDENTITY: JOE TRON // VERSION 3.1 // HEADER_FIXED // HAHA!
-#  * ROLE: Execute .exe binaries as background services with persistent logging.
+#  * TYPE: ENGINE | CLASS: RUN-ENGINE | NAME: fire-run.sh
+#  * IDENTITY: VERSION 4.0 // MASTER-PULSE // HAHA!
+#  * ROLE: Execute binaries from the /avis/ vault with persistent logging.
 #  *******************************************************************************/
 
-VAULT_JSON="fire-gem/artifacts/json/asm/"
+BIN_DIR="./avis"
+LOG_DIR="./logs"
 
-echo "[AVIS] RUN_SERVICE: Engaging Background Execution Vectors..."
+mkdir -p "$LOG_DIR"
 
-# 1. SCAN ASM VAULT FOR RUN COMMANDS
-# Using -type f to avoid directory collisions
-for target_json in $(find "$VAULT_JSON" -type f -name "*.json" 2>/dev/null); do
-    echo "RUN: Parsing $target_json for Execution Targets..."
-    
-    # Extract files marked as RUN or defined as TARGET binaries
-    # Added || echo "" to prevent jq from crashing on malformed JSON
-    RUN_FILES=$(jq -r '.AVIS_COMM_OBJECT.FLOW_SCOPE[] | select(.TYPE=="RUN") | .FILE' "$target_json" 2>/dev/null || echo "")
-    
-    for bin in $RUN_FILES; do
-        # Cleanup: ignore null or empty results from jq
-        [ -z "$bin" ] || [ "$bin" == "null" ] && continue
+echo "FIRE_RUN: Engaging Background Execution Vectors from $BIN_DIR..."
 
-        # Support for both raw names and .exe extensions
-        EXEC_TARGET=""
-        if [ -f "./$bin" ]; then EXEC_TARGET="./$bin"
-        elif [ -f "./${bin}.exe" ]; then EXEC_TARGET="./${bin}.exe"
-        elif [ -f "./${bin}_bin" ]; then EXEC_TARGET="./${bin}_bin"
-        fi
-
-        if [ -n "$EXEC_TARGET" ]; then
-            echo "SIGNAL: wm_macro_rack - Dispatching Service: $EXEC_TARGET"
-            
-            # 2. EXECUTE AS BACKGROUND SERVICE (&)
-            # Ensure it is executable and run with nohup to survive shell exit
-            chmod +x "$EXEC_TARGET"
-            LOG_FILE="fire-run-$(basename "$EXEC_TARGET").log"
-            
-            # Use nohup to ensure the process persists after the Action finishes
-            nohup "$EXEC_TARGET" > "$LOG_FILE" 2>&1 &
-            
-            PID=$!
-            echo "BASH: [ACK] THREAD_START: $EXEC_TARGET seated at PID: $PID"
-            echo "BASH: [LOG] Persistent output directed to $LOG_FILE"
-        else
-            echo "BASH: [NACK] RUN_ERROR: Target $bin NOT FOUND in root."
-        fi
+# 1. EXECUTE ALL BINARIES IN VAULT
+if [ -d "$BIN_DIR" ]; then
+    for binary in "$BIN_DIR"/*.exe; do
+        [ -e "$binary" ] || continue
+        
+        BASE=$(basename "$binary")
+        LOG_FILE="$LOG_DIR/run-${BASE}.log"
+        
+        echo "SIGNAL: Dispatching Service: $BASE"
+        
+        # Use nohup and stdbuf to prevent the "Empty Log" buffering issue
+        nohup stdbuf -oL -eL "$binary" > "$LOG_FILE" 2>&1 &
+        
+        echo "BASH: [ACK] THREAD_START: $BASE seated [PID: $!]"
     done
-done
+else
+    echo "BASH: [NACK] VAULT $BIN_DIR NOT FOUND. NO TARGETS TO RUN."
+fi
 
-echo "FIRE-RUN: All services dispatched to background. wm_macro_ack."
-exit 0
+echo "FIRE-RUN: All services dispatched. wm_macro_ack."
