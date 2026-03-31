@@ -1,23 +1,16 @@
 {
   "AVIS_COMM_OBJECT": {
-    "WRAPPER_GUID": "SENTINEL-0003-MATERIALIZER-V2",
+    "WRAPPER_GUID": "SENTINEL-0003-V2-PATHED",
     "FLOW_SCOPE": [
-      {
-        "ID": "BOOT-03-FORGE",
-        "FILE": "fire-gem-0003.asm",
-        "TYPE": "COMPILE",
-        "MACRO": "wm_macro_ack",
-        "WAIT": "TRUE"
-      },
       {
         "ID": "PIPE-03-V2-CREATE",
         "WORKER": "fire-gem/artifacts/sh/fire-run.sh",
         "COMMAND": "mkdir -p fire-gem/artifacts/json/cbord/reg/v2/",
-        "SINK": "fire-gem-0003-v2-setup.log"
+        "SINK": "logs/fire-gem-0003-v2-setup.log"
       },
       {
         "ID": "BOOT-03-RUN",
-        "FILE": "fire-gem-0003.exe",
+        "FILE": "./avis/fire-gem-0003.exe",
         "TYPE": "RUN",
         "MACRO": "wm_macro_rack",
         "WAIT": "FALSE"
