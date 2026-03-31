@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/stub_pulse.bin</loc>
   </url>
@@ -17,6 +16,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-run.sh</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/stub_pulse.bin</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/stub_pulse.bin</loc>
@@ -58,6 +60,12 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-compile.sh</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-compile.sh</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-run.sh</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CRASH/dump.crash</loc>
   </url>
   <url>
@@ -70,7 +78,19 @@
   </url>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CRASH/interpreter.crash</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-compile.sh</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SESSION/interpreter.ses</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SESSION/interpreter.ses</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CRASH/dump.crash</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SESSION/session.ses</loc>
@@ -182,6 +202,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/EXPORT/interpreter.export</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/EXPORT/interpreter.export</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/objects/manifest.cmt</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/PROFILE/interpreter.prof</loc>
@@ -200,6 +226,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/PROFILE/runtime.prof</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/PROFILE/runtime.prof</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/EXPORT/interpreter.export</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/matrix/schema.avis</loc>
@@ -215,6 +247,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/VERSION_ROOT.MANIFEST</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/LOG/README.VERSION1</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/PROFILE/runtime.prof</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/LOG/version.log</loc>
@@ -236,6 +274,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/VERSION_ROOT.MANIFEST</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/VERSION_ROOT.MANIFEST</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/LOG/README.VERSION1</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CACHE/interpreter.cache</loc>
@@ -263,6 +307,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/DOCS/interpreter.docs</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/DOCS/interpreter.docs</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CACHE/interpreter.cache</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/DOCS/api.docs</loc>
@@ -283,10 +333,22 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/scripts/manifest.fvs</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/scripts/manifest.fvs</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/DOCS/interpreter.docs</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ACTIVE.VERSION</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/STATE/global.state</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/STATE/global.state</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ACTIVE.VERSION</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/STATE/interpreter.state</loc>
@@ -338,6 +400,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TRACE/interpreter.trace</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TRACE/interpreter.trace</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/STATE/interpreter.state</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/IMPORT/schema.import</loc>
@@ -365,6 +433,18 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/MONITOR/interpreter.mon</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/IMPORT/schema.import</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/MONITOR/interpreter.mon</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/MONITOR/system.mon</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/IMPORT/interpreter.import</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/MONITOR/system.mon</loc>
@@ -392,6 +472,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/BOOT/interpreter.boot</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/BOOT/init.boot</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/MONITOR/system.mon</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CONFIG/interpreter.cfg</loc>
@@ -419,6 +505,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SCHEMA.AVIS_INTERPRETER.REG</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CONFIG/version.cfg</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CONFIG/interpreter.cfg</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SEARCH/index.search</loc>
@@ -446,6 +538,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/DEFS/matrix.defs</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SEARCH/crawl.search</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SEARCH/index.search</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/DEFS/avis.defs</loc>
@@ -475,7 +573,37 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/RESOURCE/local.resource</loc>
   </url>
   <url>
+  <url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/RESOURCE/github.resource</loc>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/IO/input.io</loc>
+  </url>
+  </url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/DEFS/avis.defs</loc>
+  </url>
+  <url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/RESOURCE/github.resource</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/IO/output.io</loc>
+  </url>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/RESOURCE/local.resource</loc>
+  </url>
+  <url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/RESOURCE/local.resource</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/AVIS.FVS</loc>
+  </url>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/IO/input.io</loc>
+  </url>
+  <url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ARTIFACTS/root.art</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/IO/input.io</loc>
+  </url>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ARTIFACTS/root.art</loc>
@@ -500,6 +628,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/AVIS.FVS</loc>
+  </url>
+  <url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ARTIFACTS/matrix.instance.art</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/AVIS.FVS</loc>
+  </url>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ARTIFACTS/root.art</loc>
@@ -529,6 +663,12 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ARTIFACTS/matrix.instance.art</loc>
   </url>
   <url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ARTIFACTS/matrix.instance.art</loc>
+  </url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/VALIDATION/schema.val</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ARTIFACTS/source_nodes.art</loc>
   </url>
   <url>
@@ -539,6 +679,18 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/STATUS.VERSION1</loc>
+  <url>
+  <url>
+  </url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/REGISTRY/manifest.reg</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/STATUS.VERSION1</loc>
+  </url>
+  </url>
+  <url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/VALIDATION/schema.val</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/REGISTRY/interpreter.reg</loc>
+  </url>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/REGISTRY/manifest.reg</loc>
@@ -556,7 +708,19 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/VALIDATION/schema.val</loc>
   </url>
   <url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/VALIDATION/interpreter.val</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/VERSION.SEAL</loc>
+  </url>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/VALIDATION/interpreter.val</loc>
+  </url>
+  <url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/REGISTRY/manifest.reg</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/EXTENSIONS/matrix_inspector.ext</loc>
+  </url>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/VERSION.SEAL</loc>
@@ -581,6 +745,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/REGISTRY/interpreter.reg</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/REGISTRY/interpreter.reg</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/EXTENSIONS/template.extension</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/VERSION.SEAL</loc>
@@ -743,6 +913,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TOOLS/comment_generator.bind</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/QUEUE/task.queue</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/QUEUE/task.queue</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TOOLS/util.tools</loc>
@@ -772,7 +948,19 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CMT/avis.cmt</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CMT/avis.cmt</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CMT/avis.cmt</loc>
+  </url>
+  <url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SCHEMA/interpreter.schema</loc>
+  </url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/PIPELINE/preprocess.pipe</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/PIPELINE/preprocess.pipe</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/PIPELINE/preprocess.pipe</loc>
@@ -824,6 +1012,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ENGINE/cyborg.engine</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SCHEMA/core.schema</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SCHEMA/core.schema</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ENGINE/cbord.engine</loc>
@@ -851,6 +1045,21 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/INTERPRETER/loader.fvs</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/INTERPRETER/loader.fvs</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/INTERPRETER/loader.fvs</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem.o</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/INTERPRETER/registry.cmt</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/INTERPRETER/registry.cmt</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/transport_law_v1.law</loc>
@@ -1157,6 +1366,18 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/SYSTEM.HEALTH</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Artifacts/CVBgod_Verified_Protocol.art</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Artifacts/avis_cmt_artifacts.def</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Artifacts/MASTER_CONVERT.art</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Artifacts/avis_cmt_artifacts.defs</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Artifacts/MASTER_CONVERT.art</loc>
@@ -1229,6 +1450,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/covenant_artifact_forging_v1.law</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Artifacts/AVIS.ARTIFACT</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-cjs.json</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Artifacts/AVIS.ARTIFACT</loc>
@@ -1261,6 +1488,12 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-cjs.json</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-cjs.json</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/covenant_artifact_forging_v1.law</loc>
   </url>
   <url>
@@ -1283,6 +1516,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync.bin</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/linux_core.bin</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn</loc>
@@ -1376,6 +1615,18 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem.asm</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/stub_pulse_bin</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem.asm</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem_bin</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/robots.txt</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem_bin</loc>
@@ -1432,6 +1683,12 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0001.bin</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/robots.txt</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/stub_pulse_bin</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/CITATION.cff</loc>
   </url>
   <url>
@@ -1457,6 +1714,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/covenant_speech_v1.law</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/CITATION.cff</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0001.bin</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0002.exe</loc>
@@ -1484,6 +1747,11 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/covenant_multi_ai_cooperation_v1.law</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/versioning_law_v1.law</loc>
+  </url>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0002.exe</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/.gitattributes</loc>
@@ -1511,6 +1779,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/images/Gemini_Generated_Image_7q1tbp7q1tbp7q1t.png</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0002.asm</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/.gitattributes</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/images/Readme.md</loc>
@@ -1540,6 +1814,12 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0002_bin</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/directory_law_v1.law</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/images/Readme.md</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0001_bin</loc>
   </url>
   <url>
@@ -1565,6 +1845,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/AVIS.avis</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0001.asm</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0001_bin</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-mod.sh</loc>
@@ -1600,7 +1886,16 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/sh/fire-compile.sh</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-mod.sh</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/json/asm/fire-gem-0002.json</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/module_law_v1.law</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/json/asm/fire-gem-0001.json</loc>
@@ -1630,6 +1925,18 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/sh/fire-run.sh</loc>
   </url>
   <url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/json/asm/fire-gem-0002.json</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/sh/fire-run.sh</loc>
+  </url>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/json/asm/fire-gem-0001.json</loc>
+  <url>
+  </url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/sh/fire-compile.sh</loc>
   </url>
   <url>
@@ -1656,6 +1963,10 @@
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/CONTRIBUTING.md</loc>
   </url>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/json/asm/fire-gem-0001.json</loc>
+  </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn.asm</loc>
   </url>
@@ -1667,6 +1978,40 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/protocol_handshake_law_v1.law</loc>
+  </url>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/sh/fire-run.sh</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/CONTRIBUTING.md</loc>
+  <url>
+  </url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery.asm</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn.asm</loc>
+  <url>
+  </url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/ai_identity_covenant_v1.law</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/sh/fire-compile.sh</loc>
+  </url>
+  <url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-start.sh</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/sh/fire-mod.sh</loc>
+  </url>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/protocol_handshake_law_v1.law</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/sitemap.xml</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/CONTRIBUTING.md</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/sitemap.xml</loc>
@@ -1682,6 +2027,12 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery.asm</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Readme.md</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn.asm</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/ai_identity_covenant_v1.law</loc>
