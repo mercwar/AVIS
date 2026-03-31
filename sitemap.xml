@@ -298,6 +298,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/META/structure.meta</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem.o</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/transport_law_v1.law</loc>
   </url>
   <url>
@@ -305,6 +308,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/SITEMAP.SH</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0001.o</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn_bin</loc>
@@ -331,7 +337,13 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/META.JSON</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn.o</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-run-fire-gem-0002.exe.log</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0003.o</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync.asm</loc>
@@ -442,7 +454,13 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync_bin</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/stub_pulse.o</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/linux_core.bin</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0002.o</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync.bin</loc>
@@ -458,6 +476,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/AVIS.FVS</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery.o</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/LICENSE</loc>
@@ -508,6 +529,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/.gitattributes</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync.o</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/directory_law_v1.law</loc>
   </url>
   <url>
@@ -527,6 +551,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/module_law_v1.law</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/linux_core.o</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/AVIS.avis</loc>
