@@ -27,12 +27,19 @@ jobs:
 
       - name: FORGE: Compile All ASM
         run: |
-          find . -maxdepth 2 -name "*.asm" -exec sh -c '
-            echo "FORGE: Compiling $1"
-            nasm -f elf64 "$1" -o "${1%.asm}.o"
-            ld "${1%.asm}.o" -o "${1%.asm}"
-            chmod +x "${1%.asm}"
-          ' _ {} \;
+          find . -maxdepth 2 -name "*.asm" | while read -r f; do
+            # Use .bin suffix to avoid directory name collisions
+            OUT_NAME="${f%.asm}.bin"
+            echo "FORGE: Compiling $f -> $OUT_NAME"
+            
+            nasm -f elf64 "$f" -o "${f%.asm}.o"
+            ld "${f%.asm}.o" -o "$OUT_NAME"
+            chmod +x "$OUT_NAME"
+            
+            # Optional: Clean up the object file immediately
+            rm "${f%.asm}.o"
+          done
+
 
       - name: EXECUTE: Generate V2 Sitemap
         run: |
