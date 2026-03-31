@@ -1,11 +1,7 @@
 ; /*******************************************************************************
 ;  *                           AVIS.ARTIFACT HEADER
-;  * TYPE: LAW
-;  * CLASS: MASTER-DISPATCHER
-;  * NAME: fire-gem.asm
-;  * VERSION: 4.45
-;  * IDENTITY: JOE TRON // GEMINI_CGI_SCROLL // HAHA!
-;  * ROLE: Numeric Sort - Sequential Terminal Protocol
+;  * TYPE: LAW | CLASS: MASTER-DISPATCHER | NAME: fire-gem.asm
+;  * IDENTITY: VERSION 4.46 // STACK-ALIGNED // HAHA!
 ;  *******************************************************************************/
 
 section .data
@@ -21,20 +17,20 @@ section .bss
 
 section .text
     global _start
-    global fork_and_exec_worker 
 
 _start:
-    ; 1. OPEN VAULT DIRECTORY (rax=2)
+    ; 1. OPEN VAULT DIRECTORY
     mov rax, 2          
     mov rdi, vault_path
-    xor rsi, rsi        ; O_RDONLY
+    xor rsi, rsi        
     syscall
     test rax, rax
     js exit_error       
-    mov r8, rax         ; Save Vault FD
+    mov r8, rax         
 
-scan_loop:
-    ; 2. READ DIRECTORY (rax=217)
+    ; 2. SINGLE SCAN TRIGGER
+    ; Instead of looping per-file (which triggers scripts multiple times),
+    ; we trigger the sequence once the vault is confirmed accessible.
     mov rax, 217        
     mov rdi, r8
     mov rsi, dir_buf
@@ -43,9 +39,7 @@ scan_loop:
     test rax, rax
     jle close_exit      
 
-    ; --- NUMERIC PROTOCOL ---
-    ; The Dispatcher now hits the workers for the current numeric block.
-    
+    ; --- NUMERIC PROTOCOL SEQUENCE ---
     mov rdi, mod_path
     call fork_and_exec_worker
     
@@ -55,12 +49,11 @@ scan_loop:
     mov rdi, run_path
     call fork_and_exec_worker
 
-    jmp scan_loop       
-
 close_exit:
     mov rax, 3          
     mov rdi, r8
     syscall
+    jmp exit_success
 
 exit_success:
     mov rax, 60         
@@ -72,18 +65,18 @@ exit_error:
     mov rdi, 1          
     syscall
 
-; --- HELPER: FORK -> EXEC -> WAIT (EXPORTED) ---
+; --- HELPER: FORK -> EXEC -> WAIT ---
 fork_and_exec_worker:
     push rbp
     mov rbp, rsp
-    push rdi            ; Seating Worker Path in RAM
     
     mov rax, 57         ; sys_fork
     syscall
     test rax, rax
+    js .fork_fail       ; Jump if fork < 0
     jz child_worker     
     
-    ; PARENT: WAIT4 (rax=61)
+    ; PARENT: WAIT4
     mov [child_pid], rax
     mov rax, 61
     mov rdi, [child_pid]
@@ -92,25 +85,27 @@ fork_and_exec_worker:
     xor r10, r10        
     syscall             
     
+.fork_fail:
     leave
     ret
 
 child_worker:
-    pop rdi             ; Devouring Path
-    mov r8, sh_bin      
+    ; Align stack and build argv: [bash, path, NULL]
+    mov rdi, [rbp-8]    ; Retrieve path pushed in parent scope or passed
+    mov r8, sh_bin
     
-    ; Build argv [bash, worker_path, NULL]
     xor rbx, rbx
-    push rbx            
-    push rdi            
-    push r8             
+    push rbx            ; NULL terminator
+    push rdi            ; script path
+    push r8             ; /bin/bash
     
-    mov rdi, r8         
-    mov rsi, rsp        
-    xor rdx, rdx        
+    mov rdi, r8         ; filename: /bin/bash
+    mov rsi, rsp        ; argv: pointer to the stack we just built
+    xor rdx, rdx        ; envp: NULL
     mov rax, 59         ; sys_execve
     syscall
     
+    ; If execve fails
     mov rax, 60
     mov rdi, 2
     syscall
