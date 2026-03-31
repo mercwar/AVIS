@@ -1,6 +1,6 @@
 ; /*******************************************************************************
 ;  * TYPE: LAW | CLASS: PROCESSOR | NAME: fire-gem-0002.asm
-;  * IDENTITY: VERSION 4.82 // VERBOSE_ERROR // HAHA!
+;  * IDENTITY: VERSION 4.83 // FORCE_FLUSH_PROTOCOL // HAHA!
 ;  * ROLE: Devour Materialized CBORD Mirror & Execute Terminal Language.
 ;  *******************************************************************************/
 
@@ -19,20 +19,19 @@ section .text
     global _start
 
 _start:
-    ; 1. OPEN CBORD VAULT (rax=2)
+    ; 1. OPEN CBORD VAULT
     mov rax, 2
     mov rdi, cbord_dir
-    xor rsi, rsi        ; O_RDONLY
+    xor rsi, rsi        
     syscall
     
-    ; Check if FD is negative (Error)
     test rax, rax
-    js exit_error
+    js exit_error       ; If folder missing, jump to error log
     
-    mov r8, rax         ; Vault FD seated in r8
+    mov r8, rax         ; Save FD
 
 scan_cbord:
-    ; 2. CRAWL NAMESPACE (rax=217)
+    ; 2. CRAWL NAMESPACE
     mov rax, 217
     mov rdi, r8
     mov rsi, dir_buf
@@ -40,26 +39,30 @@ scan_cbord:
     syscall
     
     cmp rax, 0
-    jle close_exit      ; End of vault reached
+    jle close_exit      
 
-    ; [DEVOURING LOGIC]
-    push rax            ; Save bytes read for loop safety
-    
-    ; Log the Devour Signal to fire-run-fire-gem-0002_bin.log
-    mov rax, 1
-    mov rdi, 1          ; STDOUT
+    ; --- FORCE FLUSH PROTOCOL ---
+    ; We write the ACK 100 times to fill the 4KB buffer and force a disk write.
+    mov rcx, 100        
+.flush:
+    push rcx
+    push rax            ; Save bytes-read from getdents
+    mov rax, 1          ; sys_write
+    mov rdi, 1          ; STDOUT (Redirected to log)
     mov rsi, ack_msg
     mov rdx, ack_len
     syscall
+    pop rax
+    pop rcx
+    loop .flush         ; Repeat until rcx is 0
 
-    pop rax             ; Restore bytes read
     jmp scan_cbord
 
 close_exit:
-    ; 3. CLOSE VAULT
     mov rax, 3          
     mov rdi, r8
     syscall
+    jmp exit_success
 
 exit_success:
     mov rax, 60
@@ -67,13 +70,18 @@ exit_success:
     syscall
 
 exit_error:
-    ; 4. ERROR LOGGING (Fixes the "Empty Log" issue)
-    mov rax, 1          ; sys_write
-    mov rdi, 1          ; STDOUT
+    ; 3. ERROR LOGGING (Forces NACK into the log)
+    mov rcx, 100        ; Flush the error too
+.err_flush:
+    push rcx
+    mov rax, 1
+    mov rdi, 1
     mov rsi, err_msg
     mov rdx, err_len
     syscall
+    pop rcx
+    loop .err_flush
 
-    mov rax, 60         ; sys_exit
-    mov rdi, 1          ; Exit code 1
+    mov rax, 60
+    mov rdi, 1
     syscall
