@@ -9,14 +9,6 @@
         "CLASS_NAME": "STUB_TEST_CLASS"
       },
       {
-        "ID": "PROC-STUB",
-        "CODE": "WM_CREATE_PROC",
-        "TARGET": "stub_pulse_bin",
-        "THREADS": [
-          { "ID": "T-PULSE", "CODE": "WM_CREATE_THREAD", "FUNCTION": "stub_pulse_bin" }
-        ]
-      },
-      {
         "ID": "CLASS_ASM_01",
         "CODE": "WM_REGISTER_CLASS",
         "SOURCE": "avis_robot_learn.asm",
@@ -29,27 +21,30 @@
         "CLASS_NAME": "AVIS_DISCOVERY_CLASS"
       },
       {
+        "ID": "CLASS_GEM_02",
+        "CODE": "WM_REGISTER_CLASS",
+        "SOURCE": "fire-gem-0002.asm",
+        "CLASS_NAME": "VAULT_PROCESSOR_CLASS"
+      },
+      {
+        "ID": "CLASS_GEM_03",
+        "CODE": "WM_REGISTER_CLASS",
+        "SOURCE": "fire-gem-0003.asm",
+        "CLASS_NAME": "COORDINATE_MATERIALIZER_V2"
+      },
+      {
+        "ID": "PROC-V2-INIT",
+        "CODE": "WM_CREATE_PROC",
+        "TARGET": "fire-gem-0003.exe",
+        "THREADS": [
+          { "ID": "T-V2-DROP", "CODE": "WM_CREATE_THREAD", "FUNCTION": "fire-gem-0003.exe" }
+        ]
+      },
+      {
         "ID": "MASTER-DISPATCH",
         "CODE": "WM_REGISTER_CLASS",
         "SOURCE": "fire-gem.asm",
         "CLASS_NAME": "FIRE_GEM_CLASS"
-      },
-      {
-        "ID": "PROC-AVIS-MAIN",
-        "CODE": "WM_CREATE_PROC",
-        "TARGET": "avis_robot_learn_bin",
-        "THREADS": [
-          {
-            "ID": "T1_INGEST",
-            "CODE": "WM_CREATE_THREAD",
-            "FUNCTION": "fire-site.sh"
-          },
-          {
-            "ID": "T2_SITEMAP",
-            "CODE": "WM_CREATE_THREAD",
-            "FUNCTION": "SITEMAP.SH"
-          }
-        ]
       },
       {
         "ID": "PROC-DISPATCH",
@@ -61,3 +56,4 @@
     ]
   }
 }
+
