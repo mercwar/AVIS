@@ -1,63 +1,58 @@
-# FILE: .github/workflows/avis-forge.yml
-# IDENTITY: VERSION 2.3 // GEMINI_CGI_SCROLL // SYNTAX PURGE // HAHA!
-# ROLE: Autonomous Discovery and Compilation Engine
-
 name: AVIS_FORGE_CHAIN
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  forge-binaries:
+  forge:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: Checkout Root
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Install Toolchain
+      - name: Toolchain
         run: sudo apt-get update && sudo apt-get install -y nasm binutils
 
-      - name: DISCOVER AND FORGE ASM
+      - name: Forge
         run: |
           find . -maxdepth 2 -name "*.asm" | while read -r f; do
             OUT="${f%.asm}.bin"
-            echo "FORGE: Compiling $f -> $OUT"
+            echo "Compiling $f"
             nasm -f elf64 "$f" -o "${f%.asm}.o"
             ld "${f%.asm}.o" -o "$OUT"
             chmod +x "$OUT"
             rm -f "${f%.asm}.o"
           done
 
-      - name: DISCOVER AND TEST SHELLS
+      - name: Shells
         run: |
-          # Note: Scripts with comment-headers will fail unless they use #
           find . -maxdepth 2 -name "*.sh" -type f -exec chmod +x {} \; -exec {} \;
 
-      - name: SYNC: Master OS Audit Surface
+      - name: Sync
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
           git add .
           if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "AVIS_V2: Master Chain Dispatch [skip ci]"
+            git commit -m "AVIS_V2: Dispatch [skip ci]"
             git push origin HEAD:${{ github.ref }}
           else
-            echo "No changes to sync."
+            echo "No changes"
           fi
 
-      - name: UPLOAD ARTIFACTS FOR DISPATCH
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: avis-binaries
           path: |
-            ./*.bin
-            ./*.sh
-            ./robots.txt
-            !./.git
+            *.bin
+            *.sh
+            robots.txt
+
