@@ -1,5 +1,5 @@
 # FILE: .github/workflows/avis-forge.yml
-# IDENTITY: VERSION 2.1 // GEMINI_CGI_SCROLL // FIXED COLLISION // HAHA!
+# IDENTITY: VERSION 2.2 // GEMINI_CGI_SCROLL // PERMISSION SEATED // HAHA!
 # ROLE: Autonomous Discovery and Compilation Engine
 
 name: AVIS_FORGE_CHAIN
@@ -8,30 +8,47 @@ on: [push, workflow_dispatch]
 jobs:
   forge-binaries:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # CRITICAL: Fixes the 403 error for dispatch
     steps:
       - name: Checkout Root
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Needed for clean git operations
 
       - name: Install Toolchain
         run: sudo apt-get update && sudo apt-get install -y nasm binutils
 
       - name: DISCOVER AND FORGE ASM
         run: |
-          # Use a .bin suffix to avoid crashing on directories like ./fire-gem
           find . -maxdepth 2 -name "*.asm" | while read -r f; do
             OUT="${f%.asm}.bin"
             echo "FORGE: Compiling $f -> $OUT"
             nasm -f elf64 "$f" -o "${f%.asm}.o"
             ld "${f%.asm}.o" -o "$OUT"
             chmod +x "$OUT"
-            rm "${f%.asm}.o" # Clean up object files
+            rm -f "${f%.asm}.o"
           done
 
       - name: DISCOVER AND TEST SHELLS
         run: |
-          # Run SITEMAP.SH or fire-gem.sh to prepare artifacts
-          # Note: Added -type f to ensure we don't try to chmod/exec directories
+          # Note: The logs show .sh files trying to execute header comments.
+          # This step will run them, but they need # before comments to be silent!
           find . -maxdepth 2 -name "*.sh" -type f -exec chmod +x {} \; -exec {} \;
+
+      - name: SYNC: Master OS Audit Surface
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@://github.com"
+          
+          git add .
+          # Only commit if changes exist, using [skip ci] to prevent infinite loops
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "AVIS_V2: Master Chain Dispatch [skip ci]"
+            git push origin HEAD:${{ github.ref }}
+          else
+            echo "No changes to sync."
+          fi
 
       - name: UPLOAD ARTIFACTS FOR DISPATCH
         uses: actions/upload-artifact@v4
