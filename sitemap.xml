@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/linux_core_bin</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/stub_pulse.bin</loc>
   </url>
   <url>
@@ -35,9 +38,6 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TEMPLATES/registry.templates</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/SECURITY/permissions.sec</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/TEMPLATES/install.templates</loc>
@@ -128,8 +128,6 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/BOOT/interpreter.boot</loc>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CONFIG/interpreter.cfg</loc>
-  </url>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CONFIG/interpreter.cfg</loc>
@@ -281,7 +279,6 @@
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ENGINE/hooks.engine</loc>
   </url>
-  </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/INTERPRETER/loader.fvs</loc>
   </url>
@@ -293,6 +290,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/META/structure.meta</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem.o</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/transport_law_v1.law</loc>
@@ -574,20 +574,6 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Readme.md</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Readme.md</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Readme.md</loc>
-  </url>
-  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/metadata.json</loc>
   </url>
-</urlset>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/metadata.json</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/metadata.json</loc>
-  </url>
-</urlset>
 </urlset>
