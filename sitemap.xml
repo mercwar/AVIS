@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/stub_pulse.bin</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-end.sh</loc>
   </url>
   <url>
@@ -286,9 +289,6 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/META/structure.meta</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem.o</loc>
-  </url>
-  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/transport_law_v1.law</loc>
   </url>
   <url>
@@ -307,6 +307,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/index_law_v1.law</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery.bin</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/SYSTEM.MANIFEST</loc>
   </url>
   <url>
@@ -322,7 +325,13 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync.asm</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem.bin</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/AIFVS-HEADER.h</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_robot_learn.bin</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/index.html</loc>
@@ -356,6 +365,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/.github/workflows/avis-sync.yml</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0002.bin</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/SYSTEM.INDEX</loc>
@@ -418,6 +430,12 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync_bin</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/linux_core.bin</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync.bin</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/google77a4b19e8f99751c.html</loc>
   </url>
   <url>
@@ -449,6 +467,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/avis_sync</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0001.bin</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/CITATION.cff</loc>
