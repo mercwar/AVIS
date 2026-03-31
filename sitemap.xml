@@ -198,6 +198,8 @@
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/LOG/README.VERSION1</loc>
   </url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/CACHE/interpreter.cache</loc>
+  </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/matrix/schema.avis</loc>
   </url>
@@ -291,6 +293,7 @@
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/STATE/global.state</loc>
   </url>
+  </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Version%201/ACTIVE.VERSION</loc>
   </url>
@@ -1310,6 +1313,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/google77a4b19e8f99751c.html</loc>
+  <url>
+  </url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis_discovery_bin</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/google77a4b19e8f99751c.html</loc>
@@ -1514,6 +1520,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0002_bin</loc>
+  <url>
+  </url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0002_bin</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem-0002_bin</loc>
@@ -1604,7 +1613,6 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/sh/fire-run.sh</loc>
-  </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-gem/artifacts/sh/fire-run.sh</loc>
   </url>
