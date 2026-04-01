@@ -1,14 +1,8 @@
-# AVIS-ARTIFACT
-# FILE: .github/workflows/FIRE-GEM.yml
-# PURPOSE: AVIS VERSION 2 FORGE — Auto‑Strike & Execute FIRE‑GEM ASM Drops
-# AUTHOR: Demon
-
 name: AVIS-V2-FIRE-GEM-FORGE
-
 on:
   push:
     paths:
-      - "AVIS/VERSION 2/ASM/FIRE-GEM/*.asm"
+      - "AVIS/VERSION 2/FORGE/*.asm"
   workflow_dispatch:
 
 jobs:
@@ -26,41 +20,19 @@ jobs:
       - name: Install Toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y nasm binutils coreutils gcc
+          sudo apt-get install -y nasm binutils gcc
 
-      - name: FIRE-GEM V2 STRIKE CYCLE
+      - name: Build FIRE-GEM Forge Core
         run: |
-          echo "[AVIS_V2] FORGE: Scanning FIRE-GEM ASM Drops..."
-          ASM_DIR="AVIS/VERSION 2/ASM/FIRE-GEM"
-          OUT_DIR="$ASM_DIR/OUT"
-          mkdir -p "$OUT_DIR"
+          nasm -f elf64 "AVIS/VERSION 2/fire-gem.asm" -o fire-gem.o
+          gcc fire-gem.o -o fire-gem
 
-          for f in "$ASM_DIR"/*.asm; do
-            [ -e "$f" ] || continue
-
-            base=$(basename "$f" .asm)
-            OBJ="$OUT_DIR/$base.o"
-            BIN="$OUT_DIR/$base.bin"
-
-            echo "[AVIS_V2] STRIKE: $f -> $BIN"
-            nasm -f elf64 "$f" -o "$OBJ"
-            ld "$OBJ" -o "$BIN"
-            chmod +x "$BIN"
-          done
-
-      - name: FIRE-GEM V2 EXECUTION CYCLE
+      - name: Run FIRE-GEM Forge Core
         run: |
-          echo "[AVIS_V2] EXEC: Running fire-gem.sh for each drop..."
-          chmod +x "AVIS/VERSION 2/fire-gem.sh"
+          echo "[AVIS_V2] EXEC: Running fire-gem.exe FORGE ENGINE..."
+          ./fire-gem
 
-          ASM_DIR="AVIS/VERSION 2/ASM/FIRE-GEM"
-          for f in "$ASM_DIR"/*.asm; do
-            [ -e "$f" ] || continue
-            echo "[AVIS_V2] EXEC: Dispatching $f"
-            AVIS/VERSION 2/fire-gem.sh "$f"
-          done
-
-      - name: AVIS V2 SYNC DISPATCH
+      - name: Sync Forge Output
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -68,8 +40,8 @@ jobs:
           git add .
 
           if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "AVIS_V2: Forge Strike + Execution Sync [skip ci]"
+            git commit -m "AVIS_V2: Forge Output Sync [skip ci]"
             git push origin HEAD:main
           else
-            echo "[AVIS_V2] No changes detected. Dispatch idle."
+            echo "[AVIS_V2] No changes detected."
           fi
