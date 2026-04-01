@@ -1,27 +1,23 @@
 #!/bin/bash
-# IDENTITY: VERSION 4.6 // FOREGROUND_INGEST_FORCE // HAHA!
+# IDENTITY: VERSION 5.1 // DROP_RUN_FLUSH // HAHA!
+# ROLE: Execute the 000x binaries with Zero-Buffer logging.
+
 BIN_DIR="./avis"
 LOG_DIR="./logs"
 mkdir -p "$LOG_DIR"
 
-echo "[AVIS] RUN_SERVICE: Initiating Foreground Teaching Pulse..."
+echo "[AVIS] RUN: Engaging Detected Drops..."
 
-# 1. TRIGGER THE TEACHER IN FOREGROUND (Ensures log capture)
-TEACHER="./avis/fire-gem-0003.exe"
-if [ -f "$TEACHER" ]; then
-    echo "SIGNAL: Engaging $TEACHER..."
-    # Running directly without nohup to force synchronous log flushing
-    "$TEACHER" 2>&1 | tee "$LOG_DIR/run-fire-gem-0003.exe.log"
-else
-    echo "[NACK] RUN_ERROR: Teacher binary not found."
-fi
-
-# 2. DISPATCH REMAINING SERVICES IN BACKGROUND
-for binary in "$BIN_DIR"/*.exe; do
+# Execute any .bin files created by the Forge
+for binary in "$BIN_DIR"/*.bin; do
+    [ -e "$binary" ] || continue
     BASE=$(basename "$binary")
-    [ "$BASE" == "fire-gem-0003.exe" ] && continue # Skip the teacher
+    LOG_FILE="$LOG_DIR/run-${BASE}.log"
     
-    nohup stdbuf -o0 -e0 "$binary" > "$LOG_DIR/run-${BASE}.log" 2>&1 &
+    echo "SIGNAL: Dispatching $BASE..."
+    
+    # -o0 forces the Robot Learning output to hit the log file INSTANTLY.
+    nohup stdbuf -o0 -e0 "$binary" > "$LOG_FILE" 2>&1 &
+    
+    echo "BASH: [ACK] THREAD_START: $BASE [PID: $!]"
 done
-
-echo "FIRE-RUN: Teaching cycle complete. Dispatching background pulse."
