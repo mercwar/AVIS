@@ -1,0 +1,29 @@
+# AVIS-ARTIFACT
+# FILE: AVIS/VERSION 2/fire-gem.yml
+# PURPOSE: Auto-run ASM drops for FIRE-GEM V2
+# AUTHOR: Demon
+
+name: FIRE-GEM-V2-DROP-RUNNER
+
+on:
+  push:
+    paths:
+      - "AVIS/VERSION 2/ASM/FIRE-GEM/*.asm"
+
+jobs:
+  run-fire-gem:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout AVIS Repository
+        uses: actions/checkout@v4
+
+      - name: Make fire-gem.sh executable
+        run: chmod +x "AVIS/VERSION 2/fire-gem.sh"
+
+      - name: Run FIRE-GEM V2 ASM Drop
+        run: |
+          for f in AVIS/VERSION 2/ASM/FIRE-GEM/*.asm; do
+            echo "[AVIS] Running drop: $f"
+            AVIS/VERSION 2/fire-gem.sh "$f"
+          done
