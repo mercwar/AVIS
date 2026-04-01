@@ -1,47 +1,57 @@
-name: AVIS-V2-FIRE-GEM-FORGE
+name: JOE TRON FORGE
 on:
   push:
-    paths:
-      - "AVIS/VERSION 2/FORGE/*.asm"
+    branches: [main]
   workflow_dispatch:
 
 jobs:
-  forge-v2:
+  rebuild-avis:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
-      - name: Checkout AVIS Repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Install Toolchain
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y nasm binutils gcc
+        run: sudo apt-get update && sudo apt-get install -y nasm binutils coreutils
 
-      - name: Build FIRE-GEM Forge Core
+      - name: Forge Master Dispatcher
         run: |
-          nasm -f elf64 "AVIS/VERSION 2/fire-gem.asm" -o fire-gem.o
-          gcc fire-gem.o -o fire-gem
+          # Strike fire-gem.asm into a 64-bit binary
+          # -f elf64 creates a Linux-compliant object file
+          nasm -f elf64 fire-gem.asm -o fire-gem.o
+          ld fire-gem.o -o fire-gem.bin
+          chmod +x fire-gem.bin
+          echo "FORGE: [ACK] fire-gem.bin and fire-gem.o seated."
 
-      - name: Run FIRE-GEM Forge Core
+      - name: Execute AVIS Pulse
         run: |
-          echo "[AVIS_V2] EXEC: Running fire-gem.exe FORGE ENGINE..."
-          ./fire-gem
+          mkdir -p ./logs/
+          # Execute the dispatcher with zero-buffer to force log flushing
+          # stdbuf -o0 ensures every byte hits the log instantly
+          stdbuf -o0 -e0 ./fire-gem.bin > ./logs/fire-gem-pulse.log 2>&1
+          echo "PULSE: [ACK] Master Dispatcher execution complete."
 
-      - name: Sync Forge Output
+      - name: Git Dispatch
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
           git add .
-
           if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "AVIS_V2: Forge Output Sync [skip ci]"
+            git commit -m "AVIS_V2: Master Dispatcher Pulse - Identity Verified [skip ci]"
             git push origin HEAD:main
           else
-            echo "[AVIS_V2] No changes detected."
+            echo "AVIS: No changes detected."
           fi
+
+      - name: Archive Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: avis-master-payload
+          path: |
+            fire-gem.bin
+            fire-gem.o
+            logs/fire-gem-pulse.log
