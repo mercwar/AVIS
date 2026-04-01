@@ -1,14 +1,12 @@
 // AVIS-ARTIFACT
 // FILE: fire-gem.c
-// PURPOSE: FIRE-GEM V2 — compile ASM files using gcc and run them
+// PURPOSE: FIRE-GEM V2 — Windows version (compile + run C files)
 // AUTHOR: Demon
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
-#include <unistd.h>
-#include <sys/wait.h>
 #include <sys/stat.h>
 
 #define FORGE_DIR   "VERSION 2/ASM/FORGE/OUT"
@@ -26,39 +24,29 @@ void log_line(const char *text) {
 }
 
 // ------------------------------------------------------------
-// GCC COMPILE FUNCTION
+// COMPILE C FILE USING GCC (Windows)
 // ------------------------------------------------------------
-// gcc <input.asm> -o <output.bin>
-int compile_asm(const char *input, const char *output) {
-    pid_t pid = fork();
-    if (pid == 0) {
-        execl("/usr/bin/gcc", "gcc", input, "-o", output, NULL);
-        exit(1);
-    }
-    int status = 0;
-    waitpid(pid, &status, 0);
-    return status;
+void compile_c(const char *input, const char *output) {
+    char cmd[512];
+    sprintf(cmd, "gcc \"%s\" -o \"%s\"", input, output);
+    system(cmd);
 }
 
 // ------------------------------------------------------------
-// RUN EXECUTABLE
+// RUN EXECUTABLE (Windows)
 // ------------------------------------------------------------
 void run_bin(const char *path) {
-    pid_t pid = fork();
-    if (pid == 0) {
-        execl(path, path, NULL);
-        exit(1);
-    }
-    waitpid(pid, NULL, 0);
+    char cmd[512];
+    sprintf(cmd, "\"%s\"", path);
+    system(cmd);
 }
 
 // ------------------------------------------------------------
 // MAIN FORGE ENGINE
 // ------------------------------------------------------------
 int main(void) {
-    mkdir(GEM_OUT, 0777);
+    mkdir(GEM_OUT);
 
-    // reset log
     FILE *reset = fopen(LOG_PATH, "w");
     if (reset) {
         fprintf(reset, "[AVIS_V2] LOG START\n");
@@ -76,25 +64,24 @@ int main(void) {
         const char *name = ent->d_name;
         size_t len = strlen(name);
 
-        if (len < 5 || strcmp(name + len - 4, ".asm") != 0)
+        if (len < 3 || strcmp(name + len - 2, ".c") != 0)
             continue;
 
         char src[512], dst[512];
         snprintf(src, sizeof(src), "%s/%s", FORGE_DIR, name);
 
-        // output name: replace .asm with .bin
         char outname[256];
-        snprintf(outname, sizeof(outname), "%.*s.bin", (int)(len - 4), name);
+        snprintf(outname, sizeof(outname), "%.*s.exe", (int)(len - 2), name);
 
         snprintf(dst, sizeof(dst), "%s/%s", GEM_OUT, outname);
 
         char msg[512];
-        snprintf(msg, sizeof(msg), "[AVIS_V2] COMPILING: %s -> %s", src, dst);
+        sprintf(msg, "[AVIS_V2] COMPILING: %s -> %s", src, dst);
         log_line(msg);
 
-        compile_asm(src, dst);
+        compile_c(src, dst);
 
-        snprintf(msg, sizeof(msg), "[AVIS_V2] EXECUTING: %s", dst);
+        sprintf(msg, "[AVIS_V2] EXECUTING: %s", dst);
         log_line(msg);
 
         run_bin(dst);
@@ -103,3 +90,4 @@ int main(void) {
     closedir(d);
     return 0;
 }
+
