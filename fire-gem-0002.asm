@@ -1,7 +1,6 @@
 ; /*******************************************************************************
 ;  * TYPE: LAW | CLASS: PROCESSOR | NAME: fire-gem-0002.asm
 ;  * IDENTITY: VERSION 4.86 // LOOP_BREAK_PROTOCOL // HAHA!
-;  * ROLE: Scan Vault once. Report. Exit. Stop the spam.
 ;  *******************************************************************************/
 
 section .data
@@ -18,42 +17,39 @@ section .text
     global _start
 
 _start:
-    ; 1. SIGNAL START (Once)
+    ; 1. SIGNAL START
     mov rax, 1
     mov rdi, 1
     mov rsi, ack_msg
     mov rdx, ack_len
     syscall
 
-    ; 2. OPEN VAULT
+    ; 2. OPEN & SCAN (Single pass)
     mov rax, 2
     mov rdi, cbord_dir
     xor rsi, rsi        
     syscall
     test rax, rax
     js exit_error
-    mov r8, rax         ; Vault FD
+    mov r8, rax
 
-    ; 3. PERFORM SINGLE SCAN
     mov rax, 217        ; sys_getdents64
     mov rdi, r8
     mov rsi, dir_buf
     mov rdx, 4096
     syscall
 
-    ; 4. CLOSE IMMEDIATELY (Break the Loop)
+    ; 3. CLOSE & SIGNAL FINISH
     mov rax, 3
     mov rdi, r8
     syscall
 
-    ; 5. SIGNAL FINISH (Once)
     mov rax, 1
     mov rdi, 1
     mov rsi, fin_msg
     mov rdx, fin_len
     syscall
 
-    ; 6. TERMINATE
     mov rax, 60
     xor rdi, rdi
     syscall
