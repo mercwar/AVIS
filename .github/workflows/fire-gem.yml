@@ -12,11 +12,13 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          # Fetch all history so git push works correctly
+          fetch-depth: 0
 
       - name: Prepare Vaults
         shell: pwsh
         run: |
-          # Create the nested Version 2 hierarchy
           New-Item -Path "VERSION 2\ASM\FORGE\OUT" -ItemType Directory -Force
           New-Item -Path "VERSION 2\ASM\FIRE-GEM\OUT" -ItemType Directory -Force
           New-Item -Path "logs" -ItemType Directory -Force
@@ -24,19 +26,38 @@ jobs:
       - name: Build FIRE-GEM Engine
         shell: pwsh
         run: |
-          # Strike the C code into a Windows Executable
           gcc fire-gem.c -o fire-gem.exe
-          if ($LASTEXITCODE -ne 0) { Write-Error "FORGE: Compilation Failed" }
-          dir fire-gem.exe # Verify existence in logs
+          if ($LASTEXITCODE -ne 0) { throw "FORGE: Compilation Failed" }
 
       - name: Execute Pulse
         shell: pwsh
         run: |
-          # Run the engine and redirect output to the pulse log
           .\fire-gem.exe > logs\fire-gem-pulse.log 2>&1
           Write-Host "FORGE: fire-gem.exe pulse complete."
 
-      - name: Upload AVIS Payload
+      - name: Git Sync Dispatch
+        shell: pwsh
+        run: |
+          # 1. Configure Identity
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # 2. Pull latest to avoid conflicts
+          git pull origin main --rebase
+          
+          # 3. Stage and Commit Artifacts
+          git add .
+          # Check if there are changes to avoid error on empty commit
+          $status = git status --porcelain
+          if ($status) {
+              git commit -m "AVIS_V2: Dispatch Pulse - Identity & Logs Verified [skip ci]"
+              git push origin main
+              Write-Host "GIT: Pulse pushed to origin."
+          } else {
+              Write-Host "GIT: No changes detected. Dispatch idle."
+          }
+
+      - name: Upload Artifacts (Backup)
         uses: actions/upload-artifact@v4
         if: always()
         with:
