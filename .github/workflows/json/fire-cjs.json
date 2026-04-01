@@ -1,25 +1,31 @@
 {
   "AVIS_CJS_OBJECT": {
-    "WRAPPER_GUID": "SENTINEL-MASTER-V2-REBUILD-2026",
+    "WRAPPER_GUID": "SENTINEL-V2-STABLE-2026",
     "PROGRAM_STACK": [
       {
-        "ID": "INIT_V2",
+        "ID": "V2_INIT",
         "CODE": "WM_CREATE_PROC",
         "FUNCTION": "fire-gem/artifacts/sh/fire-mod.sh"
       },
       {
-        "ID": "FORGE_V2",
+        "ID": "V2_FORGE",
         "CODE": "WM_CREATE_PROC",
         "FUNCTION": "fire-gem/artifacts/sh/fire-compile.sh"
       },
       {
-        "ID": "CLASS_V2_03",
-        "CODE": "WM_REGISTER_CLASS",
-        "SOURCE": "fire-gem-0003.asm",
-        "CLASS_NAME": "COORDINATE_MATERIALIZER_V2"
+        "ID": "PROC-V2-INGEST",
+        "CODE": "WM_CREATE_PROC",
+        "TARGET": "fire-gem-0003.bin",
+        "THREADS": [
+          { 
+            "ID": "T1", 
+            "CODE": "WM_CREATE_THREAD", 
+            "FUNCTION": "fire-gem-0003.bin" 
+          }
+        ]
       },
       {
-        "ID": "RUN_V2",
+        "ID": "V2_RUN",
         "CODE": "WM_CREATE_PROC",
         "FUNCTION": "fire-gem/artifacts/sh/fire-run.sh"
       },
