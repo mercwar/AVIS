@@ -1,56 +1,31 @@
 #!/bin/bash
-# /*******************************************************************************
-#  * TYPE: SERVICE | CLASS: FORGE-ENGINE | NAME: fire-compile.sh
-#  * IDENTITY: VERSION 3.1 // HEADER_FIXED // HAHA!
-#  * ROLE: Forge .asm targets into .exe binaries for straight-line execution.
-#  *******************************************************************************/
+# IDENTITY: VERSION 5.1 // DROP_DETECTION_FORGE // HAHA!
+# ROLE: Detect JSON drops for 0001/0002/0003 and strike them.
 
 VAULT_JSON="fire-gem/artifacts/json/asm/"
+mkdir -p ./avis/
 
-echo "[AVIS] FORGE_SERVICE: Initializing ASM-to-EXE Smithy..."
+echo "[AVIS] FORGE: Scanning Vault for New Drops..."
 
-# 1. SCAN ASM VAULT FOR COMPLIANT SOURCE FILES
-# Using -f to ensure we only target files
-for target_json in $(find "$VAULT_JSON" -type f -name "*.json" 2>/dev/null); do
-    echo "FORGE: Ingesting $target_json for Forge Targets..."
-    
-    # Extract ASM source filenames from the Registry
-    # Added || echo "" to prevent jq from crashing on empty/malformed JSON
-    ASM_SOURCES=$(jq -r '.AVIS_COMM_OBJECT.REGISTRY[] | select(.DIR_ID=="ROOT_ASM") | .FILES[].NAME' "$target_json" 2>/dev/null || echo "")
+# 1. Find every JSON in the vault (0001.json, 0002.json, etc.)
+find "$VAULT_JSON" -maxdepth 2 -name "*.json" | while read -r target_json; do
+    # 2. Extract the ASM source name from the drop
+    ASM_SOURCES=$(jq -r '.AVIS_COMM_OBJECT.REGISTRY[].FILES[].NAME' "$target_json" 2>/dev/null)
     
     for src in $ASM_SOURCES; do
         if [ -f "$src" ]; then
-            # Define output as .exe for the Joe Tron engine
-            EXE_NAME="${src%.asm}.exe"
-            OBJ_NAME="${src%.asm}.o"
+            BASE=$(basename "${src%.asm}")
+            OBJ="${BASE}.o"
+            BIN="./avis/${BASE}.bin"
             
-            # Safety: If a directory exists with the name, append _bin
-            if [ -d "$EXE_NAME" ]; then
-                EXE_NAME="${src%.asm}_bin.exe"
-            fi
-
-            echo "FORGE: [STRIKE] Compiling $src -> $EXE_NAME"
-
-            # 2. X86_64 NASM ASSEMBLE (ELF64)
-            nasm -f elf64 "$src" -o "$OBJ_NAME"
+            echo "FORGE: [STRIKE] Drop Detected: $src -> $BIN"
             
-            if [ -f "$OBJ_NAME" ]; then
-                # 3. LD LINKER (Building the EXE)
-                ld "$OBJ_NAME" -o "$EXE_NAME"
-                rm -f "$OBJ_NAME" 
-                chmod +x "$EXE_NAME"
-                echo "BASH: [ACK] FORGED_EXE: $EXE_NAME seated."
-            else
-                echo "BASH: [NACK] FORGE_ERROR: $src failed assembly."
-            fi
-        else
-            # Only report missing if the string isn't empty
-            if [ -n "$src" ] && [ "$src" != "null" ]; then
-                echo "BASH: [NACK] MISSING_SOURCE: $src"
-            fi
+            # STRIKE: No 'rm' here. We keep the .o file for the audit.
+            nasm -f elf64 "$src" -o "$OBJ"
+            ld "$OBJ" -o "$BIN"
+            chmod +x "$BIN"
+            
+            echo "BASH: [ACK] IDENTITY_SEATED: $OBJ and $BIN"
         fi
     done
 done
-
-echo "FIRE-COMPILE: All forge cycles complete. wm_macro_ack."
-exit 0
