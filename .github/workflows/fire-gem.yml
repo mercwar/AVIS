@@ -1,3 +1,7 @@
+<layout>
+# domains_identified: [no_match]
+</layout>
+
 name: RUN FIRE-GEM
 
 on:
@@ -14,22 +18,33 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Prepare Directories
+        shell: pwsh
         run: |
-          mkdir "VERSION 2\ASM\FORGE\OUT" -Force
-          mkdir "VERSION 2\ASM\FIRE-GEM\OUT" -Force
-          mkdir "VERSION 2\ASM" -Force
-          mkdir logs -Force
+          # Create nested directories. -Force prevents errors if they exist.
+          New-Item -Path "VERSION 2\ASM\FORGE\OUT" -ItemType Directory -Force
+          New-Item -Path "VERSION 2\ASM\FIRE-GEM\OUT" -ItemType Directory -Force
+          New-Item -Path "logs" -ItemType Directory -Force
+
+      - name: Build fire-gem Engine
+        shell: pwsh
+        run: |
+          # Compile the main orchestrator first
+          gcc fire-gem.c -o fire-gem.exe
+          if ($LASTEXITCODE -ne 0) { throw "Compilation failed" }
 
       - name: Run fire-gem.exe
+        shell: pwsh
         run: |
+          # Execute and capture output in logs
           .\fire-gem.exe > logs\fire-gem-pulse.log 2>&1
-          echo "FORGE: fire-gem.exe executed."
+          Write-Host "FORGE: fire-gem.exe executed."
 
       - name: Upload Logs + Output
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: firegem-output
           path: |
-            logs/fire-gem-pulse.log
+            logs/
             VERSION 2/ASM/fire-gem.log
             VERSION 2/ASM/FIRE-GEM/OUT/
