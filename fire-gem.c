@@ -11,9 +11,9 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
-#define FORGE_DIR   "AVIS/VERSION 2/FORGE/OUT"
-#define GEM_OUT     "AVIS/VERSION 2/ASM/FIRE-GEM/OUT"
-#define LOG_PATH    "AVIS/VERSION 2/ASM/fire-gem.log"
+#define FORGE_DIR   "VERSION 2/ASM/FORGE/OUT"
+#define GEM_OUT     "VERSION 2/ASM/FIRE-GEM/OUT"
+#define LOG_PATH    "VERSION 2/ASM/fire-gem.log"
 
 // ------------------------------------------------------------
 // LOG FUNCTION
