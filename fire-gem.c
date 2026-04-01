@@ -1,6 +1,6 @@
 /*******************************************************************************
  * TYPE: ENGINE | CLASS: FORGE-CORE | NAME: fire-gem.c
- * IDENTITY: VERSION 2.0 // WINDOWS_FORGE_CORE // HAHA!
+ * IDENTITY: VERSION 2.1 // WINDOWS_STRIKE_CORE // HAHA!
  * ROLE: Scan FORGE, Strike to EXE, and Execute. No .sh, no .yml logic.
  *******************************************************************************/
 
@@ -15,13 +15,13 @@
 #define LOG_PATH    "VERSION 2/ASM/fire-gem.log"
 
 // ------------------------------------------------------------
-// LOGGING SYSTEM: DIRECT STREAM TO LOG_PATH
+// LOGGING SYSTEM: FLUSH EVERY LINE TO PREVENT EMPTY LOGS
 // ------------------------------------------------------------
 void log_line(const char *text) {
     FILE *f = fopen(LOG_PATH, "a");
     if (!f) return;
     fprintf(f, "%s\n", text);
-    printf("%s\n", text); // Also output to console for GitHub Action logs
+    printf("%s\n", text); // Output to GitHub Actions console
     fclose(f);
 }
 
@@ -30,8 +30,8 @@ void log_line(const char *text) {
 // ------------------------------------------------------------
 void compile_c(const char *input, const char *output) {
     char cmd[1024];
-    // Use quotes around paths to handle spaces in Windows
-    sprintf(cmd, "gcc \"%s\" -o \"%s\"", input, output);
+    // Striking with -O2 optimization for the robot
+    sprintf(cmd, "gcc \"%s\" -O2 -o \"%s\"", input, output);
     system(cmd);
 }
 
@@ -48,23 +48,25 @@ void run_bin(const char *path) {
 // MASTER ENGINE
 // ------------------------------------------------------------
 int main(void) {
-    // 1. SEAT THE VAULTS
+    // 1. SEAT THE VAULTS (Recursive creation for Windows)
     _mkdir("VERSION 2");
     _mkdir("VERSION 2/ASM");
+    _mkdir("VERSION 2/ASM/FORGE");
+    _mkdir("VERSION 2/ASM/FORGE/OUT");
     _mkdir("VERSION 2/ASM/FIRE-GEM");
-    _mkdir(GEM_OUT);
+    _mkdir("VERSION 2/ASM/FIRE-GEM/OUT");
 
     // 2. RESET LOG FOR NEW PULSE
     FILE *reset = fopen(LOG_PATH, "w");
     if (reset) {
-        fprintf(reset, "[AVIS_V2] IDENTITY VERIFIED: FORGE START\n");
+        fprintf(reset, "[AVIS_V2] IDENTITY VERIFIED: FORGE INITIATED\n");
         fclose(reset);
     }
 
     // 3. OPEN THE FORGE FOR DISCOVERY
     DIR *d = opendir(FORGE_DIR);
     if (!d) {
-        log_line("[AVIS_V2] ERROR: FORGE DIRECTORY NOT FOUND. SEATING EMPTY VAULT.");
+        log_line("[AVIS_V2] ERROR: FORGE VAULT NOT ACCESSIBLE.");
         return 1;
     }
 
@@ -76,27 +78,27 @@ int main(void) {
         const char *name = ent->d_name;
         size_t len = strlen(name);
 
-        // Filter: Target only .c files, skip directories
+        // Filter: Target only .c files, skip . and ..
         if (len < 3 || strcmp(name + len - 2, ".c") != 0)
             continue;
 
         found = 1;
         char src[512], dst[512], outname[256];
 
-        // Format paths
+        // Path Formatting
         snprintf(src, sizeof(src), "%s/%s", FORGE_DIR, name);
         snprintf(outname, sizeof(outname), "%.*s.exe", (int)(len - 2), name);
         snprintf(dst, sizeof(dst), "%s/%s", GEM_OUT, outname);
 
         // LOG AND STRIKE
         char msg[1024];
-        sprintf(msg, "[AVIS_V2] FORGING: %s", name);
+        sprintf(msg, "[AVIS_V2] STRIKING: %s -> %s", name, outname);
         log_line(msg);
 
         compile_c(src, dst);
 
-        // EXECUTE THE STRIKE
-        sprintf(msg, "[AVIS_V2] EXECUTING PULSE: %s", outname);
+        // EXECUTE THE PULSE
+        sprintf(msg, "[AVIS_V2] EXECUTING: %s", outname);
         log_line(msg);
         
         run_bin(dst);
@@ -105,9 +107,9 @@ int main(void) {
     closedir(d);
 
     if (!found) {
-        log_line("[AVIS_V2] VAULT EMPTY: NO ASSETS DETECTED FOR FORGE.");
+        log_line("[AVIS_V2] VAULT EMPTY: DROP .C FILES INTO FORGE/OUT TO TEACH ROBOT.");
     } else {
-        log_line("[AVIS_V2] FORGE CYCLE COMPLETE. [wm_macro_ack]");
+        log_line("[AVIS_V2] FORGE CYCLE COMPLETE. wm_macro_ack.");
     }
 
     return 0;
