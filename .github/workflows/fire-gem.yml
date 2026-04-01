@@ -5,10 +5,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  rebuild-avis:
+  firegem:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -16,32 +17,30 @@ jobs:
           fetch-depth: 0
 
       - name: Install Toolchain
-        run: sudo apt-get update && sudo apt-get install -y nasm binutils coreutils
-
-      - name: Forge Master Dispatcher
         run: |
-          # Strike fire-gem.asm into a 64-bit binary
-          # -f elf64 creates a Linux-compliant object file
-          nasm -f elf64 fire-gem.asm -o fire-gem.o
-          ld fire-gem.o -o fire-gem.bin
+          sudo apt-get update
+          sudo apt-get install -y gcc
+
+      - name: Build FIRE-GEM (gcc)
+        run: |
+          gcc fire-gem.c -o fire-gem.bin
           chmod +x fire-gem.bin
-          echo "FORGE: [ACK] fire-gem.bin and fire-gem.o seated."
+          echo "FORGE: [ACK] fire-gem.bin built."
 
-      - name: Execute AVIS Pulse
+      - name: Execute FIRE-GEM Forge Core
         run: |
-          mkdir -p ./logs/
-          # Execute the dispatcher with zero-buffer to force log flushing
-          # stdbuf -o0 ensures every byte hits the log instantly
-          stdbuf -o0 -e0 ./fire-gem.bin > ./logs/fire-gem-pulse.log 2>&1
-          echo "PULSE: [ACK] Master Dispatcher execution complete."
+          mkdir -p logs
+          ./fire-gem.bin > logs/fire-gem-pulse.log 2>&1
+          echo "FORGE: [ACK] fire-gem.bin executed."
 
-      - name: Git Dispatch
+      - name: Git Dispatch (Commit Forge Output)
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add .
           if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "AVIS_V2: Master Dispatcher Pulse - Identity Verified [skip ci]"
+            git commit -m "AVIS_V2: FIRE-GEM Forge Output [skip ci]"
             git push origin HEAD:main
           else
             echo "AVIS: No changes detected."
@@ -50,8 +49,9 @@ jobs:
       - name: Archive Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: avis-master-payload
+          name: firegem-payload
           path: |
             fire-gem.bin
-            fire-gem.o
             logs/fire-gem-pulse.log
+            AVIS/VERSION 2/ASM/fire-gem.log
+            AVIS/VERSION 2/ASM/FIRE-GEM/OUT/
