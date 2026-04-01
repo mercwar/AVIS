@@ -13,9 +13,6 @@
 #define GEM_OUT     "VERSION 2/ASM/FIRE-GEM/OUT"
 #define LOG_PATH    "VERSION 2/ASM/fire-gem.log"
 
-// ------------------------------------------------------------
-// LOG FUNCTION
-// ------------------------------------------------------------
 void log_line(const char *text) {
     FILE *f = fopen(LOG_PATH, "a");
     if (!f) return;
@@ -23,27 +20,18 @@ void log_line(const char *text) {
     fclose(f);
 }
 
-// ------------------------------------------------------------
-// COMPILE C FILE USING GCC (Windows)
-// ------------------------------------------------------------
 void compile_c(const char *input, const char *output) {
     char cmd[512];
     sprintf(cmd, "gcc \"%s\" -o \"%s\"", input, output);
     system(cmd);
 }
 
-// ------------------------------------------------------------
-// RUN EXECUTABLE (Windows)
-// ------------------------------------------------------------
 void run_bin(const char *path) {
     char cmd[512];
     sprintf(cmd, "\"%s\"", path);
     system(cmd);
 }
 
-// ------------------------------------------------------------
-// MAIN FORGE ENGINE
-// ------------------------------------------------------------
 int main(void) {
     mkdir(GEM_OUT);
 
@@ -59,13 +47,17 @@ int main(void) {
         return 1;
     }
 
+    int found = 0;
     struct dirent *ent;
+
     while ((ent = readdir(d)) != NULL) {
         const char *name = ent->d_name;
         size_t len = strlen(name);
 
         if (len < 3 || strcmp(name + len - 2, ".c") != 0)
             continue;
+
+        found = 1;
 
         char src[512], dst[512];
         snprintf(src, sizeof(src), "%s/%s", FORGE_DIR, name);
@@ -88,6 +80,10 @@ int main(void) {
     }
 
     closedir(d);
+
+    if (!found) {
+        log_line("[AVIS_V2] FORGE DIRECTORY EMPTY — NOTHING TO COMPILE, NOTHING TO RUN");
+    }
+
     return 0;
 }
-
