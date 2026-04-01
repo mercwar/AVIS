@@ -460,6 +460,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Artifacts/Readme.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/avis.AVIS</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-cjs.json</loc>
   </url>
   <url>
@@ -581,9 +584,6 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/linux_core.o</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/AVIS.avis</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/fire-mod.sh</loc>
