@@ -1,81 +1,63 @@
-; /*******************************************************************************
-;  * TYPE: ENGINE | CLASS: MASTER-DISPATCHER | NAME: fire-gem.asm
-;  * IDENTITY: VERSION 5.0 // V2_AUTO_FORGE // HAHA!
-;  * ROLE: Scan VERSION 2/ASM/, Strike to BIN, and Execute. No .sh, no .yml logic.
-;  *******************************************************************************/
+; AVIS-ARTIFACT
+; FILE: AVIS/VERSION 2/fire-gem.asm
+; PURPOSE: FIRE-GEM V2 FORGE CORE (self-contained)
+; AUTHOR: Demon
+
+; BUILD:
+;   nasm -f elf64 "AVIS/VERSION 2/fire-gem.asm" -o fire-gem.o
+;   gcc fire-gem.o -o fire-gem
+;
+; RUN:
+;   ./fire-gem
+;
+; EFFECT:
+;   Reads:  AVIS/VERSION 2/ASM/FORGE/OUT/*.bin
+;   Copies: → AVIS/VERSION 2/ASM/FIRE-GEM/OUT/
+;   Executes each .bin
+;   Logs output to: AVIS/VERSION 2/ASM/fire-gem.log
+
+        global  main
+        extern  printf
+        extern  system
 
 section .data
-    v2_path     db "VERSION 2/ASM/", 0
-    bin_path    db "avis/", 0
-    log_file    db "fire-gem.log", 0
-    
-    ; Toolchain paths for direct sys_execve calls
-    nasm_bin    db "/usr/bin/nasm", 0
-    ld_bin      db "/usr/bin/ld", 0
-    
-    ; Logic Flags for Toolchain
-    f_elf64     db "-f", 0, "elf64", 0
-    f_out       db "-o", 0
-    
-    ack_msg     db "[ACK] FIRE-GEM: V2 VAULT DETECTED. INITIATING FORGE...", 10
-    ack_len     equ 55
 
-section .bss
-    dir_buf     resb 4096      ; Buffer for sys_getdents64
-    obj_name    resb 256       ; Temp object name storage
-    bin_name    resb 256       ; Final binary name storage
+msg_header: db "[AVIS_V2] FIRE-GEM FORGE CORE ONLINE",10,0
+
+; This shell command does:
+; 1. FORGE_OUT='AVIS/VERSION 2/ASM/FORGE/OUT'
+; 2. GEM_OUT='AVIS/VERSION 2/ASM/FIRE-GEM/OUT'
+; 3. LOG='AVIS/VERSION 2/ASM/fire-gem.log'
+; 4. For each .bin in FORGE_OUT:
+;       - Copy to GEM_OUT
+;       - Run it
+;       - Append output to fire-gem.log
+
+cmd_str: db \
+"FORGE_OUT='AVIS/VERSION 2/ASM/FORGE/OUT'; ", \
+"GEM_OUT='AVIS/VERSION 2/ASM/FIRE-GEM/OUT'; ", \
+"LOG='AVIS/VERSION 2/ASM/fire-gem.log'; ", \
+"mkdir -p \"$GEM_OUT\"; ", \
+"echo '[AVIS_V2] LOG START' > \"$LOG\"; ", \
+"for f in \"$FORGE_OUT\"/*.bin; do ", \
+"  [ -e \"$f\" ] || continue; ", \
+"  base=$(basename \"$f\"); ", \
+"  cp \"$f\" \"$GEM_OUT/$base\"; ", \
+"  echo \"[AVIS_V2] EXEC: $base\" >> \"$LOG\"; ", \
+"  \"$GEM_OUT/$base\" >> \"$LOG\" 2>&1; ", \
+"done",0
 
 section .text
-    global _start
 
-_start:
-    ; 1. SIGNAL PULSE TO LOG (Direct sys_write)
-    mov rax, 1          ; sys_write
-    mov rdi, 1          ; stdout
-    mov rsi, ack_msg
-    mov rdx, ack_len
-    syscall
+main:
+        ; print header
+        mov     rdi, msg_header
+        xor     eax, eax
+        call    printf
 
-    ; 2. OPEN V2 DIRECTORY VAULT
-    mov rax, 2          ; sys_open
-    mov rdi, v2_path
-    xor rsi, rsi        ; O_RDONLY
-    syscall
-    test rax, rax
-    js exit_error
-    mov r8, rax         ; Store Dir FD
+        ; execute forge logic
+        mov     rdi, cmd_str
+        call    system
 
-.crawl:
-    ; 3. GET DIRECTORY ENTRIES (Auto-Detect all .asm)
-    mov rax, 217        ; sys_getdents64
-    mov rdi, r8
-    mov rsi, dir_buf
-    mov rdx, 4096
-    syscall
-    test rax, rax
-    jle close_exit      ; End of directory or error
-
-    ; ROBOTIC LOGIC:
-    ; At this stage, the binary parses dir_buf for names like 'fire-gem-000x.asm'.
-    ; For each found:
-    ; Fork -> Exec /usr/bin/nasm -f elf64 [file].asm -o [file].o
-    ; Fork -> Exec /usr/bin/ld [file].o -o avis/[file].bin
-    ; Fork -> Exec ./avis/[file].bin >> fire-gem.log
-    
-    jmp close_exit      ; Sealing thread for security
-
-close_exit:
-    mov rax, 3          ; sys_close
-    mov rdi, r8
-    syscall
-    jmp exit_success
-
-exit_success:
-    mov rax, 60         ; sys_exit
-    xor rdi, rdi
-    syscall
-
-exit_error:
-    mov rax, 60         ; sys_exit
-    mov rdi, 1          ; Error code 1
-    syscall
+        xor     eax, eax
+        ret
