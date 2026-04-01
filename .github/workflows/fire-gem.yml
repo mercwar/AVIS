@@ -1,4 +1,4 @@
-name: FIRE-GEM V2 FORGE
+name: RUN FIRE-GEM
 
 on:
   push:
@@ -6,47 +6,12 @@ on:
   workflow_dispatch:
 
 jobs:
-
-  # ---------------------------------------------------------
-  # JOB 1 — BUILD FIRE-GEM.EXE
-  # ---------------------------------------------------------
-  build-firegem:
-    runs-on: windows-latest
-    outputs:
-      exe-path: ${{ steps.build.outputs.exe-path }}
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Build fire-gem.exe
-        id: build
-        run: |
-          gcc fire-gem.c -o fire-gem.exe
-          echo "exe-path=fire-gem.exe" >> $env:GITHUB_OUTPUT
-
-      - name: Upload fire-gem.exe
-        uses: actions/upload-artifact@v4
-        with:
-          name: firegem-exe
-          path: fire-gem.exe
-
-  # ---------------------------------------------------------
-  # JOB 2 — RUN FIRE-GEM.EXE
-  # ---------------------------------------------------------
   run-firegem:
     runs-on: windows-latest
-    needs: build-firegem
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Download fire-gem.exe
-        uses: actions/download-artifact@v4
-        with:
-          name: firegem-exe
-          path: .
 
       - name: Prepare Directories
         run: |
@@ -55,7 +20,7 @@ jobs:
           mkdir "VERSION 2\ASM" -Force
           mkdir logs -Force
 
-      - name: Run FIRE-GEM
+      - name: Run fire-gem.exe
         run: |
           .\fire-gem.exe > logs\fire-gem-pulse.log 2>&1
           echo "FORGE: fire-gem.exe executed."
