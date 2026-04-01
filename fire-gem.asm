@@ -1,20 +1,7 @@
 ; AVIS-ARTIFACT
-; FILE: AVIS/VERSION 2/fire-gem.asm
-; PURPOSE: FIRE-GEM V2 FORGE CORE (self-contained)
+; FILE: fire-gem.asm
+; PURPOSE: JOE TRON FORGE — FIRE-GEM V2 SELF-CONTAINED FORGE ENGINE
 ; AUTHOR: Demon
-
-; BUILD:
-;   nasm -f elf64 "AVIS/VERSION 2/fire-gem.asm" -o fire-gem.o
-;   gcc fire-gem.o -o fire-gem
-;
-; RUN:
-;   ./fire-gem
-;
-; EFFECT:
-;   Reads:  AVIS/VERSION 2/ASM/FORGE/OUT/*.bin
-;   Copies: → AVIS/VERSION 2/ASM/FIRE-GEM/OUT/
-;   Executes each .bin
-;   Logs output to: AVIS/VERSION 2/ASM/fire-gem.log
 
         global  main
         extern  printf
@@ -22,16 +9,21 @@
 
 section .data
 
-msg_header: db "[AVIS_V2] FIRE-GEM FORGE CORE ONLINE",10,0
+msg_header: db "[AVIS_V2] JOE TRON FORGE ONLINE",10,0
 
-; This shell command does:
+; --------------------------------------------------------------------
+; This command does EVERYTHING:
+;
 ; 1. FORGE_OUT='AVIS/VERSION 2/ASM/FORGE/OUT'
 ; 2. GEM_OUT='AVIS/VERSION 2/ASM/FIRE-GEM/OUT'
 ; 3. LOG='AVIS/VERSION 2/ASM/fire-gem.log'
-; 4. For each .bin in FORGE_OUT:
+; 4. mkdir -p GEM_OUT
+; 5. echo header > LOG
+; 6. For each .bin in FORGE_OUT:
 ;       - Copy to GEM_OUT
-;       - Run it
-;       - Append output to fire-gem.log
+;       - Execute it
+;       - Append output to LOG
+; --------------------------------------------------------------------
 
 cmd_str: db \
 "FORGE_OUT='AVIS/VERSION 2/ASM/FORGE/OUT'; ", \
@@ -50,12 +42,12 @@ cmd_str: db \
 section .text
 
 main:
-        ; print header
+        ; Print forge header
         mov     rdi, msg_header
         xor     eax, eax
         call    printf
 
-        ; execute forge logic
+        ; Execute the full forge pipeline
         mov     rdi, cmd_str
         call    system
 
