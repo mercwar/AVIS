@@ -1,18 +1,21 @@
 // AVIS-ARTIFACT
 // FILE: fire-gem.c
-// PURPOSE: FIRE-GEM V2 — Windows version (compile + run C files)
+// PURPOSE: FIRE-GEM V2 — Windows forge core (C → EXE → run)
 // AUTHOR: Demon
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
-#include <sys/stat.h>
+#include <direct.h>   // _mkdir on Windows
 
 #define FORGE_DIR   "VERSION 2/ASM/FORGE/OUT"
 #define GEM_OUT     "VERSION 2/ASM/FIRE-GEM/OUT"
 #define LOG_PATH    "VERSION 2/ASM/fire-gem.log"
 
+// ------------------------------------------------------------
+// LOG FUNCTION
+// ------------------------------------------------------------
 void log_line(const char *text) {
     FILE *f = fopen(LOG_PATH, "a");
     if (!f) return;
@@ -20,20 +23,29 @@ void log_line(const char *text) {
     fclose(f);
 }
 
+// ------------------------------------------------------------
+// COMPILE C FILE USING GCC (Windows)
+// ------------------------------------------------------------
 void compile_c(const char *input, const char *output) {
     char cmd[512];
     sprintf(cmd, "gcc \"%s\" -o \"%s\"", input, output);
     system(cmd);
 }
 
+// ------------------------------------------------------------
+// RUN EXECUTABLE (Windows)
+// ------------------------------------------------------------
 void run_bin(const char *path) {
     char cmd[512];
     sprintf(cmd, "\"%s\"", path);
     system(cmd);
 }
 
+// ------------------------------------------------------------
+// MAIN FORGE ENGINE
+// ------------------------------------------------------------
 int main(void) {
-    mkdir(GEM_OUT);
+    _mkdir(GEM_OUT);
 
     FILE *reset = fopen(LOG_PATH, "w");
     if (reset) {
@@ -54,6 +66,7 @@ int main(void) {
         const char *name = ent->d_name;
         size_t len = strlen(name);
 
+        // Only compile .c files
         if (len < 3 || strcmp(name + len - 2, ".c") != 0)
             continue;
 
