@@ -1,160 +1,82 @@
 ; AVIS-ARTIFACT
 ; FILE: AVIS/VERSION 2/fire-gem.asm
-; PURPOSE: FIRE-GEM V2 FORGE CORE (self-contained)
+; PURPOSE: FIRE-GEM V2 FORGE CORE (self-contained, no .sh)
 ; AUTHOR: Demon
+
+; TARGET: x86_64 Linux ELF
+; BUILD:
+;   nasm -f elf64 "AVIS/VERSION 2/fire-gem.asm" -o fire-gem.o
+;   gcc fire-gem.o -o fire-gem
+;
+; RUN:
+;   ./fire-gem
+;
+; EFFECT:
+;   Scans:  AVIS/VERSION 2/FORGE/*.asm
+;   For each:
+;     - Assembles → OUT/<name>.o
+;     - Links     → OUT/<name>.bin
+;     - chmod +x  → OUT/<name>.bin
+;     - Executes  → OUT/<name>.bin
+;   All logic is inside this EXE via system().
 
         global  main
         extern  printf
         extern  system
-        extern  opendir
-        extern  readdir
-        extern  closedir
 
-        section .data
-forge_dir:      db "AVIS/VERSION 2/FORGE",0
-fmt_str:        db "[AVIS_V2] FORGE: %s",10,0
-cmd_buf:        times 512 db 0
+section .data
 
-asm_ext:        db ".asm",0
-o_ext:          db ".o",0
-bin_ext:        db ".bin",0
+msg_header: db "[AVIS_V2] FORGE: FIRE-GEM V2 CORE ONLINE", 10, 0
 
-        section .text
+; We let /bin/sh handle all directory scanning and forging.
+; This single command string is executed by system().
+;
+; NOTE: This is a single long shell one-liner:
+;   - FORGE_DIR='AVIS/VERSION 2/FORGE'
+;   - OUT_DIR='AVIS/VERSION 2/FORGE/OUT'
+;   - for f in "$FORGE_DIR"/*.asm; do
+;       [ -e "$f" ] || continue
+;       base=$(basename "$f" .asm)
+;       obj="$OUT_DIR/$base.o"
+;       bin="$OUT_DIR/$base.bin"
+;       echo "[AVIS_V2] STRIKE: $f -> $bin"
+;       nasm -f elf64 "$f" -o "$obj"
+;       ld "$obj" -o "$bin"
+;       chmod +x "$bin"
+;       echo "[AVIS_V2] EXEC: $bin"
+;       "$bin"
+;     done
+
+cmd_str: db "FORGE_DIR='AVIS/VERSION 2/FORGE'; ", \
+           "OUT_DIR='AVIS/VERSION 2/FORGE/OUT'; ", \
+           "mkdir -p ""$OUT_DIR""; ", \
+           "for f in ""$FORGE_DIR""/*.asm; do ", \
+             "[ -e ""$f"" ] || continue; ", \
+             "base=$(basename ""$f"" .asm); ", \
+             "obj=""$OUT_DIR/$base.o""; ", \
+             "bin=""$OUT_DIR/$base.bin""; ", \
+             "echo ""[AVIS_V2] STRIKE: $f -> $bin""; ", \
+             "nasm -f elf64 ""$f"" -o ""$obj""; ", \
+             "ld ""$obj"" -o ""$bin""; ", \
+             "chmod +x ""$bin""; ", \
+             "echo ""[AVIS_V2] EXEC: $bin""; ", \
+             """$bin""; ", \
+           "done", 0
+
+section .text
 
 main:
         ; print header
-        mov     rdi, fmt_str
-        mov     rsi, forge_dir
-        xor     rax, rax
+        mov     rdi, msg_header
+        xor     eax, eax
         call    printf
 
-        ; open directory
-        mov     rdi, forge_dir
-        call    opendir
-        test    rax, rax
-        jz      done
-        mov     rbx, rax            ; DIR*
-
-read_loop:
-        mov     rdi, rbx
-        call    readdir
-        test    rax, rax
-        jz      close_dir
-
-        ; struct dirent* in rax
-        ; filename at rax+19 on Linux/glibc
-        mov     rsi, [rax+19]
-
-        ; check extension ".asm"
-        mov     rdi, asm_ext
-        call    ends_with
-        cmp     rax, 1
-        jne     read_loop
-
-        ; build command:
-        ; nasm -f elf64 <file> -o <file.o> && ld <file.o> -o <file.bin> && ./<file.bin>
-
-        ; cmd_buf = "nasm -f elf64 AVIS/VERSION 2/FORGE/<file> -o AVIS/VERSION 2/FORGE/<file>.o && ld ..."
-        mov     rdi, cmd_buf
-        mov     rsi, rsi            ; filename
-        call    build_command
-
-        ; print command
-        mov     rdi, fmt_str
-        mov     rsi, cmd_buf
-        xor     rax, rax
-        call    printf
-
-        ; execute command
-        mov     rdi, cmd_buf
+        ; execute forge command
+        mov     rdi, cmd_str
         call    system
 
-        jmp     read_loop
-
-close_dir:
-        mov     rdi, rbx
-        call    closedir
-
-done:
-        xor     rax, rax
+        xor     eax, eax
         ret
-
-
-; ---------------------------------------------------------
-; int ends_with(char* filename, char* ext)
-; returns 1 if filename ends with ext
-; ---------------------------------------------------------
-ends_with:
-        push    rdi
-        push    rsi
-
-        ; find lengths
-        mov     rdi, rdi
-        call    strlen
-        mov     rcx, rax            ; len(filename)
-
-        mov     rdi, rsi
-        call    strlen
-        mov     rdx, rax            ; len(ext)
-
-        ; if ext longer → fail
-        cmp     rcx, rdx
-        jl      ew_fail
-
-        ; compare tail
-        mov     rdi, [rsp+16]       ; filename
-        add     rdi, rcx
-        sub     rdi, rdx
-
-        mov     rsi, [rsp+8]        ; ext
-        mov     rcx, rdx
-        repe cmpsb
-        jne     ew_fail
-
-        mov     rax, 1
-        jmp     ew_done
-
-ew_fail:
-        xor     rax, rax
-
-ew_done:
-        pop     rsi
-        pop     rdi
-        ret
-
-
-; ---------------------------------------------------------
-; build_command(cmd_buf, filename)
-; ---------------------------------------------------------
-build_command:
-        ; rdi = cmd_buf
-        ; rsi = filename
-
-        ; Format:
-        ; nasm -f elf64 AVIS/VERSION 2/FORGE/<file> -o AVIS/VERSION 2/FORGE/<file>.o && ld <file>.o -o <file>.bin && ./<file>.bin
-
-        mov     rdx, rsi
-
-        ; write command
-        mov     rax, 0
-        mov     rcx, 0
-
-        ; nasm
-        mov     rdi, cmd_buf
-        mov     rsi, nasm_cmd
-        call    strcpy
-
-        ; append filename
-        mov     rdi, cmd_buf
-        call    strcat_filename
-
-        ; append rest
-        mov     rdi, cmd_buf
-        mov     rsi, rest_cmd
-        call    strcat
-
-        ret
-
 
 ; ---------------------------------------------------------
 ; Helper strings
