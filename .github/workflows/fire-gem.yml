@@ -13,34 +13,36 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Prepare Directories
+      - name: Prepare Vaults
         shell: pwsh
         run: |
-          # Create nested directories. -Force prevents errors if they exist.
+          # Create the nested Version 2 hierarchy
           New-Item -Path "VERSION 2\ASM\FORGE\OUT" -ItemType Directory -Force
           New-Item -Path "VERSION 2\ASM\FIRE-GEM\OUT" -ItemType Directory -Force
           New-Item -Path "logs" -ItemType Directory -Force
 
-      - name: Build fire-gem Engine
+      - name: Build FIRE-GEM Engine
         shell: pwsh
         run: |
-          # Compile the main orchestrator first
+          # Strike the C code into a Windows Executable
           gcc fire-gem.c -o fire-gem.exe
-          if ($LASTEXITCODE -ne 0) { throw "Compilation failed" }
+          if ($LASTEXITCODE -ne 0) { Write-Error "FORGE: Compilation Failed" }
+          dir fire-gem.exe # Verify existence in logs
 
-      - name: Run fire-gem.exe
+      - name: Execute Pulse
         shell: pwsh
         run: |
-          # Execute and capture output in logs
+          # Run the engine and redirect output to the pulse log
           .\fire-gem.exe > logs\fire-gem-pulse.log 2>&1
-          Write-Host "FORGE: fire-gem.exe executed."
+          Write-Host "FORGE: fire-gem.exe pulse complete."
 
-      - name: Upload Logs + Output
+      - name: Upload AVIS Payload
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: firegem-output
+          name: firegem-v2-package
           path: |
+            fire-gem.exe
             logs/
             VERSION 2/ASM/fire-gem.log
             VERSION 2/ASM/FIRE-GEM/OUT/
