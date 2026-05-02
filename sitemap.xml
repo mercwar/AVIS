@@ -475,6 +475,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/VERSION%203/AVIS.MANIFEST.EDU</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/VERSION%203/robot_avis_analyzer.c</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/VERSION%203/robot_avis_reader.c</loc>
   </url>
   <url>
