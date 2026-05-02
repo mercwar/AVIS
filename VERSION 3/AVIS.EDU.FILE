@@ -1,0 +1,122 @@
+# ================================================================
+# AVIS.EDU.FILE
+# PURPOSE: Teach an AI how to interpret this AVIS script.
+# FORMAT: AVIS.FVS.2026 (Namespace + Seed/Spec/Control Blocks)
+# NOTES:
+#   • AI. = namespace prefix
+#   • FIRE = event namespace
+#   • begin.seed = loop start
+#   • begin.spec.<module>.<function> = block start
+#   • end.seed / end.spec = block end
+#   • win.style uses raw string values
+# ================================================================
+
+AVIS.FVS.2026
+
+# --- AI prefix + FIRE namespace: begin FIRE event block ---
+AI.FIRE.START
+
+    # --- SEED LOOP START (loop container) ---
+    begin.seed
+
+        # --- SPEC BLOCK: CWIN.REG (window registration) ---
+        begin.spec.CWIN.REG
+            
+            # Window class name
+            win.class.MAINWIN
+
+            # Window procedure
+            win.proc.MAINPROC
+
+            # Window style (raw string)
+            win.style.OVERLAPPEDWINDOW
+
+            # Cursor type
+            win.cursor.ARROW
+
+            # Background brush
+            win.brush.WINDOW
+
+            # Icon resource
+            win.icon.MAIN
+
+        # --- SPEC BLOCK END ---
+        end.spec
+
+    # --- SEED LOOP END ---
+    end.seed
+
+    # --- SPEC BLOCK: CWIN.CREATE (window creation) ---
+    begin.spec.CWIN.CREATE
+
+        # Create window instance
+        win.create.MAINWIN
+
+        # Window title
+        win.title."MAIN WINDOW"
+
+        # Window position
+        win.pos.x.200
+        win.pos.y.200
+
+        # Window size
+        win.width.600
+        win.height.400
+
+        # Show state
+        win.show.NORMAL
+
+        # Centering flag
+        win.center.FALSE
+
+        # --- CONTROL BLOCK: LBL1 (static label) ---
+        begin.control.LBL1
+
+            ctrl.type.STATIC
+            ctrl.text."This is MAIN window"
+            ctrl.pos.x.20
+            ctrl.pos.y.20
+            ctrl.width.200
+            ctrl.height.20
+            ctrl.id.9400
+
+        # --- CONTROL BLOCK END ---
+        end.control
+
+    # --- SPEC BLOCK END ---
+    end.spec
+
+# --- FIRE namespace end ---
+AI.FIRE.END
+
+
+# --- NEW FIRE EVENT BLOCK ---
+AI.FIRE.START
+
+
+    # --- SEED LOOP START ---
+    begin.seed
+
+        # --- SPEC BLOCK: MENU (menu definitions) ---
+        begin.spec.MENU
+            
+            # Menu entries (parent, id, label)
+            menu.add.0.9001."Open File"
+            menu.add.0.9002."Save File"
+            menu.add.0.9003."Exit"
+
+            menu.add.1.9101."Tools → Refresh"
+            menu.add.1.9102."Tools → Reload"
+
+            menu.add.2.9201."Clear Log"
+            menu.add.2.9202."Export Log"
+
+        # --- SPEC BLOCK END ---
+        end.spec
+
+    # --- SEED LOOP END ---
+    end.seed
+
+
+# --- FIRE namespace end ---
+AI.FIRE.END
