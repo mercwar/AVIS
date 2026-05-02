@@ -442,6 +442,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/VERSION%203/AVIS.EDU.TEMPLATE</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/VERSION%203/robot_avis_optimizer.c</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/VERSION%203/robot_avis_language_server.c</loc>
   </url>
   <url>
