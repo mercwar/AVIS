@@ -1,9 +1,7 @@
 /*
     robot_avis_validator.c
-
     PURPOSE:
         Validate .avis files against AVIS structural rules.
-        LLMs can extend this with deeper checks.
 */
 
 #include <stdio.h>
@@ -31,7 +29,7 @@ static int contains(const char* text, const char* needle) {
 static void validate_avis(const char* path) {
     char* content = read_file(path);
     if (!content) {
-        printf("[VALIDATOR] FAILED to read: %s\n", path);
+        printf("[VALIDATOR] FAILED: %s\n", path);
         return;
     }
 
@@ -62,9 +60,8 @@ static void validate_avis(const char* path) {
         ok = 0;
     }
 
-    if (ok) {
+    if (ok)
         printf("[VALIDATOR] %s: OK\n", path);
-    }
 
     free(content);
 }
@@ -75,9 +72,8 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    for (int i = 1; i < argc; ++i) {
+    for (int i = 1; i < argc; ++i)
         validate_avis(argv[i]);
-    }
 
     return 0;
 }
