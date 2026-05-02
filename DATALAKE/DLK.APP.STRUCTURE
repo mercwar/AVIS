@@ -1,0 +1,6 @@
+AI.FIRE.START
+    begin.seed
+        begin.spec.CWIN.REG
+        end.spec
+    end.seed
+AI.FIRE.END
