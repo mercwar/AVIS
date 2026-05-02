@@ -1,0 +1,26 @@
+{
+  "language": "AVIS.FVS.2026",
+  "blocks": {
+    "fire": {
+      "begin": "AI.<NAMESPACE>.START",
+      "end": "AI.<NAMESPACE>.END"
+    },
+    "seed": {
+      "begin": "begin.seed",
+      "end": "end.seed"
+    },
+    "spec": {
+      "begin": "begin.spec.<MODULE>.<FUNCTION>",
+      "end": "end.spec"
+    },
+    "control": {
+      "begin": "begin.control.<ID>",
+      "end": "end.control"
+    }
+  },
+  "rules": {
+    "style_raw": true,
+    "require_fire_wrapping": true,
+    "allow_multiple_fire_blocks": true
+  }
+}
