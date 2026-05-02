@@ -21,6 +21,7 @@
   "rules": {
     "style_raw": true,
     "require_fire_wrapping": true,
-    "allow_multiple_fire_blocks": true
+    "allow_multiple_fire_blocks": true,
+    "allow_nested_control": true
   }
 }
