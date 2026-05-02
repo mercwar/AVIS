@@ -1,0 +1,5 @@
+begin.spec.CWIN.CREATE
+win.create.MAINWIN
+win.show.1
+win.center.0
+end.spec
