@@ -1,0 +1,3 @@
+win.class.MAINWIN
+win.proc.MAINPROC
+win.style.OVERLAPPEDWINDOW
