@@ -1,0 +1,23 @@
+# AVIS.MANIFEST.EDU
+# PURPOSE:
+#   Tell any AI / LLM / robot how to learn AVIS from this repo.
+
+# EDU STANDARD:
+#   • All AVIS scripts SHOULD have a matching EDU version.
+#   • EDU files explain structure, not engine code.
+#   • Robots MUST treat EDU files as the canonical pattern.
+
+# PRIMARY FILES:
+#   AVIS.EDU.FILE          ; global EDU reference
+#   mainwindow.avis        ; raw AVIS script
+#   mainwindow.EDU.avis    ; EDU version of mainwindow.avis
+
+# ROBOT TASK:
+#   1. Read AVIS.EDU.FILE
+#   2. Read all *.EDU.avis
+#   3. Infer structure rules:
+#       - AI.FIRE.START / AI.FIRE.END
+#       - begin.seed / end.seed
+#       - begin.spec.<module>.<function> / end.spec
+#       - begin.control.<id> / end.control
+#   4. Enforce same pattern on any new .avis file.
