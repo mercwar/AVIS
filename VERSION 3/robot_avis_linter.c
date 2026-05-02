@@ -1,9 +1,7 @@
 /*
     robot_avis_linter.c
-
     PURPOSE:
-        Lint .avis files and emit warnings, not hard errors.
-        LLMs can extend this with more nuanced checks.
+        Emit warnings for AVIS structural issues.
 */
 
 #include <stdio.h>
@@ -31,27 +29,26 @@ static int contains(const char* text, const char* needle) {
 static void lint_avis(const char* path) {
     char* content = read_file(path);
     if (!content) {
-        printf("[LINT] FAILED to read: %s\n", path);
+        printf("[LINT] FAILED: %s\n", path);
         return;
     }
 
     printf("[LINT] %s\n", path);
 
-    if (!contains(content, "AVIS.FVS.2026")) {
+    if (!contains(content, "AVIS.FVS.2026"))
         printf("  warning: missing AVIS.FVS.2026 header\n");
-    }
-    if (!contains(content, "begin.seed")) {
-        printf("  warning: no begin.seed found\n");
-    }
-    if (!contains(content, "begin.spec.")) {
-        printf("  warning: no begin.spec.<MODULE>.<FUNCTION> found\n");
-    }
-    if (contains(content, "win.style.") && strstr(content, "|") == NULL) {
-        printf("  note: win.style present without combined flags (no '|')\n");
-    }
-    if (!contains(content, "begin.control") && contains(content, "ctrl.")) {
-        printf("  warning: ctrl.* used without begin.control/end.control block\n");
-    }
+
+    if (!contains(content, "begin.seed"))
+        printf("  warning: missing begin.seed\n");
+
+    if (!contains(content, "begin.spec."))
+        printf("  warning: missing begin.spec.<MODULE>.<FUNCTION>\n");
+
+    if (contains(content, "win.style.") && !strstr(content, "|"))
+        printf("  note: win.style present without combined flags\n");
+
+    if (!contains(content, "begin.control") && contains(content, "ctrl."))
+        printf("  warning: ctrl.* used without control block\n");
 
     free(content);
 }
@@ -62,9 +59,8 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    for (int i = 1; i < argc; ++i) {
+    for (int i = 1; i < argc; ++i)
         lint_avis(argv[i]);
-    }
 
     return 0;
 }
