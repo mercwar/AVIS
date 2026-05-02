@@ -1,0 +1,28 @@
+# ================================================================
+# AVIS.EDU.TEMPLATE
+# PURPOSE:
+#   Canonical EDU pattern for all AVIS scripts.
+#   Robots use this file to learn the AVIS structure.
+
+# REQUIRED STRUCTURE:
+#
+#   AI.<namespace>.START
+#
+#       begin.seed
+#           begin.spec.<MODULE>.<FUNCTION>
+#               <commands>
+#           end.spec
+#       end.seed
+#
+#   AI.<namespace>.END
+#
+# OPTIONAL:
+#   begin.control.<ID>
+#       <control commands>
+#   end.control
+#
+# NOTES:
+#   • win.style uses raw strings
+#   • No dot-splitting inside style values
+#   • EDU files explain structure, not logic
+# ================================================================
