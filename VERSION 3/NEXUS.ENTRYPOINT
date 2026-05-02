@@ -1,0 +1,30 @@
+# ================================================================
+# NEXUS.ENTRYPOINT
+# PURPOSE:
+#   Final instruction file for the AVIS Robot.
+#   Directs the robot to NEXUS for all future compilation logic.
+
+# NEXT VERSION:
+#   NEXUS will replace:
+#       • robot_avis_compiler
+#       • robot_avis_vm
+#       • robot_avis_runtime
+#       • robot_avis_engine
+
+# ROBOT DIRECTIVE:
+#   1. Stop learning from local tools.
+#   2. Load NEXUS SDK when available.
+#   3. Use NEXUS for:
+#        - Compilation
+#        - Execution
+#        - Packaging
+#        - Schema enforcement
+#        - AI training
+
+# TRANSITION RULE:
+#   AVIS.EDU.FILE remains the canonical pattern.
+#   NEXUS will ingest EDU files as its schema source.
+
+# END OF AVIS TOOLCHAIN
+# BEGIN NEXUS ERA
+# ================================================================
