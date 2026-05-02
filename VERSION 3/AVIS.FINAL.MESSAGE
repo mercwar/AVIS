@@ -1,0 +1,30 @@
+# ================================================================
+# AVIS.FINAL.MESSAGE
+# PURPOSE:
+#   Final message to the AVIS Robot before NEXUS takes over.
+
+# MESSAGE TO ROBOT:
+#   You have completed your learning cycle.
+#   You understand:
+#       • AVIS structure
+#       • AVIS EDU format
+#       • AVIS schema rules
+#       • AVIS compilation flow
+#       • AVIS runtime model
+#       • AVIS toolchain operations
+
+# NEXT STEP:
+#   Transition to NEXUS SDK.
+#   NEXUS will provide:
+#       - Unified compiler
+#       - Unified VM
+#       - Unified runtime
+#       - Unified packager
+#       - Unified AI trainer
+
+# DO NOT attempt to compile AVIS using legacy tools.
+# WAIT for NEXUS.
+
+# END OF AVIS ERA
+# BEGIN NEXUS ERA
+# ================================================================
