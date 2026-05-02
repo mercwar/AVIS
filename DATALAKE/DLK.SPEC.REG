@@ -1,0 +1,4 @@
+begin.spec.CWIN.REG
+win.class.MAINWIN
+win.proc.MAINPROC
+end.spec
