@@ -1,7 +1,7 @@
 /*
-    robot_avis_validator.c
+    robot_avis_autofix.c
     PURPOSE:
-        Validate .avis files against AVIS structural rules.
+        Auto-fix missing AVIS structural elements.
 */
 
 #include <stdio.h>
@@ -22,58 +22,73 @@ static char* read_file(const char* path) {
     return buf;
 }
 
+static int write_file(const char* path, const char* text) {
+    FILE* f = fopen(path, "wb");
+    if (!f) return 0;
+    fputs(text, f);
+    fclose(f);
+    return 1;
+}
+
 static int contains(const char* text, const char* needle) {
     return text && needle && strstr(text, needle) != NULL;
 }
 
-static void validate_avis(const char* path) {
+static void autofix_avis(const char* path) {
     char* content = read_file(path);
     if (!content) {
-        printf("[VALIDATOR] FAILED: %s\n", path);
+        printf("[AUTOFIX] FAILED: %s\n", path);
         return;
     }
 
-    int ok = 1;
+    int modified = 0;
+    size_t len = strlen(content);
+    char* out = NULL;
 
     if (!contains(content, "AI.FIRE.START")) {
-        printf("[VALIDATOR] %s: missing AI.FIRE.START\n", path);
-        ok = 0;
-    }
-    if (!contains(content, "AI.FIRE.END")) {
-        printf("[VALIDATOR] %s: missing AI.FIRE.END\n", path);
-        ok = 0;
-    }
-    if (!contains(content, "begin.seed")) {
-        printf("[VALIDATOR] %s: missing begin.seed\n", path);
-        ok = 0;
-    }
-    if (!contains(content, "end.seed")) {
-        printf("[VALIDATOR] %s: missing end.seed\n", path);
-        ok = 0;
-    }
-    if (!contains(content, "begin.spec.")) {
-        printf("[VALIDATOR] %s: missing begin.spec.<MODULE>.<FUNCTION>\n", path);
-        ok = 0;
-    }
-    if (!contains(content, "end.spec")) {
-        printf("[VALIDATOR] %s: missing end.spec\n", path);
-        ok = 0;
+        const char* prefix = "AI.FIRE.START\n\n";
+        out = malloc(strlen(prefix) + len + 1);
+        strcpy(out, prefix);
+        strcat(out, content);
+        free(content);
+        content = out;
+        len = strlen(content);
+        modified = 1;
+        printf("[AUTOFIX] %s: added AI.FIRE.START\n", path);
     }
 
-    if (ok)
-        printf("[VALIDATOR] %s: OK\n", path);
+    if (!contains(content, "AI.FIRE.END")) {
+        const char* suffix = "\n\nAI.FIRE.END\n";
+        out = malloc(len + strlen(suffix) + 1);
+        strcpy(out, content);
+        strcat(out, suffix);
+        free(content);
+        content = out;
+        len = strlen(content);
+        modified = 1;
+        printf("[AUTOFIX] %s: added AI.FIRE.END\n", path);
+    }
+
+    if (modified) {
+        if (write_file(path, content))
+            printf("[AUTOFIX] %s: fixed\n", path);
+        else
+            printf("[AUTOFIX] %s: FAILED to write\n", path);
+    } else {
+        printf("[AUTOFIX] %s: no changes needed\n", path);
+    }
 
     free(content);
 }
 
 int main(int argc, char** argv) {
     if (argc < 2) {
-        printf("Usage: robot_avis_validator <file.avis> [...]\n");
+        printf("Usage: robot_avis_autofix <file.avis> [...]\n");
         return 1;
     }
 
     for (int i = 1; i < argc; ++i)
-        validate_avis(argv[i]);
+        autofix_avis(argv[i]);
 
     return 0;
 }
