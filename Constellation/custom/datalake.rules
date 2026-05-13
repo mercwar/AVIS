@@ -1,0 +1,22 @@
+/* FILE: datalake.rules */
+/* PATH: /AVIS-DATALAKE/Constellation/custom/datalake.rules */
+
+/* ------------------------------------------------------------
+   AVIS.HEADER
+   ROLE: DATALAKE_RULESET
+   PURPOSE: AVIS-Datalake-specific Constellation override rules.
+   AUTHOR: Demon
+   NOTES: Datalake is the final ingestion layer for all repos.
+   ------------------------------------------------------------ */
+
+[RULES]
+ENFORCE_INDEX_ONLY = TRUE
+ALLOW_ALL_REPO_INPUT = TRUE
+REQUIRE_SCHEMA = TRUE
+REQUIRE_MANIFEST = TRUE
+VALIDATION_LEVEL = DATALAKE_STRICT
+
+[BEHAVIOR]
+PRIORITIZE_METADATA = TRUE
+PRIORITIZE_STRUCTURE = TRUE
+PRIORITIZE_AI_VISIBILITY = TRUE

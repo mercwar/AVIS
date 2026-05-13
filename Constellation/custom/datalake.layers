@@ -1,0 +1,25 @@
+/* FILE: datalake.layers */
+/* PATH: /AVIS-DATALAKE/Constellation/custom/datalake.layers */
+
+/* ------------------------------------------------------------
+   AVIS.HEADER
+   ROLE: DATALAKE_LAYER_DEFINITION
+   PURPOSE: Defines the 6-layer AVIS-Datalake intelligence stack.
+   AUTHOR: Demon
+   ------------------------------------------------------------ */
+
+[LAYERS]
+L1 = RAW_REPO_ATOMS
+L2 = SEMANTIC_LINKS
+L3 = PATTERN_REINFORCEMENT
+L4 = SYMBOL_MAPS
+L5 = ABI_ALIGNMENT
+L6 = INTELLIGENCE_MODEL
+
+[PROPERTIES]
+L1_VISIBLE = TRUE
+L2_VISIBLE = TRUE
+L3_VISIBLE = TRUE
+L4_VISIBLE = TRUE
+L5_VISIBLE = TRUE
+L6_VISIBLE = TRUE

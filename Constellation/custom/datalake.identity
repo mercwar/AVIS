@@ -1,0 +1,16 @@
+/* FILE: datalake.identity */
+/* PATH: /AVIS-DATALAKE/Constellation/custom/datalake.identity */
+
+/* ------------------------------------------------------------
+   AVIS.HEADER
+   ROLE: DATALAKE_IDENTITY
+   PURPOSE: Defines AVIS-Datalake identity inside AVIS ecosystem.
+   AUTHOR: Demon
+   ------------------------------------------------------------ */
+
+[IDENTITY]
+NAME = AVIS-DATALAKE
+ROLE = AI_VISIBLE_STORAGE_UNIVERSE
+GENERATION = 1
+FAMILY = AVIS_CORE
+MODE = INDEX_ONLY

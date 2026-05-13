@@ -1,0 +1,15 @@
+/* FILE: datalake.version */
+/* PATH: /AVIS-DATALAKE/Constellation/custom/datalake.version */
+
+/* ------------------------------------------------------------
+   AVIS.HEADER
+   ROLE: DATALAKE_VERSION_FILE
+   PURPOSE: Defines AVIS-Datalake version lineage for Constellation.
+   AUTHOR: Demon
+   ------------------------------------------------------------ */
+
+[VERSION]
+MAJOR = 1
+MINOR = 0
+PATCH = 0
+TAG = AVIS_DATALAKE_V1
