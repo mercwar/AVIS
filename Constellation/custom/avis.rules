@@ -1,0 +1,24 @@
+/* FILE: avis.rules */
+/* PATH: /AVIS/Constellation/custom/avis.rules */
+
+/* ------------------------------------------------------------
+   AVIS.HEADER
+   ROLE: AVIS_RULESET
+   PURPOSE: AVIS-specific Constellation override rules.
+   AUTHOR: Demon
+   NOTES: AVIS is the intelligence law root; all repos inherit
+          from this rule layer.
+   ------------------------------------------------------------ */
+
+[RULES]
+ENFORCE_AVIS_LAW = TRUE
+ENFORCE_ROOT_SCHEMA = TRUE
+ALLOW_ALL_CHILD_REPOS = TRUE
+SCAN_MODE = ROOT_DEEP
+REDUCE_MODE = ROOT_SAFE
+VALIDATION_LEVEL = ROOT_STRICT
+
+[BEHAVIOR]
+PRIORITIZE_LAW = TRUE
+PRIORITIZE_SEMANTICS = TRUE
+PRIORITIZE_INTELLIGENCE = TRUE

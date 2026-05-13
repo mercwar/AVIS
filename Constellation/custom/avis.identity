@@ -1,0 +1,16 @@
+/* FILE: avis.identity */
+/* PATH: /AVIS/Constellation/custom/avis.identity */
+
+/* ------------------------------------------------------------
+   AVIS.HEADER
+   ROLE: AVIS_IDENTITY
+   PURPOSE: Defines AVIS identity inside the ecosystem.
+   AUTHOR: Demon
+   ------------------------------------------------------------ */
+
+[IDENTITY]
+NAME = AVIS
+ROLE = INTELLIGENCE_LAW_ROOT
+GENERATION = 1
+FAMILY = AVIS_CORE
+LAW = AVIS.INTELLIGENCE.LAW
