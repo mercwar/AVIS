@@ -610,6 +610,9 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/README.md</loc>
   </url>
   <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/constellation_validator.c</loc>
+  </url>
+  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/constellation_linker.h</loc>
   </url>
   <url>
@@ -683,9 +686,6 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/constellation_validator.h</loc>
-  </url>
-  <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/new%201constellation_validator.c</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/new%202constellation_autobuild.h</loc>
