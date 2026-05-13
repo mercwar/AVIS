@@ -610,9 +610,6 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/README.md</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/constellation_validator.c</loc>
-  </url>
-  <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/constellation_linker.h</loc>
   </url>
   <url>
@@ -652,31 +649,34 @@
     <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/constellation.h</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/datalake.layers</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/avis.graph</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/sentinel.zip</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/datalake.graph</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/avis.version</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/nexus.zip</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/datalake.rules</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/datalake.zip</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/datalake.zip</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/avis.identity</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/cyborg.zip</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/datalake.identity</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/avis.binding</loc>
   </url>
   <url>
-    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/datalake.version</loc>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/avis.zip</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/avis.rules</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/custom/CVBGOD</loc>
@@ -686,6 +686,9 @@
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/constellation_validator.h</loc>
+  </url>
+  <url>
+    <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/new%201constellation_validator.c</loc>
   </url>
   <url>
     <loc>https://github.com/mercwar/AVIS/blob/main/Constellation/new%202constellation_autobuild.h</loc>
