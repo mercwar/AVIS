@@ -30,29 +30,28 @@ Its purpose is to make every file **self‑describing, traceable, and scannable*
 
 | Page | Focus Area |
 |------|------------|
-| **[Page 1](ca://s?q=Continue_to_AVIS_Page_1)** | Introduction to AVIS — purpose, scope, and core concepts |
-| **[Page 2](ca://s?q=Continue_to_AVIS_Page_2)** | AVIS headers — structure, filename comments, and AIFVS mappings |
-| **[Page 3](ca://s?q=Continue_to_AVIS_Page_3)** | Metadata blocks — description, author, version, and semantic cues |
-| **[Page 4](ca://s?q=Continue_to_AVIS_Page_4)** | Semantic cues — contextual meaning for indexing and classification |
-| **[Page 5](ca://s?q=Continue_to_AVIS_Page_5)** | Integrity principles — validation, consistency, and traceability |
-| **[Page 6](ca://s?q=Continue_to_AVIS_Page_6)** | Practical structure — examples of headers across artifact types |
-| **[Page 7](ca://s?q=Continue_to_AVIS_Page_7)** | Applications — code, documentation, data, and UI artifacts |
-| **[Page 8](ca://s?q=Continue_to_AVIS_Page_8)** | Integrity checks — validation loops, error prevention, consistency |
-| **[Page 9](ca://s?q=Continue_to_AVIS_Page_9)** | Real-world examples — AVIS in practice across domains |
-| **[Page 10](ca://s?q=Continue_to_AVIS_Page_10)** | Key takeaways — summary of AVIS principles |
-| **[Page 11](ca://s?q=Continue_to_AVIS_Page_11)** | Advanced applications — integration with data systems & workflows |
-| **[Page 12](ca://s?q=Continue_to_AVIS_Page_12)** | Large-scale environments — heavy indexing & distributed systems |
-| **[Page 13](ca://s?q=Continue_to_AVIS_Page_13)** | Compliance frameworks — audit trails, governance, regulatory alignment |
-| **[Page 14](ca://s?q=Continue_to_AVIS_Page_14)** | Version control — embedded versioning, author tracking, lifecycle |
-| **[Page 15](ca://s?q=Continue_to_AVIS_Page_15)** | Collaboration workflows — shared context, team coordination |
-| **[Page 16](ca://s?q=Continue_to_AVIS_Page_16)** | Knowledge management — searchable, reusable organizational memory |
-| **[Page 17](ca://s?q=Continue_to_AVIS_Page_17)** | Automation — classification, validation, workflow integration |
-| **[Page 18](ca://s?q=Continue_to_AVIS_Page_18)** | Scalability in automation — enterprise pipelines & orchestration |
-| **[Page 19](ca://s?q=Continue_to_AVIS_Page_19)** | Monitoring systems — alerts, logs, health tracking |
-| **[Page 20](ca://s?q=Continue_to_AVIS_Page_20)** | Security frameworks — validation, detection, resilience |
-| **[Page 21](ca://s?q=Continue_to_AVIS_Page_21)** | Disaster recovery — rollback, recovery, continuity planning |
-| **[Page 22](ca://s?q=Continue_to_AVIS_Page_22)** | Business continuity — resilience, planning, uninterrupted operations |
-
+| **[INTRO](README.md)** | Introduction to AVIS — purpose, scope, and core concepts |
+| **[Page 1](README_Page_1.md)** | Introduction to AVIS — purpose, scope, and core concepts |
+| **[Page 2](README_Page_2.md)** | AVIS headers — structure, filename comments, and AIFVS mappings |
+| **[Page 3](README_Page_3.md)** | Metadata blocks — description, author, version, and semantic cues |
+| **[Page 4](README_Page_4.md)** | Semantic cues — contextual meaning for indexing and classification |
+| **[Page 5](README_Page_5.md)** | Integrity principles — validation, consistency, and traceability |
+| **[Page 6](README_Page_6.md)** | Practical structure — examples of headers across artifact types |
+| **[Page 7](README_Page_7.md)** | Applications — code, documentation, data, and UI artifacts |
+| **[Page 8](README_Page_8.md)** | Integrity checks — validation loops, error prevention, consistency |
+| **[Page 9](README_Page_9.md)** | Real-world examples — AVIS in practice across domains |
+| **[Page 10](README_Page_10.md)** | Key takeaways — summary of AVIS principles |
+| **[Page 11](README_Page_11.md)** | Advanced applications — integration with data systems & workflows |
+| **[Page 12](README_Page_12.md)** | Large-scale environments — heavy indexing & distributed systems |
+| **[Page 13](README_Page_13.md)** | Compliance frameworks — audit trails, governance, regulatory alignment |
+| **[Page 14](README_Page_14.md)** | Version control — embedded versioning, author tracking, lifecycle |
+| **[Page 15](README_Page_15.md)** | Collaboration workflows — shared context, team coordination |
+| **[Page 16](README_Page_16.md)** | Knowledge management — searchable, reusable organizational memory |
+| **[Page 17](README_Page_17.md)** | Automation — classification, validation, workflow integration |
+| **[Page 18](README_Page_18.md)** | Scalability in automation — enterprise pipelines & orchestration |
+| **[Page 19](README_Page_19.md)** | Monitoring systems — alerts, logs, health tracking |
+| **[Page 20](README_Page_20.md)** | Security frameworks — validation, detection, resilience |
+| **[Page 21](README_Page_21.md)** | Disaster recovery — rollback, recovery, continuity planning |
 ---
 
 ## Takeaway
