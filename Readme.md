@@ -9,7 +9,7 @@
 ---
 
 ## 🧬 AVIS — AI Visibility & Integration Standard
-
+![Read more about AVIS](llm/README.md)
 ![AVIS](https://github.com/mercwar/Robo-Knight-Gallery/blob/main/Version%203/Copilot_20260222_014503.png)
 
 ### AVIS is a visibility framework designed to make **comments**, **metadata**, and **COM‑object structures** readable to both humans and autonomous AI systems.  
