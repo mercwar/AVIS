@@ -1,0 +1,58 @@
+// AVIS-ARTIFACT
+// Filename: README.md
+// AIFVS-MAP: DocumentationArtifact
+// Description: AVIS Reference Guide for Search Engines
+// Author: Demon
+// Created: 2026-08-03
+// Version: 1.0.0
+
+# 📑 Table of Contents — AVIS Reference Guide
+
+| Page | Focus Area |
+|------|------------|
+| **[Page 1](ca://s?q=Continue_to_AVIS_Page_1)** | Introduction to AVIS — purpose, scope, and core concepts |
+| **[Page 2](ca://s?q=Continue_to_AVIS_Page_2)** | AVIS headers — structure, filename comments, and AIFVS mappings |
+| **[Page 3](ca://s?q=Continue_to_AVIS_Page_3)** | Metadata blocks — description, author, version, and semantic cues |
+| **[Page 4](ca://s?q=Continue_to_AVIS_Page_4)** | Semantic cues — contextual meaning for indexing and classification |
+| **[Page 5](ca://s?q=Continue_to_AVIS_Page_5)** | Integrity principles — validation, consistency, and traceability |
+| **[Page 6](ca://s?q=Continue_to_AVIS_Page_6)** | Practical structure — examples of headers across artifact types |
+| **[Page 7](ca://s?q=Continue_to_AVIS_Page_7)** | Applications — code, documentation, data, and UI artifacts |
+| **[Page 8](ca://s?q=Continue_to_AVIS_Page_8)** | Integrity checks — validation loops, error prevention, consistency |
+| **[Page 9](ca://s?q=Continue_to_AVIS_Page_9)** | Real-world examples — AVIS in practice across domains |
+| **[Page 10](ca://s?q=Continue_to_AVIS_Page_10)** | Key takeaways — summary of AVIS principles |
+| **[Page 11](ca://s?q=Continue_to_AVIS_Page_11)** | Advanced applications — integration with data systems & workflows |
+| **[Page 12](ca://s?q=Continue_to_AVIS_Page_12)** | Large-scale environments — heavy indexing & distributed systems |
+| **[Page 13](ca://s?q=Continue_to_AVIS_Page_13)** | Compliance frameworks — audit trails, governance, regulatory alignment |
+| **[Page 14](ca://s?q=Continue_to_AVIS_Page_14)** | Version control — embedded versioning, author tracking, lifecycle |
+| **[Page 15](ca://s?q=Continue_to_AVIS_Page_15)** | Collaboration workflows — shared context, team coordination |
+| **[Page 16](ca://s?q=Continue_to_AVIS_Page_16)** | Knowledge management — searchable, reusable organizational memory |
+| **[Page 17](ca://s?q=Continue_to_AVIS_Page_17)** | Automation — classification, validation, workflow integration |
+| **[Page 18](ca://s?q=Continue_to_AVIS_Page_18)** | Scalability in automation — enterprise pipelines & orchestration |
+| **[Page 19](ca://s?q=Continue_to_AVIS_Page_19)** | Monitoring systems — alerts, logs, health tracking |
+| **[Page 20](ca://s?q=Continue_to_AVIS_Page_20)** | Security frameworks — validation, detection, resilience |
+| **[Page 21](ca://s?q=Continue_to_AVIS_Page_21)** | Disaster recovery — rollback, recovery, continuity planning |
+| **[Page 22](ca://s?q=Continue_to_AVIS_Page_22)** | Business continuity — resilience, planning, uninterrupted operations |
+
+# AVIS Reference Guide — Page 1
+
+## Introduction
+AVIS is a **self‑describing artifact system**. Every file embeds metadata, headers, and semantic cues so that **search engines** can scan it directly and extract complete context without relying on external sources.
+
+---
+
+## Why AVIS?
+- **[Self-describing artifacts](ca://s?q=Explain_self_describing_artifacts)** — each file tells its own story.  
+- **[Uniform headers](ca://s?q=AVIS_headers_explained)** — filename comments + AIFVS mapping guarantee consistency.  
+- **[Semantic cues](ca://s?q=Semantic_cues_in_AVIS)** — built-in meaning for indexing and retrieval.  
+
+---
+
+## Example AVIS Header (JavaScript File)
+```javascript
+// AVIS-ARTIFACT
+// Filename: engine.js
+// AIFVS-MAP: CodeArtifact
+// Description: Core logic for FireGem engine execution
+// Author: Demon
+// Created: 2026-08-03
+// Version: 1.0.0
