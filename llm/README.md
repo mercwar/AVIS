@@ -10,16 +10,15 @@
 
 | Page | Focus Area |
 |------|------------|
-| **[INTRO](README.md)** | Introduction to AVIS — purpose, scope, and core concepts |
-| **[Page 1](README_Page_1.md)** | Introduction to AVIS — purpose, scope, and core concepts |
-| **[Page 2](README_Page_2.md)** | AVIS headers — structure, filename comments, and AIFVS mappings |
-| **[Page 3](README_Page_3.md)** | Metadata blocks — description, author, version, and semantic cues |
-| **[Page 4](README_Page_4.md)** | Semantic cues — contextual meaning for indexing and classification |
-| **[Page 5](README_Page_5.md)** | Integrity principles — validation, consistency, and traceability |
-| **[Page 6](README_Page_6.md)** | Practical structure — examples of headers across artifact types |
-| **[Page 7](README_Page_7.md)** | Applications — code, documentation, data, and UI artifacts |
-| **[Page 8](README_Page_8.md)** | Integrity checks — validation loops, error prevention, consistency |
-| **[Page 9](README_Page_9.md)** | Real-world examples — AVIS in practice across domains |
+| **[Page 1](README_Page_01.md)** | Introduction to AVIS — purpose, scope, and core concepts |
+| **[Page 2](README_Page_02.md)** | AVIS headers — structure, filename comments, and AIFVS mappings |
+| **[Page 3](README_Page_03.md)** | Metadata blocks — description, author, version, and semantic cues |
+| **[Page 4](README_Page_04.md)** | Semantic cues — contextual meaning for indexing and classification |
+| **[Page 5](README_Page_05.md)** | Integrity principles — validation, consistency, and traceability |
+| **[Page 6](README_Page_06.md)** | Practical structure — examples of headers across artifact types |
+| **[Page 7](README_Page_07.md)** | Applications — code, documentation, data, and UI artifacts |
+| **[Page 8](README_Page_08.md)** | Integrity checks — validation loops, error prevention, consistency |
+| **[Page 9](README_Page_09.md)** | Real-world examples — AVIS in practice across domains |
 | **[Page 10](README_Page_10.md)** | Key takeaways — summary of AVIS principles |
 | **[Page 11](README_Page_11.md)** | Advanced applications — integration with data systems & workflows |
 | **[Page 12](README_Page_12.md)** | Large-scale environments — heavy indexing & distributed systems |
