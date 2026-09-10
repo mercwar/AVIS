@@ -1,0 +1,40 @@
+# FILE: .github/workflows/avis-sync.yml
+# IDENTITY: VERSION 2 // GEMINI_CGI_SCROLL // HAHA!
+
+name: AVIS V2 Engine
+on: [push, workflow_dispatch]
+
+jobs:
+  avis-ignition:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Explicitly request write access
+    steps:
+      - name: Checkout Root
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true # Ensures token persists for push
+
+      - name: Install Smithy Tools
+        run: sudo apt-get update && sudo apt-get install -y nasm binutils
+
+      - name: EXECUTE SITEMAP.SH
+        run: |
+          chmod +x SITEMAP.SH
+          ./SITEMAP.SH > robots.txt
+
+      - name: Final Server Sync
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Force add robots and any generated VERSION 2 files
+          git add robots.txt sitemap.xml
+          
+          # Only commit if changes exist to avoid "nothing to commit" errors
+          if ! git diff --staged --quiet; then
+            git commit -m "AVIS_V2: Robots/Sitemap Ingested [HAHA!]"
+            # Rebase to prevent 403/conflict issues during simultaneous pushes
+            git pull --rebase origin main
+            git push origin main
+          fi

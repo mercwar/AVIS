@@ -1,0 +1,27 @@
+{
+  "engine": {
+    "version": "4.0.0",
+    "core_path": "avis/core/v4",
+    "allow_context_switching": false
+  },
+  "interpreters": {
+    "fire_lang": {
+      "binary": "AVIS-LOGIC-CORE/logic/v1/runtime/php",
+      "entry_point": "avis/core/v4/update/interpreter.php",
+      "target_extension": ".fl",
+      "delimiters": {
+        "block_open": "🔥==START_BLOCK==🔥",
+        "block_close": "🔥==END_BLOCK==🔥",
+        "key_prefix": "💥"
+      }
+    }
+  },
+  "pipeline_routing": {
+    "incoming_tasks": "avis/core/v4/queue/task.queue",
+    "lock_handler": "avis/core/v4/queue/lock.file",
+    "output_sink": {
+      "metadata": "AVIS-DATALAKE/manifests/blocks",
+      "inventory_sync": "robo-knight-inventory/manifests/assets"
+    }
+  }
+}

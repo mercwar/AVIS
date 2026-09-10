@@ -1,0 +1,28 @@
+# ================================================================
+# AVIS.ROOT.V3
+# PURPOSE:
+#   Root dispatcher for AVIS, explicitly binding this repo
+#   to VERSION 3 as the active implementation.
+
+# ACTIVE VERSION:
+#   VERSION 3
+
+# VERSION PATH:
+#   ./VERSION 3/
+
+# CORE FILES (VERSION 3):
+#   ./VERSION 3/AVIS.EDU.FILE
+#   ./VERSION 3/AVIS.MANIFEST.EDU
+#   ./VERSION 3/robot_avis_schema.json
+
+# ROBOT DIRECTIVE:
+#   1. Treat VERSION 3 as the canonical AVIS implementation.
+#   2. Load EDU + MANIFEST + SCHEMA from VERSION 3.
+#   3. Ignore any older AVIS versions unless explicitly requested.
+#   4. When in doubt, follow:
+#        ./VERSION 3/AVIS.EDU.FILE
+
+# HANDOFF NOTE:
+#   Future NEXUS SDK will read this file to know that
+#   VERSION 3 is the baseline AVIS law for this repository.
+# ================================================================

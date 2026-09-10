@@ -1,0 +1,6 @@
+begin.control.LABEL1
+ctrl.type.STATIC
+ctrl.text."HELLO WORLD"
+ctrl.pos.x.20
+ctrl.pos.y.60
+end.control

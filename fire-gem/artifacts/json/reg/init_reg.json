@@ -1,0 +1,12 @@
+{
+  "AVIS_REGISTRY_OBJECT": {
+    "ID": "REG-0002-INIT",
+    "SOURCE": "fire-gem/artifacts/json/reg/",
+    "DISPATCH_TARGET": "fire-gem/artifacts/cbord/reg/",
+    "ACTION": "CBORD_DROP",
+    "ENTRIES": [
+      { "KEY": "CORE_IDENTITY", "VALUE": "JOE_TRON_V3" },
+      { "KEY": "BOOT_CLASS", "VALUE": "WIN43_CYBORG" }
+    ]
+  }
+}

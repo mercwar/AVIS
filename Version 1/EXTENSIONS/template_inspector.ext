@@ -1,0 +1,15 @@
+/* FILE: AVIS/VERSION 1/EXTENSIONS/template_inspector.ext
+   ROLE: EXTENSION
+   VERSION: 1
+*/
+
+BEGIN EXTENSION TEMPLATE_INSPECTOR
+    [EXT_META]:
+        VERSION: 1;
+        AUTHOR: "CVBGOD_CORE";
+        DESCRIPTION: "Inspect and list installed templates";
+
+    [EXT_OPS]:
+        OP LIST():
+            RETURN TEMPLATE_REGISTRY.LIST_TEMPLATES();
+END EXTENSION

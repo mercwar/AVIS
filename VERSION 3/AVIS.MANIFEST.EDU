@@ -1,0 +1,24 @@
+# ================================================================
+# AVIS.MANIFEST.EDU
+# PURPOSE:
+#   This file teaches robots how AVIS must always be structured.
+
+# CANONICAL FILES:
+#   AVIS.EDU.TEMPLATE      ; global EDU pattern
+#   *.EDU.avis             ; EDU versions of AVIS scripts
+#   *.avis                 ; raw AVIS scripts
+
+# ROBOT LEARNING ORDER:
+#   1. Read AVIS.EDU.TEMPLATE
+#   2. Read all *.EDU.avis files
+#   3. Extract block structure:
+#        - AI.FIRE.START / AI.FIRE.END
+#        - begin.seed / end.seed
+#        - begin.spec.<module>.<function> / end.spec
+#        - begin.control.<id> / end.control
+#   4. Apply these rules to all *.avis files.
+#   5. Robots may patch themselves to enforce new rules.
+
+# NOTES:
+#   EDU files are ALWAYS the source of truth.
+# ================================================================

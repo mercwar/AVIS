@@ -1,0 +1,47 @@
+// FILE: state_law_v1.law
+/*******************************************************************************
+ *                           AVIS.ARTIFACT HEADER
+ * TYPE: LAW
+ * CLASS: STATE-LAW
+ * NAME: STATE-LAW-V1
+ * VERSION: 1.00
+ * ROLE: Rules for State Tracking and Updates
+ * ENGINE: AVIS-2026 / AIFVS-MODE
+ * ORIGIN: /mercwar01/law/state_law_v1.law
+ *******************************************************************************
+ * [PURPOSE]
+ * Define how components maintain, update, and expose internal state within
+ * the AVIS ecosystem.
+ *
+ * [STATE PRINCIPLES]
+ * 1. Visibility:
+ *    State must be readable when requested.
+ *
+ * 2. Isolation:
+ *    Each module maintains its own state unless shared state is explicitly defined.
+ *
+ * 3. Controlled Mutation:
+ *    State changes must occur through defined update functions or procedures.
+ *
+ * 4. Consistency:
+ *    State transitions must be predictable and documented.
+ *
+ * [STATE TYPES]
+ * - STATIC: Does not change after initialization.
+ * - DYNAMIC: Changes based on operations.
+ * - DERIVED: Computed from other state values.
+ *
+ * [UPDATE RULES]
+ * - All updates must specify:
+ *     - CURRENT VALUE
+ *     - NEW VALUE
+ *     - REASON FOR CHANGE
+ *
+ * [ERROR HANDLING]
+ * - Invalid state transitions must be rejected with a clear explanation.
+ *
+ * [COMPLIANCE]
+ * All modules must follow this law to ensure predictable system behavior.
+ *******************************************************************************
+ * [END AVIS.ARTIFACT]
+ *******************************************************************************/

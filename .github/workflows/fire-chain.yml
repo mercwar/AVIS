@@ -1,0 +1,55 @@
+name: Fire-Gem AVIS Engine
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '*/15 * * * *'  # Pulse every 15 minutes [AUTONOMOUS]
+  workflow_dispatch:        # Manual override preserved
+
+jobs:
+  avis-ignition:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write       # FIX: Must explicitly state 'write'
+      
+    steps:                  # FIX: Indented to align with 'runs-on'
+      - name: Checkout Root
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0    # Changed to 0 for full history so 'git pull' works
+          submodules: recursive
+
+      - name: Install Toolchain (Smithy Tools)
+        run: sudo apt-get update && sudo apt-get install -y nasm binutils jq
+
+      - name: FORGE DISPATCHER (ASM POWER)
+        run: |
+          if [ -f "fire-gem.asm" ]; then
+            nasm -f elf64 fire-gem.asm -o fire-gem.o
+            ld fire-gem.o -o fire-gem_bin
+            chmod +x fire-gem_bin
+            echo "BASH: [ACK] FIRE-GEM DISPATCHER FORGED."
+          fi
+
+      - name: MASTER_PULSE (BASH BRAIN)
+        run: |
+          if [ -f "./fire-start.sh" ]; then
+            chmod +x fire-start.sh
+            ./fire-start.sh
+          fi
+
+      - name: EXECUTE MASTER DISPATCH (ASM EXECUTION)
+        run: |
+          if [ -f "./fire-gem_bin" ]; then
+            ./fire-gem_bin
+          fi
+
+      - name: MASTER_END (SEAL & DISPATCH)
+        run: |
+          if [ -f "./fire-end.sh" ]; then
+            chmod +x fire-end.sh
+            ./fire-end.sh
+          fi

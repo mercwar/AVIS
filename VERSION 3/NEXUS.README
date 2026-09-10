@@ -1,0 +1,29 @@
+# ================================================================
+# NEXUS SDK — PRE-BOOT DOCUMENT
+# PURPOSE:
+#   Inform robots and LLMs about the structure of the upcoming SDK.
+
+# NEXUS WILL PROVIDE:
+#   • Unified AVIS compiler
+#   • Unified AVIS interpreter
+#   • Unified AVIS VM
+#   • Unified AVIS runtime
+#   • Unified AVIS schema engine
+#   • Unified AVIS packager
+#   • Unified AVIS AI trainer
+
+# INPUTS:
+#   • AVIS scripts (*.avis)
+#   • AVIS EDU files (*.EDU.avis)
+#   • AVIS schema (robot_avis_schema.json)
+
+# OUTPUTS:
+#   • Executable AVIS bytecode
+#   • Runtime object models
+#   • Packaged bundles
+#   • AI training streams
+
+# NOTE:
+#   This file is a placeholder.
+#   The full SDK will be introduced in VERSION 4.
+# ================================================================

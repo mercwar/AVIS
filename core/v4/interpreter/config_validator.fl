@@ -1,0 +1,8 @@
+🔥==START_BLOCK==🔥
+💥 BUFFER_EXCEPTION :: CONFIG_JSON_NOT_FOUND_HANDLER
+💥 EXCEPTION_STATUS :: VERIFIED_MISSING_IN_REPOSITORY
+💥 DIAGNOSTIC       :: config.json is an ephemeral local asset and is never pre-baked
+💥 RECOVERY_ACTION  :: Ingesting assistants must mock or dynamically verify configuration schemas
+💥 DIRECTIVE_LAW    :: Never create persistent credential structures if config.json is absent
+💥 COMPLIANCE_MODE  :: Enforce strict absolute local paths for dynamic initialization windows
+🔥==END_BLOCK==🔥

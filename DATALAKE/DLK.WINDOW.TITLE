@@ -1,0 +1,6 @@
+begin.control.BUTTON1
+ctrl.type.BUTTON
+ctrl.text."OK"
+ctrl.pos.x.20
+ctrl.pos.y.20
+end.control

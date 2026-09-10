@@ -1,0 +1,89 @@
+name: AVIS_MASTER_CHAIN
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.txt' # Prevents sitemap updates from re-triggering
+  workflow_dispatch:
+
+# Prevents multiple runs from clashing
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  forge:
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-id: ${{ steps.upload.outputs.artifact-id }}
+    steps:
+      - name: Checkout Root
+        uses: actions/checkout@v4
+
+      - name: Install Toolchain
+        run: sudo apt-get update && sudo apt-get install -y nasm binutils
+
+      - name: FORGE: Compile All ASM
+        run: |
+          find . -maxdepth 2 -name "*.asm" | while read -r f; do
+            # Use .bin suffix to avoid directory name collisions
+            OUT_NAME="${f%.asm}.bin"
+            echo "FORGE: Compiling $f -> $OUT_NAME"
+            
+            nasm -f elf64 "$f" -o "${f%.asm}.o"
+            ld "${f%.asm}.o" -o "$OUT_NAME"
+            chmod +x "$OUT_NAME"
+            
+            # Optional: Clean up the object file immediately
+            rm "${f%.asm}.o"
+          done
+
+
+      - name: EXECUTE: Generate V2 Sitemap
+        run: |
+          if [ -f "SITEMAP.SH" ]; then
+            chmod +x SITEMAP.SH
+            ./SITEMAP.SH > robots.txt
+          fi
+
+      - name: UPLOAD: Store Binaries
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: avis-binaries
+          path: |
+            ./*
+            !./.git
+            !./.github
+
+  dispatch:
+    runs-on: ubuntu-latest
+    needs: forge
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Root
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Essential for pushing back to repo
+
+      - name: DOWNLOAD: Retrieve Binaries
+        uses: actions/download-artifact@v4
+        with:
+          name: avis-binaries
+
+      - name: SYNC: Master OS Audit Surface
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add .
+          # Check if there are actual changes before committing
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "AVIS_V2: Master Chain Dispatch [skip ci]"
+            git push origin HEAD:${{ github.ref }}
+          else
+            echo "No changes to sync."
+          fi

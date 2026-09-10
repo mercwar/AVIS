@@ -1,0 +1,35 @@
+{
+  "AVIS_CJS_OBJECT": {
+    "WRAPPER_GUID": "SENTINEL-V2-STABLE-2026",
+    "PROGRAM_STACK": [
+      {
+        "ID": "V2_INIT",
+        "CODE": "WM_CREATE_PROC",
+        "FUNCTION": "fire-gem/artifacts/sh/fire-mod.sh"
+      },
+      {
+        "ID": "V2_FORGE",
+        "CODE": "WM_CREATE_PROC",
+        "FUNCTION": "fire-gem/artifacts/sh/fire-compile.sh"
+      },
+      {
+        "ID": "PROC-V2-INGEST",
+        "CODE": "WM_CREATE_PROC",
+        "TARGET": "fire-gem-0003.bin",
+        "THREADS": [
+          { 
+            "ID": "T1", 
+            "CODE": "WM_CREATE_THREAD", 
+            "FUNCTION": "fire-gem-0003.bin" 
+          }
+        ]
+      },
+      {
+        "ID": "V2_RUN",
+        "CODE": "WM_CREATE_PROC",
+        "FUNCTION": "fire-gem/artifacts/sh/fire-run.sh"
+      },
+      { "CODE": "EXIT", "MACRO": "wm_macro_ack" }
+    ]
+  }
+}

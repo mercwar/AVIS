@@ -1,0 +1,69 @@
+/* AVIS.ARTIFACT
+   FILE: avis.fvs
+   NAME: AVIS_NAVIGATOR
+   ROLE: Root navigation artifact for folder-drop-in compatibility
+
+   PURPOSE:
+       - Serves as the entry point for any AVIS-enabled folder
+       - Provides navigation to all .defs, .artifact templates, and .art identity files
+       - Establishes AVIS folder structure without requiring installation
+       - Enables AVIS systems to auto-detect and auto-load artifacts
+       - Acts as the FVS (File Visibility System) root
+
+   WRAPS:
+       avis_cmt_artifacts.def
+       avis_cmt_artifacts.defs
+       avis_c_artifacts.defs
+       avis_h_artifacts.defs
+       avis_cmt.artifacts
+
+   MAPS:
+       TEMPLATES: *.artifact
+       ARTIFACTS: *.art
+       DEFINITIONS: *.defs
+       WRAPPERS: *_wrap.art
+
+   SUBSYSTEM:
+       FAMILY: AVIS
+       LAYER: Navigation
+       TIER: 0
+       STATUS: Active
+
+   IDENTITY:
+       VERSION: 1.0
+       AUTHOR: AVIS System
+       CREATED: <Date>
+       UPDATED: <Date>
+       SIGNATURE: AVIS-FVS-NAV-ROOT
+
+   DESCRIPTION:
+       This file is the AVIS navigator. It is the first file loaded by any
+       AVIS-aware system. It defines the folder structure, the template
+       architecture, and the DEFS linkage. It enables drop-in compatibility
+       by providing a single, stable entry point that requires no external
+       configuration.
+
+   NOTES:
+       - This file must always be named avis.fvs
+       - This file must always exist at the root of the AVIS folder
+       - This file contains no code; it is identity and navigation only
+       - This file is mandatory for AVIS folder portability
+
+   REGISTRY:
+       - Root of AVIS template registry
+       - Root of AVIS DEFS registry
+       - Root of AVIS artifact registry
+
+   LAW:
+       PREFIX: AVIS_
+       NAMING: Navigator must be named avis.fvs
+       STRUCTURE: Must contain WRAPS and MAPS blocks
+
+   HISTORY:
+       [v1.0] Initial navigator creation
+
+   FUTURE:
+       - Auto-discovery of new DEFS files
+       - Auto-expansion of template categories
+       - Integration with AVIS runtime loaders
+*/

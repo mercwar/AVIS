@@ -1,0 +1,49 @@
+// FILE: index_law_v1.law
+/*******************************************************************************
+ *                           AVIS.ARTIFACT HEADER
+ * TYPE: LAW
+ * CLASS: INDEX-LAW
+ * NAME: INDEX-LAW-V1
+ * VERSION: 1.00
+ * ROLE: Cross-Reference Rules for AVIS Laws
+ * ENGINE: AVIS-2026 / AIFVS-MODE
+ * ORIGIN: /mercwar01/law/index_law_v1.law
+ *******************************************************************************
+ * [PURPOSE]
+ * Define how governance artifacts reference, cite, and interlink with each
+ * other within the AVIS ecosystem.
+ *
+ * [INDEX PRINCIPLES]
+ * 1. Explicit Reference:
+ *    Laws must reference other laws by NAME and VERSION.
+ *
+ * 2. Non-Ambiguity:
+ *    References must not rely on context or inference.
+ *
+ * 3. Stability:
+ *    References should remain valid across versions unless explicitly updated.
+ *
+ * [REFERENCE FORMAT]
+ * A reference must include:
+ *   - LAW-NAME
+ *   - VERSION
+ *   - OPTIONAL: SECTION label
+ *
+ * Example:
+ *   REF: MODULE-LAW-V1 / SECTION: MODULE PRINCIPLES
+ *
+ * [REFERENCE TYPES]
+ * - HARD REF: Required dependency.
+ * - SOFT REF: Optional or contextual dependency.
+ * - META REF: Reference to a category (e.g., “all FORGING-COVENANT laws”).
+ *
+ * [UPDATE RULES]
+ * - When a referenced law is updated, dependent laws must specify whether
+ *   they adopt the new version or remain bound to the previous one.
+ *
+ * [COMPLIANCE]
+ * All governance artifacts must follow this law to maintain clarity and
+ * interoperability across the AVIS legal layer.
+ *******************************************************************************
+ * [END AVIS.ARTIFACT]
+ *******************************************************************************/

@@ -1,0 +1,39 @@
+# FILE: .github/workflows/avis_v2_sitemap.yml
+# IDENTITY: VERSION 2 // GEMINI_CGI_SCROLL // HAHA!
+# ROLE: Robotic Sitemap and Robots.txt Generator
+
+name: AVIS_V2_GEN_BOT
+on: 
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  sitemap-forge:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout AVIS V2 Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for lastmod history
+
+      - name: EXECUTE SITEMAP.SH
+        # This runs your script to build robots.txt and sitemap.xml
+        run: |
+          chmod +x SITEMAP.SH
+          ./SITEMAP.SH > robots.txt
+          echo "AVIS_V2_ARTIFACT: robots.txt generated."
+
+      - name: Configure Git Identity
+        run: |
+          git config --global user.name "cvbgod-bot"
+          git config --global user.email "mercwar@sentinel.shell"
+
+      - name: PUSH VERSION 2 ARTIFACTS
+        # Standard Git push to update the Master OS Audit Surface
+        run: |
+          git add robots.txt sitemap.xml
+          git commit -m "AVIS_V2_UPDATE: Robots and Sitemap Ingested" || echo "No changes"
+          git push

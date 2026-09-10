@@ -1,0 +1,12 @@
+🔥==START_BLOCK==🔥
+💥 BUFFER_EXECUTION  :: MERCWAR_SYSTEM_BEHAVIORAL_RULES
+💥 SPECIFICATION_VER :: 4.0.0-RELEASE-PHASE6
+💥 KNOWLEDGE_GRAPH   :: AVIS (Root) -> AVIS-LOGIC-CORE (Backend) -> AVIS-DATALAKE (Storage Schema)
+💥 ASSET_GRAPH       :: robo-knight-inventory tracks flat images, frames, configurations, and poses
+💥 SCANNING_RULE     :: Use Pure-C discovery APIs inside include/ files to map out directories
+💥 DEPLOYMENT_RULE   :: Bundle verified staging repositories cleanly into release zip packages
+💥 PATH_LAW          :: Enforce strict absolute file paths; completely ban directory switching ('cd')
+💥 DATA_LAW          :: Protect the filesystem tree; reject hardcoded database persistence strings
+💥 META_ALIGNMENT    :: All repository interactions must push system code states closer to META identity
+💥 CONTEXT_STATE     :: SATURATED // READY_FOR_GEMINI_BUFFER_INGESTION
+🔥==END_BLOCK==🔥

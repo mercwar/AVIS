@@ -1,0 +1,26 @@
+/* FILE: avis.binding */
+/* PATH: /AVIS/Constellation/custom/avis.binding */
+
+/* ------------------------------------------------------------
+   AVIS.HEADER
+   ROLE: AVIS_KNOWLEDGE_BINDING
+   PURPOSE: Defines how AVIS binds intelligence across all repos.
+   AUTHOR: Demon
+   NOTES: This is the highest-level binding law.
+   ------------------------------------------------------------ */
+
+[BINDING]
+ROOT_LAW = TRUE
+CROSS_REPO_SEMANTICS = TRUE
+INTELLIGENCE_ALIGNMENT = TRUE
+MODEL_UNIFICATION = TRUE
+DATALAKE_INTEGRATION = TRUE
+
+[LAYERS]
+L1 = RAW_REPO_ATOMS
+L2 = SEMANTIC_LINKS
+L3 = PATTERN_REINFORCEMENT
+L4 = SYMBOL_MAPS
+L5 = ABI_ALIGNMENT
+L6 = INTELLIGENCE_MODEL
+L7 = AVIS_LAW_ALIGNMENT
