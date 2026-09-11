@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📂 System Directory Structure: avis/core/ | AVIS</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📂 System Directory Structure: avis/core/" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A structured, machine‑readable repository standard for AI systems. AVIS defines schemas, manifests, indexing rules, and artifact protocols that allow AI models to scan, interpret, and integrate codebases with zero ambiguity." />
+<meta property="og:description" content="A structured, machine‑readable repository standard for AI systems. AVIS defines schemas, manifests, indexing rules, and artifact protocols that allow AI models to scan, interpret, and integrate codebases with zero ambiguity." />
+<link rel="canonical" href="https://mercwar.github.io/AVIS/core/" />
+<meta property="og:url" content="https://mercwar.github.io/AVIS/core/" />
+<meta property="og:site_name" content="AVIS" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📂 System Directory Structure: avis/core/" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A structured, machine‑readable repository standard for AI systems. AVIS defines schemas, manifests, indexing rules, and artifact protocols that allow AI models to scan, interpret, and integrate codebases with zero ambiguity.","headline":"📂 System Directory Structure: avis/core/","url":"https://mercwar.github.io/AVIS/core/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/AVIS/assets/css/style.css?v=2081b894c74860e9dfc1bbee52af856c0565f6ca">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/AVIS/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/AVIS/">AVIS</a></h1>
+      
+
+      <h2 id="-system-directory-structure-aviscore">📂 System Directory Structure: avis/core/</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>avis/
+└── core/
+    ├── README.md               # 💎 System-embedded technical blueprint for AVIS Core
+    └── v4/
+        ├── manifest.json       # 📑 Machine-readable ecosystem dependency schema
+        └── queue/
+            ├── task.queue      # 📥 Flat line-by-line task processing system
+            └── lock.file       # 🔒 Transactional system write-lock
+</code></pre></div></div>
+<hr />
+<h2 id="-code-layout-aviscorereadmemd">📑 Code Layout: avis/core/README.md</h2>
+
+<h1 id="-avis-core-matrix--version-400">🧠 AVIS CORE MATRIX — VERSION 4.0.0</h1>
+<p>Welcome to the internal processing core of the system environment. This directory acts as the central <strong>Deterministic Execution Plane</strong> for our entire distributed codebase.</p>
+
+<p>By operating out of a unified path layer, this matrix eliminates the need for arbitrary command-line directory changes (<code class="language-plaintext highlighter-rouge">cd</code>) when executing runtime actions.</p>
+<h2 id="-ecosystem-core-mapping">⚡ Ecosystem Core Mapping</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌───────────────────┐
+│ AVIS CORE │
+│ (This Matrix) │
+└─────────┬─────────┘
+│
+┌───────────────────────┼───────────────────────┐
+▼ ▼ ▼
+┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
+│ AVIS-LOGIC-CORE │ │ AVIS-DATALAKE │ │ robo-knight-* │
+│ (PHP Engine V1) │ │ (Pure-C Lake) │ │ (Asset Factory) │
+└─────────────────┘ └─────────────────┘ └─────────────────┘
+
+</code></pre></div></div>
+<h2 id="️-architectural-layering">⚙️ Architectural Layering</h2>
+
+<ul>
+  <li>📥 <strong>v4/queue/task.queue</strong>: The sequential transaction line. Actions are written as plain-text vectors. This allows language models and autonomous crawlers to read and append actions without token or parsing overhead.</li>
+  <li>📑 <strong>v4/manifest.json</strong>: The universal dictionary mapping structural paths and downstream asset boundaries directly to their system footprints.</li>
+  <li>🔒 <strong>v4/queue/lock.file</strong>: The atomic engine lock file preventing file mutation collisions during high-throughput repository iterations.</li>
+</ul>
+
+<h2 id="️-integration-directives">🛡️ Integration Directives</h2>
+
+<ol>
+  <li><strong>Zero Database Footprint</strong>: No external persistent socket parameters or local configurations may host plain-text credential files inside this tree.</li>
+  <li><strong>Absolute Path Targeting</strong>: Any server module or tool communicating with <code class="language-plaintext highlighter-rouge">avis/core/</code> must target scripts explicitly by file location attributes, completely ignoring terminal context changes.</li>
+  <li><strong>LLM Awareness</strong>: All manifest fields are strictly declared flat to maximize crawling processing accuracy.</li>
+</ol>
+
+<hr />
+<h2 id="-code-layout-aviscorev4manifestjson">📑 Code Layout: avis/core/v4/manifest.json</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "system_identity": "AVIS_CORE",
+  "version": "4.0.0",
+  "operational_mode": "strict_absolute_paths",
+  "manifest_rules": {
+    "allow_db_strings": false,
+    "require_explicit_directories": true
+  },
+  "subsystem_endpoints": {
+    "backend_processor": "AVIS-LOGIC-CORE/logic/v1",
+    "storage_sink": "AVIS-DATALAKE",
+    "asset_warehouse": "robo-knight-inventory"
+  }
+}
+</code></pre></div></div>
+<hr />
+<h2 id="-sample-state-aviscorev4queuetaskqueue">📥 Sample State: avis/core/v4/queue/task.queue</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2026-09-10T07:55:00-04:00] PIPELINE_INIT: VERSION=4.0.0 STATUS=ACTIVE SOURCE=AVIS_CORE
+[2026-09-10T07:55:12-04:00] DOWNSTREAM_HOOK: REPO=Cyborg TARGET=logic/v1 STATUS=PENDING
+[2026-09-10T07:55:15-04:00] DOWNSTREAM_HOOK: REPO=NEXUS TARGET=logic/v1 STATUS=PENDING
+[2026-09-10T07:55:18-04:00] DOWNSTREAM_HOOK: REPO=Sentinel TARGET=logic/v1 STATUS=PENDING
+</code></pre></div></div>
+<hr />
+<p>With the avis/core/ Version 4 layout and its internal README fully built out, what should we build next?</p>
+
+<ul>
+  <li>Move to AVIS-LOGIC-CORE to write the backend engine logic that processes this line-by-line text queue?</li>
+  <li>Write out the C-based structures for AVIS-DATALAKE that will store transactions popped from this queue?</li>
+</ul>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/AVIS/edit/main/core/README.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+/* FILE: AVIS/VERSION 1/ARTIFACTS/source_nodes.art
+   ROLE: SOURCE_FILE_ARTIFACT_NODES
+   VERSION: 1
+*/
+
+BEGIN AVIS_SOURCE_NODES VERSION_1
+
+    /* ENGINE */
+    NODE "ENGINE/cyborg.engine"            ROLE ENGINE;
+    NODE "ENGINE/events.engine"            ROLE EVENT_SYSTEM;
+    NODE "ENGINE/hooks.engine"             ROLE HOOK_SYSTEM;
+
+    /* RUNTIME */
+    NODE "RUNTIME/core.runtime"            ROLE RUNTIME_CORE;
+    NODE "RUNTIME/dispatch.runtime"        ROLE DISPATCH_SYSTEM;
+    NODE "RUNTIME/interpreter.runtime"     ROLE INTERPRETER_RUNTIME;
+
+    /* MATRIX */
+    NODE "matrix/schema.avis"              ROLE MATRIX_SCHEMA;
+    NODE "ARTIFACTS/matrix.instance.art"   ROLE MATRIX_INSTANCE;
+    NODE "DEFS/matrix.defs"                ROLE MATRIX_DEFS;
+
+    /* EXTENSIONS */
+    NODE "EXTENSIONS/registry.ext"         ROLE EXTENSION_REGISTRY;
+    NODE "EXTENSIONS/loader.ext"           ROLE EXTENSION_LOADER;
+    NODE "EXTENSIONS/matrix_inspector.ext" ROLE EXTENSION;
+    NODE "EXTENSIONS/template_inspector.ext" ROLE EXTENSION;
+
+    /* TEMPLATES */
+    NODE "TEMPLATES/matrix.artifact"       ROLE TEMPLATE;
+    NODE "TEMPLATES/interpreter.artifact"  ROLE TEMPLATE;
+    NODE "TEMPLATES/registry.templates"    ROLE TEMPLATE_REGISTRY;
+    NODE "TEMPLATES/bindings.templates"    ROLE TEMPLATE_BINDINGS;
+    NODE "TEMPLATES/install.templates"     ROLE TEMPLATE_INSTALLER;
+
+    /* SEARCH */
+    NODE "SEARCH/crawl.search"             ROLE SEARCH_CRAWLER;
+    NODE "SEARCH/index.search"             ROLE SEARCH_INDEX;
+
+    /* BOOT */
+    NODE "BOOT/init.boot"                  ROLE VERSION_BOOTSTRAP;
+
+    /* CONFIG */
+    NODE "CONFIG/version.cfg"              ROLE VERSION_CONFIGURATION;
+
+    /* SECURITY */
+    NODE "SECURITY/policy.sec"             ROLE SECURITY_POLICY;
+
+    /* VALIDATION */
+    NODE "VALIDATION/schema.val"           ROLE VALIDATION_RULES;
+
+    /* META */
+    NODE "META/version.meta"               ROLE VERSION_METADATA;
+
+    /* STATUS */
+    NODE "STATUS.VERSION1"                 ROLE VERSION_STATUS;
+
+    /* ACTIVATION */
+    NODE "ACTIVATE.VERSION1"               ROLE VERSION_ACTIVATION;
+
+    /* SYSTEM */
+    NODE "../../SYSTEM.INDEX"              ROLE SYSTEM_INDEX;
+    NODE "../../SYSTEM.MAP"                ROLE SYSTEM_MAP;
+    NODE "../../SYSTEM.MANIFEST"           ROLE SYSTEM_MANIFEST;
+    NODE "../../SYSTEM.HEALTH"             ROLE SYSTEM_HEALTH;
+
+    /* ACTIVE POINTER */
+    NODE "../../ACTIVE.VERSION"            ROLE ACTIVE_VERSION_POINTER;
+
+END AVIS_SOURCE_NODES

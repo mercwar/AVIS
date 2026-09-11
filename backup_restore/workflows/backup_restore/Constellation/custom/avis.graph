@@ -1,0 +1,29 @@
+/* FILE: avis.graph */
+/* PATH: /AVIS/Constellation/custom/avis.graph */
+
+/* ------------------------------------------------------------
+   AVIS.HEADER
+   ROLE: AVIS_GRAPH_MAP
+   PURPOSE: Defines AVIS semantic graph for Constellation robots.
+   AUTHOR: Demon
+   NOTES: This is the root semantic graph for the entire AVIS
+          intelligence ecosystem.
+   ------------------------------------------------------------ */
+
+[GRAPH]
+NODE:ROOT = /AVIS/
+NODE:LAW = /AVIS/LAW/
+NODE:SCHEMA = /AVIS/SCHEMA/
+NODE:CORE = /AVIS/CORE/
+NODE:INTELLIGENCE = /AVIS/INTELLIGENCE/
+NODE:MODELS = /AVIS/MODELS/
+NODE:CHILDREN = /AVIS/CHILD_REPOS/
+
+[LINKS]
+ROOT -> LAW
+LAW -> SCHEMA
+SCHEMA -> CORE
+CORE -> INTELLIGENCE
+INTELLIGENCE -> MODELS
+MODELS -> CHILDREN
+CHILDREN -> ROOT

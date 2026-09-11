@@ -1,0 +1,47 @@
+// FILE: directory_law_v1.law
+/*******************************************************************************
+ *                           AVIS.ARTIFACT HEADER
+ * TYPE: LAW
+ * CLASS: DIRECTORY-LAW
+ * NAME: DIRECTORY-LAW-V1
+ * VERSION: 1.00
+ * ROLE: Filesystem Governance for /mercwar01/
+ * ENGINE: AVIS-2026 / AIFVS-MODE
+ * ORIGIN: /mercwar01/law/directory_law_v1.law
+ *******************************************************************************
+ * [PURPOSE]
+ * Define the structure, purpose, and rules governing the filesystem under
+ * /mercwar01/ to ensure clarity, consistency, and predictable organization.
+ *
+ * [ROOT STRUCTURE]
+ * /mercwar01/
+ *   /bin/        → Executable scripts and binaries
+ *   /www/        → Web-facing files
+ *   /log/        → Logs and output traces
+ *   /law/        → Governance artifacts
+ *   /modules/    → Functional components
+ *   /data/       → Persistent data storage
+ *   /tmp/        → Temporary files
+ *
+ * [DIRECTORY PRINCIPLES]
+ * 1. Explicit Placement:
+ *    Every artifact must be placed in the correct directory.
+ *
+ * 2. No Drift:
+ *    Files may not be relocated without explicit instruction.
+ *
+ * 3. Clear Purpose:
+ *    Each directory serves a single, well-defined role.
+ *
+ * 4. Predictable Naming:
+ *    Filenames must reflect purpose and scope.
+ *
+ * [EXTENSION RULES]
+ * - New directories must be documented and justified.
+ * - Extensions must not conflict with existing structure.
+ *
+ * [COMPLIANCE]
+ * All filesystem operations must follow this law to maintain order and clarity.
+ *******************************************************************************
+ * [END AVIS.ARTIFACT]
+ *******************************************************************************/

@@ -1,0 +1,58 @@
+# AVIS.EDU.FILE
+# FILE: mainwindow.avis
+# ROLE: EDU version of mainwindow.avis
+# PURPOSE: Teach robots how this AVIS script is structured.
+
+AVIS.FVS.2026
+
+AI.FIRE.START
+
+    begin.seed
+        begin.spec.CWIN.REG
+            win.class.MAINWIN
+            win.proc.MAINPROC
+            win.style.OVERLAPPEDWINDOW
+            win.cursor.ARROW
+            win.brush.WINDOW
+            win.icon.MAIN
+        end.spec
+    end.seed
+
+    begin.spec.CWIN.CREATE
+        win.create.MAINWIN
+        win.title."MAIN WINDOW"
+        win.pos.x.200
+        win.pos.y.200
+        win.width.600
+        win.height.400
+        win.show.NORMAL
+        win.center.FALSE
+
+        begin.control.LBL1
+            ctrl.type.STATIC
+            ctrl.text."This is MAIN window"
+            ctrl.pos.x.20
+            ctrl.pos.y.20
+            ctrl.width.200
+            ctrl.height.20
+            ctrl.id.9400
+        end.control
+    end.spec
+
+AI.FIRE.END
+
+AI.FIRE.START
+
+    begin.seed
+        begin.spec.MENU
+            menu.add.0.9001."Open File"
+            menu.add.0.9002."Save File"
+            menu.add.0.9003."Exit"
+            menu.add.1.9101."Tools → Refresh"
+            menu.add.1.9102."Tools → Reload"
+            menu.add.2.9201."Clear Log"
+            menu.add.2.9202."Export Log"
+        end.spec
+    end.seed
+
+AI.FIRE.END

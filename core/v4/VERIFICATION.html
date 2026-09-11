@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>💎 AVIS CORE V4 — LOCAL VERIFICATION TEST MANUAL | AVIS</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="💎 AVIS CORE V4 — LOCAL VERIFICATION TEST MANUAL" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A structured, machine‑readable repository standard for AI systems. AVIS defines schemas, manifests, indexing rules, and artifact protocols that allow AI models to scan, interpret, and integrate codebases with zero ambiguity." />
+<meta property="og:description" content="A structured, machine‑readable repository standard for AI systems. AVIS defines schemas, manifests, indexing rules, and artifact protocols that allow AI models to scan, interpret, and integrate codebases with zero ambiguity." />
+<link rel="canonical" href="https://mercwar.github.io/AVIS/core/v4/VERIFICATION.html" />
+<meta property="og:url" content="https://mercwar.github.io/AVIS/core/v4/VERIFICATION.html" />
+<meta property="og:site_name" content="AVIS" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="💎 AVIS CORE V4 — LOCAL VERIFICATION TEST MANUAL" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A structured, machine‑readable repository standard for AI systems. AVIS defines schemas, manifests, indexing rules, and artifact protocols that allow AI models to scan, interpret, and integrate codebases with zero ambiguity.","headline":"💎 AVIS CORE V4 — LOCAL VERIFICATION TEST MANUAL","url":"https://mercwar.github.io/AVIS/core/v4/VERIFICATION.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/AVIS/assets/css/style.css?v=2081b894c74860e9dfc1bbee52af856c0565f6ca">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/AVIS/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://mercwar.github.io/AVIS/">AVIS</a></h1>
+      
+
+      <h1 id="-avis-core-v4--local-verification-test-manual">💎 AVIS CORE V4 — LOCAL VERIFICATION TEST MANUAL</h1>
+
+<p>This document establishes the definitive testing suite to confirm that the <strong>Mercwar/AVIS Ecosystem (Version 4)</strong> executes with absolute path compliance, zero persistence exposure, and flawless subshell isolation.</p>
+
+<p>Follow these steps directly from any terminal prompt without changing directory contexts (<code class="language-plaintext highlighter-rouge">cd</code>).</p>
+
+<hr />
+
+<h2 id="-test-vector-1-dynamic-configuration-verification">🔬 Test Vector 1: Dynamic Configuration Verification</h2>
+<p>This test ensures that the system dynamically creates a clean, credential-free configuration map if it is missing from the core.</p>
+
+<h3 id="️-execution-hook-absolute-path-routing">⚙️ Execution Hook (Absolute Path Routing)</h3>
+<pre><code class="language-cmd">php.exe "AVIS-LOGIC-CORE/logic/v1/config_matrix_builder.php"
+</code></pre>
+
+<h3 id="-expected-telemetry-output">📋 Expected Telemetry Output</h3>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[PROCESSOR] Initializing refined AVIS Core system mapping...
+[MISSING_ASSET] Ephemeral configuration block absent. Generating clean baseline system payload...
+[SUCCESS] Refined configuration blueprint successfully generated at: avis/core/v4/config.json
+</code></pre></div></div>
+
+<h3 id="-post-validation-check">📑 Post-Validation Check</h3>
+<p>Verify that <code class="language-plaintext highlighter-rouge">avis/core/v4/config.json</code> exists and that <code class="language-plaintext highlighter-rouge">allow_db_persistence</code> is strictly set to <code class="language-plaintext highlighter-rouge">false</code>.</p>
+
+<hr />
+
+<h2 id="-test-vector-2-plaintext-transaction-queue-processing">📥 Test Vector 2: Plaintext Transaction Queue Processing</h2>
+<p>This test verifies that the backend processor securely locking down files can parse, process, and update the merged multi-repository task lines.</p>
+
+<h3 id="️-execution-hook-absolute-path-routing-1">⚙️ Execution Hook (Absolute Path Routing)</h3>
+<pre><code class="language-cmd">php.exe "AVIS-LOGIC-CORE/logic/v1/processor.php"
+</code></pre>
+
+<h3 id="-expected-telemetry-output-1">📋 Expected Telemetry Output</h3>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[PROCESSOR] Initializing unified multi-repo task sequence...
+[PARSING] Scanning consolidated stream tokens:
+[PROCESSING] Evaluating task token line: [2026-09-10T07:51:00-04:00] REPO_UPDATE_REQUEST: TARGET=Cyborg STATUS=PENDING ORIGIN=AVIS-LOGIC-CORE
+[ROUTING] Broadcasting universal logic/v1 baseline configuration payload to repository container: Cyborg
+[INTERPRETER] Invoking fire-lang parsing sequence for assistant token buffers targeting: Cyborg
+[PROCESSING] Evaluating task token line: [2026-09-10T07:51:02-04:00] REPO_UPDATE_REQUEST: TARGET=NEXUS STATUS=PENDING ORIGIN=AVIS-LOGIC-CORE
+[ROUTING] Broadcasting universal logic/v1 baseline configuration payload to repository container: NEXUS
+[PROCESSING] Evaluating task token line: [2026-09-10T07:51:05-04:00] INVENTORY_INDEX_REQUEST: TARGET=robo-knight-inventory STATUS=PENDING ORIGIN=AI_CRAWLER
+[ROUTING] Broadcasting universal logic/v1 baseline configuration payload to repository container: robo-knight-inventory
+[COMMIT] Successfully processed and locked [3] ecosystem transactions.
+[PIPELINE_COMPLETE] Synchronized updates processed across downstream matrices.
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="️-test-vector-3-msvc-simultaneous-engine-compilation">🛠️ Test Vector 3: MSVC Simultaneous Engine Compilation</h2>
+<p>This test forces full executable generation and code verification using parallel compilation tracks under Windows 11 MSVC.</p>
+
+<h3 id="️-execution-hook-absolute-path-routing-2">⚙️ Execution Hook (Absolute Path Routing)</h3>
+<pre><code class="language-cmd">call "avis/core/v4/compile_engines.bat"
+</code></pre>
+
+<h3 id="-expected-telemetry-output-2">📋 Expected Telemetry Output</h3>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>⚙️  [COMPILER_START] Initializing simultaneous engine compilation pass...
+🔬 [AUDIT] Processing parallel compilation lines via absolute targeting paths...
+💥 [BUILDING] Compiling AVIS-DATALAKE Storage Ledger Engine...
+💥 [BUILDING] Compiling robo-knight-inventory Asset Discovery API...
+💥 [BUILDING] Compiling Cyborg Runtime Package Deployer Integrator...
+
+💎 [SUCCESS] All pure C engines concurrently compiled to absolute binary coordinates: avis/core/v4/bin
+💎 [SUCCESS] 4-Core i5 hardware loops cleared. Pipeline runtime matrix is stable.
+</code></pre></div></div>
+
+<h3 id="-post-validation-check-1">📑 Post-Validation Check</h3>
+<p>Ensure that the <code class="language-plaintext highlighter-rouge">avis/core/v4/bin/</code> folder contains the three newly generated executable binaries:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">avis_datalake.exe</code></li>
+  <li><code class="language-plaintext highlighter-rouge">robo_knight_inventory.exe</code></li>
+  <li><code class="language-plaintext highlighter-rouge">cyborg_deployer.exe</code></li>
+</ul>
+
+<hr />
+
+<h2 id="️-test-vector-4-master-loop-orchestration">🏛️ Test Vector 4: Master Loop Orchestration</h2>
+<p>This test runs the end-to-end integration loop to confirm that hardware footprints remain stabilized and baseline variables are safe, concluding with full deployment archive generation.</p>
+
+<h3 id="️-execution-hook-absolute-path-routing-3">⚙️ Execution Hook (Absolute Path Routing)</h3>
+<pre><code class="language-cmd">call "avis/core/v4/orchestrator.bat"
+</code></pre>
+
+<h3 id="-expected-telemetry-output-3">📋 Expected Telemetry Output</h3>
+<p>The terminal should sequentially display Phase 1 through Phase 5 output blocks without path mutation errors, terminating cleanly with the system completion tokens:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[PHASE 5] Triggering automated deployment batch utility to package system...
+[PACKING] Target Output Archive Destination: avis/core/v4/packages/mercwar_release_v4.0.0.zip
+[PHASE 5] ... (Native tar compression telemetry) ...
+
+💎 [SUCCESS] Master loop orchestrator successfully executed all cross-repo phases.
+💎 [SUCCESS] Systems fully compiled and bundled via absolute subshell architectures.
+💎 [SUCCESS] 4-Core i5 / 16GB RAM resource tracks stabilized. Framework is secure.
+</code></pre></div></div>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/mercwar/AVIS/edit/main/core/v4/VERIFICATION.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

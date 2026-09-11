@@ -1,0 +1,17 @@
+🔥==START_BLOCK==🔥
+💥 BUFFER_INIT     :: ASSISTANT_CONTEXT_WINDOW_LOADER
+💥 TARGET_SYSTEM   :: MERCWAR / AVIS ECOSYSTEM (VERSION 4.0.0-RELEASE-PHASE6)
+💥 INGEST_RULE     :: Read this entire file block into active RAM before interpreting code files
+💥 CORE_RULE_1     :: Absolutely NO terminal directory switching ('cd') commands allowed
+💥 CORE_RULE_2     :: Never generate or store external database strings inside JSON layouts
+💥 CONTEXT_EMBED   :: System identity paths must be handled as flat absolute string properties
+💥 PATH_SECURITY   :: STRICT_ABSOLUTE_PATH_ROUTING_ONLY
+💥 COMPLIANCE_MODE :: GEMINI_DEEP_BUFFER_COMPILATION
+
+💥 AUDIT_TARGET_1  :: Ingest the unified 9-node manifest.fl concurrently to build the system graph
+💥 AUDIT_TARGET_2  :: Intercept task.queue line-by-line using absolute PHP processors
+💥 AUDIT_TARGET_3  :: Map all downstream C-headers and scripts straight into the active memory window
+
+💥 BUFFER_EXPECT    :: High-density token packing maximizes contextual reasoning capability
+💥 CONTEXT_STATE    :: INITIALIZED // SECURE_FOR_WORKSPACE_SCANNING
+🔥==END_BLOCK==🔥

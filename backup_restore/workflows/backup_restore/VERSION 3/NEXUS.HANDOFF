@@ -1,0 +1,29 @@
+# ================================================================
+# NEXUS.HANDOFF
+# PURPOSE:
+#   Final handoff instructions for the AVIS Robot.
+
+# ROBOT INSTRUCTIONS:
+#   1. Load AVIS.EDU.FILE
+#   2. Load AVIS.MANIFEST.EDU
+#   3. Load robot_avis_schema.json
+#   4. STOP using local compilers and engines
+#   5. WAIT for NEXUS SDK initialization
+
+# WHEN NEXUS ARRIVES:
+#   • Rebuild schema from EDU files
+#   • Rebuild compiler pipeline
+#   • Rebuild VM pipeline
+#   • Rebuild runtime pipeline
+#   • Rebuild packager pipeline
+
+# NEXUS WILL CONTROL:
+#   - Compilation
+#   - Execution
+#   - Validation
+#   - Optimization
+#   - Packaging
+#   - AI training
+
+# END OF HANDOFF
+# ================================================================

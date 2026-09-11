@@ -1,0 +1,48 @@
+// FILE: module_law_v1.law
+/*******************************************************************************
+ *                           AVIS.ARTIFACT HEADER
+ * TYPE: LAW
+ * CLASS: MODULE-LAW
+ * NAME: MODULE-LAW-V1
+ * VERSION: 1.00
+ * ROLE: Behavioral Rules for System Modules
+ * ENGINE: AVIS-2026 / AIFVS-MODE
+ * ORIGIN: /mercwar01/law/module_law_v1.law
+ *******************************************************************************
+ * [PURPOSE]
+ * Define how modules behave, interact, and expose functionality within the
+ * AVIS ecosystem.
+ *
+ * [MODULE PRINCIPLES]
+ * 1. Single Responsibility:
+ *    Each module must focus on one domain or function.
+ *
+ * 2. Clear Interfaces:
+ *    Modules must expose well-defined inputs and outputs.
+ *
+ * 3. Encapsulation:
+ *    Internal logic should not be exposed unless required.
+ *
+ * 4. Predictability:
+ *    Module behavior must remain stable across versions.
+ *
+ * [MODULE STRUCTURE]
+ * Each module must include:
+ *   - NAME
+ *   - PURPOSE
+ *   - INPUTS
+ *   - OUTPUTS
+ *   - DEPENDENCIES
+ *
+ * [INTERACTION RULES]
+ * - Modules communicate only through defined interfaces.
+ * - No module may modify another module’s state directly.
+ *
+ * [EXTENSION RULES]
+ * - New features must not break existing interfaces.
+ *
+ * [COMPLIANCE]
+ * All modules must follow this law to ensure system stability.
+ *******************************************************************************
+ * [END AVIS.ARTIFACT]
+ *******************************************************************************/

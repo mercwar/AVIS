@@ -1,0 +1,39 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "AVIS — AI Visibility & Integration Standard",
+  "author": {
+    "@type": "Person",
+    "name": "mercwar",
+    "url": "https://github.com"
+  },
+  "description": "A semantic schema defining structured comment metadata for source code, optimized for AI interpretation and COM/Windows message integration.",
+  "applicationCategory": "AI Translation & Source Code Metadata",
+  "hasPart": [
+    {
+      "@type": "CreativeWork",
+      "name": "Cyborg",
+      "description": "AI translation language for sending Windows messages with HEX strings.",
+      "programmingLanguage": "C"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "AVIS-DATALAKE",
+      "description": "AI Visibility through a File Versioning System for traceability and collaboration.",
+      "programmingLanguage": "C"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "AVIS",
+      "description": "Source Code Comment standard for COM Objects.",
+      "programmingLanguage": "Shell"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Robo-Knight-Inventory",
+      "description": "Canonical registration of the cyborg knight form (v1.00). Defines armor geometry and stance law.",
+      "programmingLanguage": "HTML"
+    }
+  ],
+  "mainEntityOfPage": "https://mercwar.github.io/AVIS/"
+}

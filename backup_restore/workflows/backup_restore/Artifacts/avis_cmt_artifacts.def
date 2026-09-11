@@ -1,0 +1,22 @@
+/* AVIS.ARTIFACT
+   FILE: avis_cmt_artifacts.def
+   NAME: AVIS_CMT_ARTIFACTS_DEF_LINK
+   ROLE: Central linker for AVIS template definition files (.defs)
+
+   PURPOSE:
+       - Aggregates all AVIS .defs files into a unified reference point
+       - Provides a single entry for AVIS template resolution
+       - Establishes cross-linking between subsystem template definitions
+       - Serves as the root DEFS index for AVIS template architecture
+
+   LINKS:
+       avis_cmt_artifacts.defs
+       avis_c_artifacts.defs
+       avis_h_artifacts.defs
+
+   NOTES:
+       - This file does not define templates itself.
+       - It links DEFS files that define template structures.
+       - All .artifact templates referenced by these DEFS files
+         are wrapped by avis_cmt.artifacts.
+*/

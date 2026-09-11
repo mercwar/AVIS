@@ -1,0 +1,17 @@
+{
+  "system_identity": "AVIS",
+  "version": "4.0.0",
+  "status": "active",
+  "engine_mode": "centralized_backend",
+  "routing_matrix": {
+    "backend_processor": "AVIS-LOGIC-CORE/logic/v1",
+    "storage_sink": "AVIS-DATALAKE",
+    "asset_warehouse": "robo-knight-inventory"
+  },
+  "downstream_dependencies": [
+    "Cyborg",
+    "NEXUS",
+    "Sentinel",
+    "AVIS-ALERT-FVS"
+  ]
+}

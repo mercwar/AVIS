@@ -1,0 +1,49 @@
+// FILE: versioning_law_v1.law
+/*******************************************************************************
+ *                           AVIS.ARTIFACT HEADER
+ * TYPE: LAW
+ * CLASS: VERSIONING-LAW
+ * NAME: VERSIONING-LAW-V1
+ * VERSION: 1.00
+ * ROLE: Rules for Governance Artifact Evolution
+ * ENGINE: AVIS-2026 / AIFVS-MODE
+ * ORIGIN: /mercwar01/law/versioning_law_v1.law
+ *******************************************************************************
+ * [PURPOSE]
+ * Define how governance artifacts evolve, update, and maintain continuity
+ * within the AVIS ecosystem.
+ *
+ * [VERSIONING PRINCIPLES]
+ * 1. Semantic Structure:
+ *    Use MAJOR.MINOR.PATCH format.
+ *
+ * 2. Backward Compatibility:
+ *    MINOR and PATCH updates must not break existing references.
+ *
+ * 3. Identity Preservation:
+ *    A law’s NAME must never change across versions.
+ *
+ * 4. Transparency:
+ *    Each version must include a CHANGELOG section.
+ *
+ * [VERSION RULES]
+ * - MAJOR: Breaking changes or structural redesigns.
+ * - MINOR: New features or sections.
+ * - PATCH: Small corrections or clarifications.
+ *
+ * [CHANGELOG FORMAT]
+ * Each version must include:
+ *   - VERSION NUMBER
+ *   - DATE
+ *   - SUMMARY OF CHANGES
+ *
+ * [DEPRECATION]
+ * - Deprecated laws must be marked clearly.
+ * - Deprecation does not imply deletion.
+ *
+ * [COMPLIANCE]
+ * All governance artifacts must follow this law to ensure predictable
+ * evolution and stable interoperability.
+ *******************************************************************************
+ * [END AVIS.ARTIFACT]
+ *******************************************************************************/

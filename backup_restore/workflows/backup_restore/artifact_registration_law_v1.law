@@ -1,0 +1,52 @@
+// FILE: artifact_registration_law_v1.law
+/*******************************************************************************
+ *                           AVIS.ARTIFACT HEADER
+ * TYPE: LAW
+ * CLASS: REGISTRATION-LAW
+ * NAME: ARTIFACT-REGISTRATION-LAW-V1
+ * VERSION: 1.00
+ * ROLE: Rules for Adding New Artifacts to the AVIS Ecosystem
+ * ENGINE: AVIS-2026 / AIFVS-MODE
+ * ORIGIN: /mercwar01/law/artifact_registration_law_v1.law
+ *******************************************************************************
+ * [PURPOSE]
+ * Define the process for introducing new artifacts—laws, modules, scripts,
+ * structures, or specifications—into the AVIS ecosystem.
+ *
+ * [REGISTRATION PRINCIPLES]
+ * 1. Identity:
+ *    Every artifact must have a unique NAME and VERSION.
+ *
+ * 2. Classification:
+ *    Each artifact must declare its TYPE and CLASS.
+ *
+ * 3. Placement:
+ *    Artifacts must specify their canonical filesystem path.
+ *
+ * 4. Documentation:
+ *    Artifacts must include a PURPOSE section.
+ *
+ * [REGISTRATION PROCESS]
+ * Step 1: Assign NAME, TYPE, CLASS, VERSION.
+ * Step 2: Define PURPOSE and ROLE.
+ * Step 3: Specify ORIGIN path under /mercwar01/.
+ * Step 4: Include AVIS.ARTIFACT header.
+ * Step 5: Add the artifact to the INDEX registry.
+ *
+ * [REGISTRY FORMAT]
+ * Registry entries must include:
+ *   - NAME
+ *   - VERSION
+ *   - TYPE
+ *   - CLASS
+ *   - ORIGIN
+ *
+ * [UPDATE RULES]
+ * - Updated artifacts must replace or version‑increment their registry entry.
+ *
+ * [COMPLIANCE]
+ * All new artifacts must follow this law to ensure consistency and
+ * discoverability across the AVIS ecosystem.
+ *******************************************************************************
+ * [END AVIS.ARTIFACT]
+ *******************************************************************************/

@@ -1,0 +1,15 @@
+🔥==START_BLOCK==🔥
+💥 HEADER       :: AVIS ENGINE MANIFEST INTERFACE
+💥 SUBSYSTEM   :: ROBO-KNIGHT-INVENTORY UNIT
+💥 COMPILER     :: MSVC RUNTIME TARGET WINDOWS 11
+💥 DIRECTIVE    :: ZERO DIRECTORY SWITCHING ALLOWED
+💥 PROTOCOL    :: VERSION 4 UNIVERSAL LOGIC/V1 COUPLING
+💥 OBJECTIVE    :: Provide crawling robots with clear source metadata paths
+🔥==END_BLOCK==🔥
+
+🔥==START_BLOCK==🔥
+💥 DELIMITER_1  :: '🔥==START_BLOCK==🔥' -> Opens structural context window
+💥 DELIMITER_2  :: '🔥==END_BLOCK==🔥'   -> Seals structural context window
+💥 PROPERTY_TAG :: '💥'                  -> Prefixes explicit machine-readable metadata keys
+💥 REPO_TRACE   :: AVIS-DATALAKE C-BASE HOOK
+🔥==END_BLOCK==🔥

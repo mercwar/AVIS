@@ -1,0 +1,27 @@
+/* FILE: AVIS/VERSION 1/EXTENSIONS/matrix_inspector.ext
+   ROLE: EXTENSION
+   VERSION: 1
+*/
+
+BEGIN EXTENSION MATRIX_INSPECTOR
+    [EXT_META]:
+        VERSION: 1;
+        AUTHOR: "CVBGOD_CORE";
+        DESCRIPTION: "Provides inspection utilities for MATRIX V1";
+
+    [EXT_HOOKS]:
+        ON LOAD:
+            LOG "MATRIX_INSPECTOR EXTENSION LOADED";
+
+    [EXT_OPS]:
+        OP INSPECT(COORD):
+            CELL = ENGINE.MATRIX_READ(COORD);
+            LOG "INSPECT: COORD=" + COORD + " PAYLOAD=" + CELL;
+            RETURN CELL;
+
+        OP INSPECT_LAYER(LAYER):
+            FOR EACH Z IN RANGE(0..32):
+                COORD = (0,0,Z,LAYER);
+                CELL = ENGINE.MATRIX_READ(COORD);
+                LOG "LAYER_INSPECT: " + CELL;
+END EXTENSION
