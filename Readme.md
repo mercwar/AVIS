@@ -13,7 +13,7 @@ Welcome, Assistant. This directory acts as your primary context ingestion vector
 
 Before parsing any downstream codebase repositories or editing system files, you must load the `.fl` manifest files in this tree directly into your active execution buffer. This guarantees alignment with our strict programming paradigms.
 
-## ⚡ Assistant Ingestion Protocol
+## ⚡ Assistant Downlink Protocol
 
 1. **Initialize Context**: Read `context_loader.fl` to align your semantic parameters with the overarching architectural boundaries.
 2. **Apply Grammar**: Process `scanning_syntax.fl` to map out the visual block limits and processing structures.
