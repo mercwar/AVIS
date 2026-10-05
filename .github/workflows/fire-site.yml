@@ -23,9 +23,9 @@ jobs:
           # Use ${GITHUB_WORKSPACE} to ensure we are in the repository root
           cd ${GITHUB_WORKSPACE}
           
-          if [ -f "./sitemap.sh" ]; then
-            chmod +x ./sitemap.sh
-            ./sitemap.sh
+          if [ -f "./fire-site.sh" ]; then
+            chmod +x ./fire-site.sh
+            ./fire-site.sh
           else
             echo "::error::MERCWAR FATAL: sitemap.sh NOT FOUND at $(pwd)"
             ls -R
