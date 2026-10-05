@@ -1,0 +1,47 @@
+name: "MERCWAR :: SITE-MAP-DISPATCH"
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  sentinel-dispatch:
+    name: "MERCWAR :: Sentinel Dispatch"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: "MERCWAR :: Checkout"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: "MERCWAR :: Execute Sitemap Script"
+        run: |
+          # Use ${GITHUB_WORKSPACE} to ensure we are in the repository root
+          cd ${GITHUB_WORKSPACE}
+          
+          if [ -f "./sitemap.sh" ]; then
+            chmod +x ./sitemap.sh
+            ./sitemap.sh
+          else
+            echo "::error::MERCWAR FATAL: sitemap.sh NOT FOUND at $(pwd)"
+            ls -R
+            exit 1
+          fi
+
+      - name: "MERCWAR :: Commit & Push"
+        run: |
+          git config --global user.name "MERCWAR-Automaton"
+          git config --global user.email "mercwar@github.local"
+          
+          git add -A
+          
+          if ! git diff --staged --quiet; then
+            git commit -m "MERCWAR: Automated sitemap update"
+            git push
+          else
+            echo "MERCWAR: No changes to commit."
+          fi
